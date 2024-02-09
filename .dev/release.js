@@ -4,10 +4,10 @@
  * @description Inquirer for release versions in github.
  */
 
-import inquirer           from 'inquirer'
-import { releaseIt }      from './templates/releaseIt.js'
+import inquirer      from 'inquirer'
+import { releaseIt } from './templates/releaseIt.js'
 import {
-	exec, pkg, writeSync, 
+	exec, writeSync, 
 } from './_core.js'
 
 const noRelease = process.argv.includes( '--no-release' )
