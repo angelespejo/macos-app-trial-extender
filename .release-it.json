@@ -21,7 +21,7 @@
         ],
         "after:git:release": "echo 'After git push, before github release'",
         "after:release": [
-            "gh repo edit https://github.com/angelespejo/macos-app-trial-extender -d \\\"undefined\\\"",
+            "gh repo edit https://github.com/angelespejo/macos-app-trial-extender -d \"MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.\"",
             "gh repo edit https://github.com/angelespejo/macos-app-trial-extender --add-topic macos,dmg,app,tauri,js",
             "echo 'Github action is now releasing: macos-app-trial-extender v${version} to https://github.com/angelespejo/macos-app-trial-extender.\n Check if all is ok 🌈🤖\n https://github.com/angelespejo/macos-app-trial-extender/actions'"
         ]

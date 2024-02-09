@@ -39,7 +39,7 @@ const data = {
 		],
 		'after:git:release' : 'echo \'After git push, before github release\'',
 		'after:release'     : [
-			`gh repo edit ${gitUrl} -d \\"${desc}\\"`,
+			`gh repo edit ${gitUrl} -d "${desc}"`,
 			`gh repo edit ${gitUrl} --add-topic ${topics}`,
 			`echo 'Github action is now releasing: ${name} ${ver} to ${gitUrl}.\n Check if all is ok 🌈🤖\n ${gitUrl}/actions'`,
 		],
