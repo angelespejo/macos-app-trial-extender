@@ -8,7 +8,7 @@
 	},
 	"package": {
 		"productName": "MATE",
-		"version": "0.0.1"
+		"version": "0.0.2"
 	},
 	"tauri": {
 		"systemTray": {
@@ -18,7 +18,7 @@
 		"allowlist": {
 			"all": false,
 			"fs": {
-				"all": false, 
+				"all": false,
 				"writeFile": true,
 				"removeFile": true,
 				"exists": true,
@@ -31,13 +31,13 @@
 				"all": true
 			},
 			"shell": {
-				"open": true 
+				"open": true
 			},
 			"notification": {
-				"all": true 
+				"all": true
 			},
 			"dialog": {
-				"all": false, 
+				"all": false,
 				"ask": true,
 				"confirm": true
 			},
