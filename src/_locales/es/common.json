@@ -4,7 +4,7 @@
 		"shortDesciption": "MATE es una aplicación que te permite restablecer el período de prueba de aplicaciones nativas de macOS como Final Cut Pro o Logic Pro.",
 		"purposes": "Esta aplicación es solo para fines de desarrollo.",
 		"aboutTitle": "Acerca de",
-		"aboutDescription": "Esta aplicación está dirigida a desarrolladores y probadores que pueden haber superado los plazos de prueba y necesitan restablecer el temporizador a cero, lo que les permite seguir probando la aplicación o perfeccionar aún más sus complementos.",
+		"aboutDescription": "Esta aplicación está dirigida a desarrolladores y testers que pueden haber superado los plazos de prueba y necesitan restablecer el temporizador a cero, lo que les permite seguir probando la aplicación o perfeccionar aún más sus complementos (plugins).",
 		"aboutAlert": "Para acceder ilimitadamente a cualquier programa de macOS, es esencial obtenerlo a través de la App Store de Apple, ya sea descargándolo de forma gratuita o comprándolo si es necesario.",
 		"howTitle": "Cómo funciona",
 		"howDescription": "Esta aplicación se encarga de automatizar un proceso que normalmente requiere intervención manual en la Terminal. Cuando lo ejecutas, elimina los archivos \"userdata\" de los directorios correspondientes a cada aplicación en ~/Library/Application Support. Estos archivos son responsables de almacenar datos relacionados con la fecha de vencimiento de la prueba de cada aplicación.",
@@ -24,7 +24,7 @@
 	"settings": {
 		"title": "Configuración",
 		"extendTitle": "Extender la versión de prueba",
-		"extendBtnSuccess": "Éxit",
+		"extendBtnSuccess": "Éxito",
 		"extendBtn": "Extender",
 		"automateTitle": "Automatización (beta)",
 		"automateDescription": "Mantiene automáticamente la versión de prueba el primer día. Se recomienda activar el inicio automático si está activado.",
@@ -49,8 +49,8 @@
 		"version": "Versión",
 		"license": "Licencia",
 		"author": "Autor",
-		"homepage": "Página de inicio",
-		"funding": "Financiamiento",
+		"homepage": "Repositorio",
+		"funding": "Donar",
 		"bugs": "Errores"
 	},
 	"nots": {

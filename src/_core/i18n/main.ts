@@ -8,7 +8,9 @@
 import { dev }            from '$app/environment'
 import i18n               from 'sveltekit-i18n'
 import localeTranslations from '../../_locales'
-import { derived }        from 'svelte/store'
+import {
+	derived, get, 
+}   from 'svelte/store'
 
 const i18nObj = new i18n( {
 	log : {
@@ -39,8 +41,9 @@ export const currLocaleRoute = derived( locale, $locale => {
 
 export const layoutFunct = async ( pathname: string ) =>{
 
-	const lang  = `${pathname.match( /\w+?(?=\/|$)/ ) || defaultLocale}`
-	const route = pathname.replace( new RegExp( `^/${lang}` ), '' )
+	const storeLang = get( locale )
+	const lang      = `${pathname.match( /\w+?(?=\/|$)/ ) || storeLang || defaultLocale}`
+	const route     = pathname.replace( new RegExp( `^/${lang}` ), '' )
 	
 	await loadTranslations( lang, route )
 

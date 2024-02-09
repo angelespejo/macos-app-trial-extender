@@ -6,7 +6,7 @@
     import { page } from "$app/stores";
 
     const {t, locale, locales, store} = $page.data
-    const { notification, automate } = store
+    const { notification, automate, autostart } = store
     let isClickedReset = false
     const clickedResetFunction = () => {
         isClickedReset = true
@@ -85,6 +85,7 @@
     <Config 
         title={$t('common.settings.autostartTitle')}
         config={false}
+        bind:value={$autostart}
     >  
         <div slot="desc">
             {$t('common.settings.autostartDescription')} 

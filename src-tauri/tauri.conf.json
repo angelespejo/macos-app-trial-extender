@@ -3,11 +3,12 @@
 		"beforeDevCommand": "pnpm dev:web",
 		"beforeBuildCommand": "pnpm build:web",
 		"devPath": "http://localhost:13129",
-		"distDir": "../build"
+		"distDir": "../build",
+		"withGlobalTauri": true
 	},
 	"package": {
 		"productName": "MATE",
-		"version": "0.0.0"
+		"version": "0.0.1"
 	},
 	"tauri": {
 		"systemTray": {
@@ -47,7 +48,10 @@
 		},
 		"bundle": {
 			"active": true,
-			"targets": "all",
+			"targets": [
+				"app",
+				"updater"
+			],
 			"copyright": "",
 			"longDescription": "",
 			"shortDescription": "",
@@ -59,10 +63,15 @@
 				"icons/128x128@2x.png",
 				"icons/icon.icns",
 				"icons/icon.ico"
-			]
+			],
+			"macOS": {
+				"minimumSystemVersion": "10.13",
+				"license": "../LICENSE"
+			}
 		},
 		"updater": {
-			"active": false
+			"active": false,
+			"dialog": true
 		},
 		"security": {
 			"csp": null

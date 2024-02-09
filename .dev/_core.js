@@ -52,7 +52,7 @@ export const pkgFunct = fileName => {
 	)
 
 	// when is used in the compilated files of 'dist' folder
-	if ( projectPath.includes( 'dist' ) ) projectPath = path.join( projectPath, '..' )
+	if ( projectPath.includes( 'dist' ) || projectPath.includes( 'build' ) ) projectPath = path.join( projectPath, '..' )
 
 	const pkgPath = path.join( projectPath, fileName + '.json' )
 	const pkgData = json( pkgPath )

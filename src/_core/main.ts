@@ -41,6 +41,7 @@ export class Core {
 		
 		this.resetTrialWatcher()
 		this.changeTrayName()
+		this.autostart()
 	
 	}
 
@@ -51,7 +52,7 @@ export class Core {
 		goto( `/${$page.data.lang}${pageID}` )
 	
 	}
-	
+
 	isOnPage( pageID: string ){
 
 		const $page = this.store.get( page )
@@ -62,6 +63,7 @@ export class Core {
 		return activeUrl === pageRoute
 	
 	}
+	
 	navTransitions(){
 
 		onNavigate( navigation => {
@@ -105,6 +107,7 @@ export class Core {
 		await this.#sendNot()
 	
 	}
+
 	async changeTrayName(){
 
 		this.i18n.locale.subscribe( value => {
@@ -133,6 +136,18 @@ export class Core {
 		} )
 	
 	}
+
+	autostart(){
+
+		this.store.autostart.subscribe( async value => {
+
+			if( value ) await this.app.autostart.enable()
+			else await this.app.autostart.disable()
+		
+		} )
+	
+	}
+	
 	async resetTrialWatcher(){
 
 		const home             = await this.path.homeDir()
@@ -156,10 +171,13 @@ export class Core {
 			if( value === true ) {
 
 				await this.resetTrial()
-				watcher.start()
+				await watcher.start()
+			
+			} else {
+
+				await watcher.stop()
 			
 			}
-			else watcher.stop()
 		
 		} )
 

@@ -1,7 +1,7 @@
 {
-	"name": "macos-app-trial-extended",
+	"name": "macos-app-trial-extender",
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"type": "module",
 	"packageManager": "pnpm@8.14.3",
 	"engines": {
@@ -20,9 +20,19 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"tauri": "tauri $@",
 		"co": "cz",
+		"dev-info": "md docs/dev-info.md",
+		"push-main": "node .dev/release.js --no-release",
+		"release": "node .dev/release.js",
 		"todo": "node .dev/todo.js",
 		"prepare": "husky install .dev/husky"
 	},
+	"keywords": [
+		"macos",
+		"dmg",
+		"app",
+		"tauri",
+		"js"
+	],
 	"dependencies": {
 		"@tauri-apps/api": "^1.5.2",
 		"svelte-ripple-action": "^1.0.5",
@@ -34,6 +44,7 @@
 		"@fortawesome/free-brands-svg-icons": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"@playwright/test": "^1.28.1",
+		"@release-it/bumper": "^6.0.1",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.4",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
@@ -41,6 +52,7 @@
 		"@tsconfig/svelte": "^5.0.2",
 		"@typescript-eslint/eslint-plugin": "^6.15.0",
 		"@typescript-eslint/parser": "^6.15.0",
+		"auto-changelog": "^2.4.0",
 		"autoprefixer": "^10.4.16",
 		"browserslist": "^4.22.1",
 		"cli-markdown": "^3.0.5",
@@ -71,6 +83,7 @@
 		"lint-staged": "^15.1.0",
 		"markdownlint": "^0.31.1",
 		"postcss": "^8.4.32",
+		"release-it": "^17.0.3",
 		"rimraf": "^5.0.5",
 		"svelte": "^4.2.8",
 		"svelte-check": "^3.4.6",

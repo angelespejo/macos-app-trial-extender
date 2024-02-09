@@ -30,7 +30,7 @@ pnpm build
 ## 📊 Update packages version
 
 ```bash
-pnpm update-version
+pnpm release
 ```
 
 > **INFO**  This command automatically updates the versions of the packages that are selected at the prompt

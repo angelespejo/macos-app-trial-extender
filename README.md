@@ -33,6 +33,8 @@ DEVELOPED BY ANGELO
 
 # MacOS App Trial Extender (MATE)
 
+[![HEADER](docs/banner.png)](https://github.com/angelespejo/macos-app-trial-extender/releases)
+
 MacOS app that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.
 
 > This application is for development purposes only.

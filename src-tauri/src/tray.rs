@@ -13,15 +13,18 @@ use tauri::{
 
 #[path = "./dock.rs"] mod dock;
 
-fn handle_system_tray_event(app: &AppHandle, event_type: &str, event_data: &str) {
+fn handle_system_tray_event(app: &AppHandle, event_type: &str, event_data: &str, open: bool) {
+   
     if let Some(window) = app.get_window("main") {
-        if !window.is_visible().expect("winvis") {
-            dock::icon_visibility(true);
-            window.show().unwrap();
-            // item_handle.set_title("Hide").unwrap();
+        if open {
+            if !window.is_visible().expect("winvis") {
+                dock::icon_visibility(true);
+                window.show().unwrap();
+                // item_handle.set_title("Hide").unwrap();
+            }
+            
+            window.set_focus().unwrap();
         }
-        
-        window.set_focus().unwrap();
 
         window.eval(&format!(
             "window.dispatchEvent(new CustomEvent('system-tray-event', {{ detail: {{ from: 'system-tray', type: '{}', data: '{}' }} }}));",
@@ -38,38 +41,25 @@ fn handle_event( app: &AppHandle, event: SystemTrayEvent) {
 
             match id.as_str() {
                 "open-page" => {
-                    match app.get_window("main") {
-                        Some(window) => match window.is_visible().expect("winvis") {
-                            true => {   
-                                window.set_focus().unwrap();
-                                return;
-    
-                            }
-                            false => {
-                                dock::icon_visibility(true);
-                                window.show().unwrap();
-                                window.set_focus().unwrap();
-                            },
-                        },
-                        None => return,
-                    };
+                    handle_system_tray_event(&app , "open-page", "", true);
                 }
                 "support" => {
 
-                    open(&app.shell_scope(), "https://pigeonposse.com/?popup=donate&iconflow", None).unwrap();
+                    open(&app.shell_scope(), "https://github.com/sponsors/angelespejo", None).unwrap();
 
                 }
                 "automate" => {
-                    handle_system_tray_event(&app , "automate", "");
+                    // handle_system_tray_event(&app , "automate", "", false);
+                    handle_system_tray_event(&app, "open-page", "settings", true);
                 }
                 "reset" => {
-                    handle_system_tray_event(&app , "reset", "");
+                    handle_system_tray_event(&app , "reset", "",false);
                 }
                 "settings" => {
-                    handle_system_tray_event(&app, "open-page", "settings");
+                    handle_system_tray_event(&app, "open-page", "settings", true);
                 }
                 "info" => {
-                    handle_system_tray_event(&app, "open-page", "info");
+                    handle_system_tray_event(&app, "open-page", "info", true);
                 }
                 "quit" => {
                     std::process::exit(0);

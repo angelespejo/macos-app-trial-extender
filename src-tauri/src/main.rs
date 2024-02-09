@@ -45,7 +45,7 @@ fn main() {
         // PLUGINS
         .plugin(tauri_plugin_autostart::init(
             MacosLauncher::LaunchAgent, 
-            None,
+            Some(vec!["--flag1", "--flag2"]),
         ))
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);
@@ -60,6 +60,17 @@ fn main() {
             core::reset_trial_data_watcher
         ])
         ///////////////////////////////////////////////////////////////////////
+        // ON
+        .on_window_event(|event| match event.event() {
+            tauri::WindowEvent::CloseRequested { api, .. } => {
+                event.window().hide().unwrap();
+                api.prevent_close();
+                dock::icon_visibility(false);
+                println!("Prevent close app on close window")
+            }
+            _ => {}
+        })
+        ///////////////////////////////////////////////////////////////////////
         // BUILD
         .build(tauri::generate_context!())
         .expect("error while building tauri application");
@@ -73,16 +84,6 @@ fn main() {
                 api.prevent_exit();
                 println!("Prevent backend app on close window")
             }
-
-            // Keep the Frontend Running in the Background
-            tauri::RunEvent::WindowEvent { event, .. } => match event {
-                tauri::WindowEvent::CloseRequested { api, .. } => {
-                  api.prevent_close();
-                  dock::icon_visibility(false);
-                  println!("Prevent close app on close window")
-                }
-                _ => {}
-            },
             _ => {}
 
         });
