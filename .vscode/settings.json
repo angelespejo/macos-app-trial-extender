@@ -1,0 +1,48 @@
+/** 
+* *****************************************************************************
+* vscode config.
+* *****************************************************************************
+*
+* @description Configuration file for Visual Studio Code (VSCode) settings specific to your project.
+* @see https://code.visualstudio.com/docs/getstarted/settings
+*
+* *****************************************************************************
+*/
+{
+    "files.autoSave": "onFocusChange",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": [
+        "javascript", 
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json", 
+        "jsonc", 
+        "json5",
+        "html",
+        "yaml",
+        "toml"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "markdownlint.ignore": [
+        "**/LICENSE"
+    ],
+    "terminal.integrated.defaultProfile.linux": "zsh", 
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "/bin/zsh"
+        },
+    },
+    "editor.tabSize": 4,
+    "svelte.enable-ts-plugin": true,
+    "rust-analyzer.linkedProjects": [
+        "./src-tauri/Cargo.toml",
+        "./src-tauri/Cargo.toml"
+    ]
+}

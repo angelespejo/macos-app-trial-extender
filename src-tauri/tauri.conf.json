@@ -1,0 +1,86 @@
+{
+	"build": {
+		"beforeDevCommand": "pnpm dev:web",
+		"beforeBuildCommand": "pnpm build:web",
+		"devPath": "http://localhost:13129",
+		"distDir": "../build"
+	},
+	"package": {
+		"productName": "MATE",
+		"version": "0.0.0"
+	},
+	"tauri": {
+		"systemTray": {
+			"iconPath": "icons/tray-icon.png",
+			"iconAsTemplate": true
+		},
+		"allowlist": {
+			"all": false,
+			"fs": {
+				"all": false, 
+				"writeFile": true,
+				"removeFile": true,
+				"exists": true,
+				"scope": [
+					"$HOME/Library/Application Support/*",
+					"$HOME/Library/Application Support/.*"
+				]
+			},
+			"path": {
+				"all": true
+			},
+			"shell": {
+				"open": true 
+			},
+			"notification": {
+				"all": true 
+			},
+			"dialog": {
+				"all": false, 
+				"ask": true,
+				"confirm": true
+			},
+			"window": {
+				"all": false,
+				"startDragging": true
+			}
+		},
+		"bundle": {
+			"active": true,
+			"targets": "all",
+			"copyright": "",
+			"longDescription": "",
+			"shortDescription": "",
+			"category": "DeveloperTool",
+			"identifier": "com.angelespejo.mate",
+			"icon": [
+				"icons/32x32.png",
+				"icons/128x128.png",
+				"icons/128x128@2x.png",
+				"icons/icon.icns",
+				"icons/icon.ico"
+			]
+		},
+		"updater": {
+			"active": false
+		},
+		"security": {
+			"csp": null
+		},
+		"macOSPrivateApi": true,
+		"windows": [
+			{
+				"fullscreen": false,
+				"resizable": true,
+				"transparent": true,
+				"titleBarStyle": "Overlay",
+				"title": "",
+				"width": 450,
+				"minWidth": 800,
+				"maxWidth": 800,
+				"height": 600,
+				"minHeight": 400
+			}
+		]
+	}
+}

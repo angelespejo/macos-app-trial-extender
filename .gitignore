@@ -1,0 +1,61 @@
+# #############################################################################
+# .gitignore config.
+# #############################################################################
+#
+# @description Specifies which files and directories should be ignored by Git, 
+#              ensuring a clean version control history.
+# @see https://git-scm.com/docs/gitignore
+#
+# #############################################################################
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+.pnpm-store
+node_modules
+dist
+dist-ssr
+build
+*.local
+
+# misc
+.DS_Store
+
+# Editor directories and files
+# .vscode/*
+# !.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Tuborepo
+/.turbo
+**/.turbo
+
+# Svelte
+/.svelte-kit
+**/.svelte-kit
+
+# playwright 
+/test-results
+**/test-results
+
+# tauri 
+/src-tauri/target
+**/src-tauri/target
+
+# project 
+**/dist
+**/__temp__
+/__cache__
+**/__cache__
+**/*.timestamp-*

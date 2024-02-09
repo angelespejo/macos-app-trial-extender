@@ -1,0 +1,426 @@
+{
+	"root": true,
+	"env": {
+		"node": true,
+		"browser": true,
+		"es2022": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 2023,
+		"sourceType": "module",
+		"allowImportExportEverywhere": true
+	},
+	"plugins": [
+		"html",
+		"align-import",
+		"align-assignments",
+		"promise",
+		"jsonc",
+		"yaml"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:promise/recommended",
+		"plugin:jsdoc/recommended",
+		"plugin:import/recommended",
+		"plugin:tailwindcss/recommended"
+	],
+	"rules": {		
+		// "max-len": [
+		// 	"error", 
+		// 	{ 
+		// 		"code": 80,
+		// 		"ignoreComments": true,
+		// 		"ignoreStrings": true,
+		// 		"ignoreTemplateLiterals": true,
+		// 		"ignoreRegExpLiterals": true
+		// 	}
+		// ],
+		"align-import/align-import": "error",
+		"align-assignments/align-assignments": [
+			"error",
+			{
+				"requiresOnly": false
+			}
+		],
+		"camelcase": "warn",
+		"key-spacing": [
+			"error",
+			{
+				"multiLine": {
+					"beforeColon": true,
+					"afterColon": true
+				},
+				"align": {
+					"beforeColon": true,
+					"afterColon": true,
+					"on": "colon"
+				}
+			}
+		],
+		"switch-colon-spacing": [
+			"error",
+			{
+				"after": true,
+				"before": true
+			}
+		],
+		// "switch-colon-spacing": "error",
+		"comma-dangle": [
+			"error",
+			"always-multiline"
+		],
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 1,
+				"maxEOF": 1,
+				"maxBOF": 1
+			}
+		],
+		"padded-blocks": [
+			"error",
+			"always"
+		],
+		"one-var": [
+			"error",
+			{
+				"var": "always",
+				"let": "always",
+				"const": "never"
+			}
+		],
+		"vars-on-top": "warn",
+		"space-in-parens": [
+			"error",
+			"always"
+		],
+		"object-curly-newline": [
+			"error", 
+			{ 
+				"ObjectPattern": {
+					"multiline": true 
+				},
+				"ObjectExpression": {
+					"minProperties": 1 
+				},
+				"ImportDeclaration": {
+					"multiline": false, "minProperties": 2 
+				}
+			}
+		],
+		"object-curly-spacing": [
+			"error",
+			"always"
+		],
+		"array-bracket-newline": [
+			"error",
+			{
+				"minItems": 1 
+			}
+		],
+		"array-bracket-spacing": [
+			"error",
+			"always"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"semi": [
+			"error",
+			"never"
+		],
+		"import/no-unresolved": "off",
+		"arrow-parens": [
+			"error",
+			"as-needed"
+		],
+		"align-import/trim-import": "error",
+		"default-case-last": "error",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1 
+			}
+		],
+		"default-case": "error",
+		"eol-last": [
+			"error",
+			"always"
+		],
+		"no-prototype-builtins": "off",
+		"no-inline-comments": "off",
+		"space-infix-ops": "error",
+		"no-multi-spaces": [
+			"error",
+			{
+				"exceptions": {
+					"ImportDeclaration": true,
+					"VariableDeclarator": true,
+					"AssignmentExpression": true
+				}
+			}
+		]
+	},
+	"ignorePatterns": [ 
+		"!.dev",
+		"!.utils",
+		"dist/*", 
+		"**/dist/*",
+		"**/vendor/*",
+		"**/static/*",
+		"**/public/*",
+		"**/build/*",
+		"**/.svelte-kit/*",
+		"**/*.timestamp-*",
+		"**/*.d.ts",
+		"packages/exts/*.html"
+	],
+	"overrides": [
+		{
+			"files": [
+				"**/*.cjs"
+			], 
+			"env": {
+				"node": true 
+			}
+		},
+		/**
+		 * EXCLUSIVE FOR JS & TS FILES.
+		 */
+		{
+			"files": [
+				"**/*.js",
+				"**/*.mjs",
+				"**/*.cjs",
+				"**/*.jxs",
+				"**/*.ts",
+				"**/*.mts",
+				"**/*.cts",
+				"**/*.txs"
+			],
+			"rules": {
+				"jsdoc/require-file-overview": [
+					"error",
+					{
+						"tags": {
+							"description": {
+								"mustExist": true,
+								"initialCommentsOnly": true,
+								"preventDuplicates": false
+							}
+						}
+					}
+				],
+				"jsdoc/require-jsdoc": [
+					"error",
+					{
+						"require": {}
+					}
+				],
+				"jsdoc/require-description": [
+					"error",
+					{
+						"descriptionStyle": "body"
+					}
+				],
+				"jsdoc/require-hyphen-before-param-description": [
+					"error",
+					"always",
+					{
+						"tags": {
+							"returns": "always"
+						}
+					}
+				],
+				"jsdoc/check-line-alignment": [
+					"error",
+					"always",
+					{
+						"tags": [
+							"version",
+							"description",
+							"since",
+							"param",
+							"returns"
+						]
+					}
+				],
+				"jsdoc/require-description-complete-sentence": [
+					"error",
+					{
+						"tags": [
+							"param",
+							"returns",
+							"description"
+						]
+					}
+				],
+				"jsdoc/tag-lines": [
+					"error",
+					"never",
+					{
+						"startLines": 1,
+						"endLines": 0,
+						"tags": {
+							"version": {
+								"count": 1,
+								"lines": "always"
+							},
+							"author": {
+								"count": 1,
+								"lines": "always"
+							}
+						}
+					}
+				],
+				"quotes": [
+					"error",
+					"single"
+				]
+			}
+		},
+		/**
+		 * TYPESCRIPT config.
+		 */
+		{
+			"files": [
+				"**/*.ts"
+			],
+			"plugins": [
+				"@typescript-eslint"
+			],
+			"extends": [
+				"eslint:recommended",
+				"plugin:@typescript-eslint/eslint-recommended",
+				"plugin:@typescript-eslint/recommended"
+			],
+			"parser": "@typescript-eslint/parser",
+			"rules": {
+				"@typescript-eslint/consistent-type-imports": [
+					"error",
+					{
+						"prefer": "type-imports",
+						"disallowTypeAnnotations": false
+					}
+				]
+			}
+		},
+		/**
+		 * SVELTE config.
+		 */
+		{
+			"files": [
+				"**/src/*.svelte"
+			],
+			"extends": [
+				"plugin:svelte/recommended"
+			],
+			"parser": "svelte-eslint-parser",
+			"parserOptions": {
+				"parser": {
+					"ts": "@typescript-eslint/parser",
+					"typescript": "@typescript-eslint/parser"
+				}
+			}
+		},
+		/**
+		 * REACT config.
+		 * @see https://www.npmjs.com/package/eslint-plugin-react-hooks
+		 */
+		{
+			"files": [
+				"**/*.tsx", 
+				"**/*.jsx"
+			],
+			"env": {
+				"browser": true, 
+				"es2020": true 
+			},
+			"extends": [
+				"plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"
+			],
+			"parser": "@typescript-eslint/parser",
+			"plugins": [
+				"react-refresh"
+			],
+			"rules": {
+				"react-refresh/only-export-components": [
+					"warn",
+					{
+						"allowConstantExport": true 
+					}
+				]
+			}
+		},
+		/**
+		 * YAML config.
+		 * @see https://www.npmjs.com/package/eslint-plugin-yaml
+		 */
+		{
+			"files": [
+				"**/*.yaml",
+				"**/*.yml"
+			],
+			"extends": [
+				"plugin:yaml/recommended"
+			]
+		},
+		/**
+		 * JSON config.
+		 * @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
+		 */
+		{
+			"files": [
+				"**/*.json",
+				"**/*.json5",
+				"**/*.jsonc"
+			],
+			"parser": "jsonc-eslint-parser",
+			"rules": {
+				"strict": "error",
+				"jsonc/auto": "off",
+				"jsonc/no-comments": "off",
+				"jsonc/indent": [
+					"error",
+					"tab"
+				],
+				"jsonc/comma-style": [
+					"error",
+					"last"
+				],
+				"jsonc/array-bracket-newline": [
+					"error",
+					"always"
+				],
+				"jsonc/comma-dangle": [
+					"error",
+					"never"
+				],
+				"jsonc/key-spacing": [
+					"error",
+					{
+						"beforeColon": false,
+						"afterColon": true,
+						"mode": "strict"
+					}
+				],
+				"jsonc/object-curly-newline": [
+					"error", {
+						"multiline": true, 
+						"minProperties": 1 
+					}
+				],
+				"jsonc/quotes": [
+					"error",
+					"double",
+					{
+						"avoidEscape": false
+					}
+				]
+			}   
+		}
+	]
+}
