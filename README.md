@@ -44,7 +44,7 @@ DEVELOPED BY Angelo 🐦🌈
 [![HEADER](docs/banner.png)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
 [![License](https://img.shields.io/github/license/pigeonposse/stylegpt?color=green&style=for-the-badge&logoColor=white)](/LICENSE)
-[![Github Releases](https://img.shields.io/github/package-json/v/angelespejo/macos-app-trial-extender?color=blue&style=for-the-badge&logoColor=white)](undefined)
+[![Github Releases](https://img.shields.io/github/package-json/v/angelespejo/macos-app-trial-extender?color=blue&style=for-the-badge&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
 MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.
 
@@ -56,7 +56,7 @@ MATE is an application that allows you to reset the trial period of native macos
 [![Macos Intel](https://img.shields.io/badge/Macos%20Intel-black?style=for-the-badge&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases/download/latest/MATE_x64.app.tar.gz)
 [![Macos Silicon](https://img.shields.io/badge/Macos%20Silicon-black?style=for-the-badge&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases/download/latest/MATE_aarch64.app.tar.gz)
 
-[![All](https://img.shields.io/badge/All-black?style=for-the-badge&logoColor=white)](undefined)
+[![All](https://img.shields.io/badge/All-black?style=for-the-badge&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
 <!-- PIGEONPOSSE END HEADER -->
 <!-- PIGEONPOSSE START ORG -->
