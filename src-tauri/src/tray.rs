@@ -45,7 +45,9 @@ fn handle_event( app: &AppHandle, event: SystemTrayEvent) {
                 }
                 "support" => {
                     open(&app.shell_scope(), "https://github.com/sponsors/angelespejo", None).unwrap();
-
+                }
+                "feedback" => {
+                    open(&app.shell_scope(), "https://github.com/angelespejo/macos-app-trial-extender/issues", None).unwrap();
                 }
                 "automate" => {
                     // handle_system_tray_event(&app , "automate", "", false);
@@ -76,6 +78,7 @@ fn create_menu() -> SystemTrayMenu{
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let open = CustomMenuItem::new("open-page".to_string(), "Open dashboard");
     let settings = CustomMenuItem::new("settings".to_string(), "Settings");
+    let feedback = CustomMenuItem::new("feedback".to_string(), "Feedback");
     let reset = CustomMenuItem::new("reset".to_string(), "Reset trial versions");
     let automate = CustomMenuItem::new("automate".to_string(), "Automation");
 
@@ -91,6 +94,8 @@ fn create_menu() -> SystemTrayMenu{
         .add_native_item(SystemTrayMenuItem::Separator)
         .add_item(settings)
         .add_item(info)
+        .add_native_item(SystemTrayMenuItem::Separator)
+        .add_item(feedback)
         .add_item(support)
         .add_native_item(SystemTrayMenuItem::Separator)
         .add_item(quit);

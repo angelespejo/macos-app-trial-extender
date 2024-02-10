@@ -36,6 +36,7 @@ const data = {
 		],
 		'after:bump' : [
 			'pnpm auto-changelog -p',
+			'pnpm readme',
 		],
 		'after:git:release' : 'echo \'After git push, before github release\'',
 		'after:release'     : [

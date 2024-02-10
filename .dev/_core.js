@@ -85,7 +85,18 @@ export const writeSync = ( projectPath, txt ) => {
 
 }
 export const joinPath = path.join
+export const constructorLinks = ( links, type = 'link' ) => {
+	
+	let res = ''
+	links.forEach( ( link, index ) => {
 
+		res += type === 'img' ? imgUrl( link ) : `[${link.name}](${link.url})`
+		if ( index !== links.length - 1 ) res += '\n'
+
+	} )
+	return res
+
+}
 export const addTextBetweenAMark = async ( projectPath, startMarker, endMarker, textToAdd ) =>{
 
 	const filePath       = path.join( pkg.dir, projectPath )
@@ -223,6 +234,16 @@ export const getCurrentDateTime = () => {
 
 }
 
+export const imgUrl = ( { name, color = 'black', url, logo = false, type = false } ) => {
+	
+	if( !type ) type = `badge/${encodeURIComponent( name )}-${color}?`
+	else type = `${type}?color=${color}&`
+	
+	const img = `https://img.shields.io/${type}style=for-the-badge${logo ? '&logo=' + encodeURIComponent( logo.toLowerCase() ) : ''}&logoColor=white`
+
+	return `[![${name}](${img})](${url})`
+
+}
 export const isGitHubAuthenticated = () =>{
 
 	try {

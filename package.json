@@ -24,6 +24,7 @@
 		"dev-info": "md docs/dev-info.md",
 		"push-main": "node .dev/release.js --no-release",
 		"release": "node .dev/release.js",
+		"readme": "node .dev/readme.js",
 		"todo": "node .dev/todo.js",
 		"prepare": "husky install .dev/husky"
 	},
@@ -142,6 +143,11 @@
 		"productName": "MATE",
 		"productNameLong": "MacOS App Trial Extender",
 		"licenseUrl": "https://github.com/angelespejo/macos-app-trial-extender/blob/main/LICENSE",
+		"downloadUrl": {
+			"macosUniversal": "https://github.com/angelespejo/macos-app-trial-extender/releases/download/latest/MATE_universal.app.tar.gz",
+			"macosIntel": "https://github.com/angelespejo/macos-app-trial-extender/releases/download/latest/MATE_x64.app.tar.gz",
+			"macosSilicon": "https://github.com/angelespejo/macos-app-trial-extender/releases/download/latest/MATE_aarch64.app.tar.gz"
+		},
 		"software": {
 			"finalcut": {
 				"name": "Final Cut Pro",
@@ -167,12 +173,27 @@
 				"reset": "reset",
 				"automate": "automate",
 				"quit": "quit",
-				"support": "support"
+				"support": "support",
+				"feedback": "feddback"
 			},
 			"pages": {
 				"info": "info",
 				"infoHow": "info-how",
 				"settings": "settings"
+			}
+		},
+		"collective": {
+			"id": "pigeonposse",
+			"name": "PigeonPosse",
+			"gh": "https://github.com/pigeonposse",
+			"about": "https://pigeonposse.com?popup=about",
+			"url": "https://pigeonposse.com",
+			"web": "https://pigeonposse.com",
+			"email": "dev@pigeonposse.com",
+			"social": {
+				"twitter": "https://twitter.com/pigeonposse_",
+				"instagram": "https://www.instagram.com/pigeon.posse/",
+				"medium": "https://medium.com/@pigeonposse"
 			}
 		}
 	}
