@@ -31,7 +31,7 @@ DEVELOPED BY ANGELO
 
  -->
 
-# MacOS App Trial Extender (MATE)
+# MATE - MacOS App Trial Extender
 
 [![HEADER](docs/banner.png)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
