@@ -102,14 +102,15 @@ const releaseImgLinks = pkg => constructorLinks( dataReleasesLinks( pkg ), 'img'
 
 const header = pkg => {
 
+	const releaseUrl = `${pkg.data.repository.url}/releases`
 	return `
-[![HEADER](docs/banner.png)](${pkg.data.repository.url}/releases)
+[![HEADER](docs/banner.png)](${releaseUrl})
 
 ${imgUrl( {
 		name : 'License', color : 'green', type : 'github/license/pigeonposse/stylegpt',url : '/LICENSE',
 	} )}
 ${imgUrl( {
-		name : 'Github Releases', color : 'blue', type : `github/package-json/v/angelespejo/${pkg.data.name.toLowerCase()}`,url : pkg.data.extra.releaseUrl,
+		name : 'Github Releases', color : 'blue', type : `github/package-json/v/angelespejo/${pkg.data.name.toLowerCase()}`,url : releaseUrl,
 	} )}
 
 ${pkg.data.description}
@@ -121,7 +122,7 @@ ${pkg.data.description}
 ${releaseImgLinks( pkg )}
 
 ${imgUrl( {
-		name : 'All', color : 'black', url : pkg.data.extra.releaseUrl,
+		name : 'All', color : 'black', url : releaseUrl,
 	} )}
 `
 
