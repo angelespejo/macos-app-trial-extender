@@ -121,8 +121,11 @@ ${pkg.data.description}
 
 ${releaseImgLinks( pkg )}
 
+> [!CAUTION]
+> Currently the app for Silicon is damaged, so it is advisable to install the app for macOS universal app
+
 ${imgUrl( {
-		name : 'All', color : 'black', url : releaseUrl,
+		name : 'All releases', color : 'black', url : releaseUrl,
 	} )}
 `
 

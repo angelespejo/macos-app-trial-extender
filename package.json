@@ -146,7 +146,7 @@
 		"downloadUrl": {
 			"macosUniversal": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_universal.app.tar.gz",
 			"macosIntel": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download//MATE_x64.app.tar.gz",
-			"macosSilicon": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_aarch64.app.tar.gz"
+			"macosSilicon": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_universal.app.tar.gz"
 		},
 		"software": {
 			"finalcut": {
