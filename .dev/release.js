@@ -4,13 +4,21 @@
  * @description Inquirer for release versions in github.
  */
 
-import inquirer      from 'inquirer'
-import { releaseIt } from './templates/releaseIt.js'
+import inquirer                             from 'inquirer'
+import { releaseIt }                        from './templates/releaseIt.js'
 import {
-	exec, writeSync, 
+	exec, isGitHubAuthenticated, writeSync, 
 } from './_core.js'
 
 const noRelease = process.argv.includes( '--no-release' )
+const auth      = isGitHubAuthenticated()
+
+if( !auth ) {
+
+	console.log( '❌ You need to logged with github. use: gh auth login' )
+	process.exit()
+
+}
 
 const release = async () => {
 

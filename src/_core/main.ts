@@ -141,8 +141,9 @@ export class Core {
 
 		this.store.autostart.subscribe( async value => {
 
-			if( value ) await this.app.autostart.enable()
-			else await this.app.autostart.disable()
+			const status = await this.app.autostart.getStatus()
+			if( value && !status ) await this.app.autostart.enable()
+			else if( !value && status ) await this.app.autostart.disable()
 		
 		} )
 	

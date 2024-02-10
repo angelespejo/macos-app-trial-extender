@@ -24,7 +24,11 @@ export class Autostart {
 		this.isEnabled = await isEnabled()
 	
 	}
+	async getStatus() {
 
+		return await isEnabled()
+	
+	}
 	async enable(): Promise<boolean> {
 
 		await enable()
@@ -47,15 +51,10 @@ export class Autostart {
 
 		const enabled = await isEnabled()
 
-		if ( enabled ) {
-
+		if ( enabled ) 
 			await this.enable()
-		
-		} else {
-
+		else 
 			await this.disable()
-		
-		}
 
 		const enabledRes = await isEnabled()
 		this.isEnabled   = enabledRes

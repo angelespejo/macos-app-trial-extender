@@ -62,7 +62,6 @@ export class PathWatcher {
 				recursive : this.#recursive, 
 			},
 		)
-		console.log( this.#watcher )
 	
 	}
 

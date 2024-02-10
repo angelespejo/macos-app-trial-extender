@@ -44,7 +44,6 @@ fn handle_event( app: &AppHandle, event: SystemTrayEvent) {
                     handle_system_tray_event(&app , "open-page", "", true);
                 }
                 "support" => {
-
                     open(&app.shell_scope(), "https://github.com/sponsors/angelespejo", None).unwrap();
 
                 }

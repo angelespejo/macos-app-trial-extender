@@ -1,6 +1,6 @@
 [package]
 name = "macos-app-trial-extender"
-version = "1.0.0"
+version = "0.1.0"
 description = "Extend the trial time for macos apps like logicpro or finalcutpro "
 authors = ["angelo <angelo@pigeonpossse.com>"]
 license = "gpl-3"
@@ -8,12 +8,15 @@ repository = "https://github.com/angelespejo/macos-app-trial-extender"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# [lib]
+# name="mate_lib"
+# crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
 tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
-tauri = { version = "1.5", features = [ "fs-remove-file", "fs-exists", "path-all", "shell-open", "dialog-ask", "dialog-confirm", "notification-all", "fs-write-file", "window-start-dragging", "macos-private-api", "system-tray"] }
+tauri = { version = "1.5", features = [ "updater", "fs-remove-file", "fs-exists", "path-all", "shell-open", "dialog-ask", "dialog-confirm", "notification-all", "fs-write-file", "window-start-dragging", "macos-private-api", "system-tray"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 

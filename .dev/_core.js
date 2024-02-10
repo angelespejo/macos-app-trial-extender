@@ -3,7 +3,9 @@
  *
  * @description Functions for .Utils folder.
  */
-import { spawn }         from 'child_process'
+import {
+	execSync, spawn, 
+} from 'child_process'
 import { fileURLToPath } from 'url'
 import fs                from 'fs'
 import path              from 'path'
@@ -206,3 +208,35 @@ export const copyDir = async ( src, dest ) => {
 	}
 
 }
+
+export const getCurrentDateTime = () => {
+
+	const currentDate = new Date()
+	const year        = currentDate.getUTCFullYear()
+	const month       = ( '0' + ( currentDate.getUTCMonth() + 1 ) ).slice( -2 )
+	const day         = ( '0' + currentDate.getUTCDate() ).slice( -2 )
+	const hours       = ( '0' + currentDate.getUTCHours() ).slice( -2 )
+	const minutes     = ( '0' + currentDate.getUTCMinutes() ).slice( -2 )
+	const seconds     = ( '0' + currentDate.getUTCSeconds() ).slice( -2 )
+	
+	return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`
+
+}
+
+export const isGitHubAuthenticated = () =>{
+
+	try {
+
+		const output = execSync( 'gh auth status', {
+			encoding : 'utf-8', 
+		} )
+		return output.includes( 'Active account: true' )
+	
+	} catch ( error ) {
+
+		return false
+	
+	}
+
+}
+

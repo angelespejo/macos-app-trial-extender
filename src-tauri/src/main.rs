@@ -18,12 +18,31 @@ struct Payload {
 
 mod tray;
 mod dock;
-mod locale;
 mod core;
 
-fn main() {
+pub fn main() {
 
     let app = tauri::Builder::default()
+        ///////////////////////////////////////////////////////////////////////
+        // PLUGINS
+        .plugin(tauri_plugin_autostart::init(
+            MacosLauncher::LaunchAgent, 
+            Some(vec!["--flag1", "--flag2"]),
+        ))
+        .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
+            println!("{}, {argv:?}, {cwd}", app.package_info().name);
+            app.emit_all("single-instance", Payload { args: argv, cwd }).unwrap();
+        }))
+        .plugin(tauri_plugin_fs_watch::init())
+        ///////////////////////////////////////////////////////////////////////
+        // COMMANDS
+        .invoke_handler(tauri::generate_handler![
+            core::backend_i18n,
+            core::reset_trial_data,
+            core::reset_trial_data_watcher
+        ])
+        ///////////////////////////////////////////////////////////////////////
+        // SETUP
         .setup(|app| {
 
             let window = app.get_window("main").unwrap();
@@ -41,24 +60,6 @@ fn main() {
             Ok(())
             
         })
-        ///////////////////////////////////////////////////////////////////////
-        // PLUGINS
-        .plugin(tauri_plugin_autostart::init(
-            MacosLauncher::LaunchAgent, 
-            Some(vec!["--flag1", "--flag2"]),
-        ))
-        .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
-            println!("{}, {argv:?}, {cwd}", app.package_info().name);
-            app.emit_all("single-instance", Payload { args: argv, cwd }).unwrap();
-        }))
-        .plugin(tauri_plugin_fs_watch::init())
-        ///////////////////////////////////////////////////////////////////////
-        // COMMANDS
-        .invoke_handler(tauri::generate_handler![
-            locale::backend_i18n,
-            core::reset_trial_data,
-            core::reset_trial_data_watcher
-        ])
         ///////////////////////////////////////////////////////////////////////
         // ON
         .on_window_event(|event| match event.event() {
