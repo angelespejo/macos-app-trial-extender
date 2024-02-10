@@ -151,7 +151,7 @@
 		"software": {
 			"finalcut": {
 				"name": "Final Cut Pro",
-				"fromVersion": "10.7",
+				"fromVersion": "10.5.4",
 				"testedVersion": {
 					"from": "10.7",
 					"to": "10.7"
@@ -159,7 +159,7 @@
 			},
 			"logicPro": {
 				"name": "Logic Pro",
-				"fromVersion": "10.8.0",
+				"fromVersion": "10.6.1",
 				"testedVersion": {
 					"from": "10.8.0",
 					"to": "10.8.1"
