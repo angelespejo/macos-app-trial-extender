@@ -9,6 +9,7 @@ import {
 import { fileURLToPath } from 'url'
 import fs                from 'fs'
 import path              from 'path'
+import figlet            from 'figlet'
 
 export const exec = async cmd => {
 
@@ -82,6 +83,16 @@ export const writeSync = ( projectPath, txt ) => {
 	console.log( '✅ File overwritten!' )
 
 	console.groupEnd()
+
+}
+export const generateASCII = ( projectName = '', collectiveName = 'PIGEON\nPOSSE', font = 'ANSI Shadow' ) => {
+
+	return figlet.textSync( `${collectiveName}\n-------\n${projectName}` , {
+		font,
+		horizontalLayout : 'default',
+		verticalLayout   : 'default',
+		whitespaceBreak  : true,
+	} )
 
 }
 export const joinPath = path.join
