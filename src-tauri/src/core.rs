@@ -45,7 +45,7 @@ pub fn reset_trial_data() -> Result<(), String> {
     }
 
     if final_cut_path_old.exists() {
-        fs::remove_file(&final_cut_path).map_err(|e| {
+        fs::remove_file(&final_cut_path_old).map_err(|e| {
             format!(
                 "Failed to remove Final Cut Pro trial(older ver.) data: {}",
                 e
