@@ -16,7 +16,20 @@ edition = "2021"
 tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
-tauri = { version = "1.5", features = [ "updater", "fs-remove-file", "fs-exists", "path-all", "shell-open", "dialog-ask", "dialog-confirm", "notification-all", "fs-write-file", "window-start-dragging", "macos-private-api", "system-tray"] }
+tauri = { version = "1.5", features = [
+    "updater",
+    "fs-remove-file",
+    "fs-exists",
+    "path-all",
+    "shell-open",
+    "dialog-ask",
+    "dialog-confirm",
+    "notification-all",
+    "fs-write-file",
+    "window-start-dragging",
+    "macos-private-api",
+    "system-tray",
+] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 

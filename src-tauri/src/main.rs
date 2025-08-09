@@ -4,7 +4,7 @@
 use tauri::Manager;
 
 // https://github.com/tauri-apps/window-vibrancy
-use window_vibrancy::{ apply_vibrancy, NSVisualEffectMaterial};
+use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
 // https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/autostart
 use tauri_plugin_autostart::MacosLauncher;
@@ -12,41 +12,37 @@ use tauri_plugin_autostart::MacosLauncher;
 // https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/single-instance
 #[derive(Clone, serde::Serialize)]
 struct Payload {
-  args: Vec<String>,
-  cwd: String,
+    args: Vec<String>,
+    cwd: String,
 }
 
-mod tray;
-mod dock;
 mod core;
+mod dock;
+mod tray;
 
 pub fn main() {
-
     let app = tauri::Builder::default()
-        ///////////////////////////////////////////////////////////////////////
         // PLUGINS
         .plugin(tauri_plugin_autostart::init(
-            MacosLauncher::LaunchAgent, 
+            MacosLauncher::LaunchAgent,
             Some(vec!["--flag1", "--flag2"]),
         ))
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);
-            app.emit_all("single-instance", Payload { args: argv, cwd }).unwrap();
+            app.emit_all("single-instance", Payload { args: argv, cwd })
+                .unwrap();
         }))
         .plugin(tauri_plugin_fs_watch::init())
-        ///////////////////////////////////////////////////////////////////////
         // COMMANDS
         .invoke_handler(tauri::generate_handler![
             core::backend_i18n,
             core::reset_trial_data,
             core::reset_trial_data_watcher
         ])
-        ///////////////////////////////////////////////////////////////////////
         // SETUP
         .setup(|app| {
-
             let window = app.get_window("main").unwrap();
-            
+
             #[cfg(debug_assertions)]
             window.open_devtools();
 
@@ -55,12 +51,10 @@ pub fn main() {
 
             #[cfg(target_os = "macos")]
             apply_vibrancy(&window, NSVisualEffectMaterial::HudWindow, None, None)
-            .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
-    
+                .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
+
             Ok(())
-            
         })
-        ///////////////////////////////////////////////////////////////////////
         // ON
         .on_window_event(|event| match event.event() {
             tauri::WindowEvent::CloseRequested { api, .. } => {
@@ -71,22 +65,17 @@ pub fn main() {
             }
             _ => {}
         })
-        ///////////////////////////////////////////////////////////////////////
         // BUILD
         .build(tauri::generate_context!())
         .expect("error while building tauri application");
 
-    ///////////////////////////////////////////////////////////////////////
     // RUN
     app.run(|_app_handle, event| match event {
-            
-            // Keep the backend running
-            tauri::RunEvent::ExitRequested { api, .. } => {
-                api.prevent_exit();
-                println!("Prevent backend app on close window")
-            }
-            _ => {}
-
-        });
-
+        // Keep the backend running
+        tauri::RunEvent::ExitRequested { api, .. } => {
+            api.prevent_exit();
+            println!("Prevent backend app on close window")
+        }
+        _ => {}
+    });
 }

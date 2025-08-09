@@ -1,20 +1,12 @@
 use tauri::{
-    api::shell::open, 
-    Manager, 
-    App,
-    AppHandle, 
-    SystemTrayEvent, 
-    SystemTray, 
-    CustomMenuItem, 
-    SystemTrayMenu, 
-    SystemTrayMenuItem,
+    api::shell::open, App, AppHandle, CustomMenuItem, Manager, SystemTray, SystemTrayEvent,
+    SystemTrayMenu, SystemTrayMenuItem,
 };
 
-
-#[path = "./dock.rs"] mod dock;
+#[path = "./dock.rs"]
+mod dock;
 
 fn handle_system_tray_event(app: &AppHandle, event_type: &str, event_data: &str, open: bool) {
-   
     if let Some(window) = app.get_window("main") {
         if open {
             if !window.is_visible().expect("winvis") {
@@ -22,7 +14,7 @@ fn handle_system_tray_event(app: &AppHandle, event_type: &str, event_data: &str,
                 window.show().unwrap();
                 // item_handle.set_title("Hide").unwrap();
             }
-            
+
             window.set_focus().unwrap();
         }
 
@@ -33,28 +25,37 @@ fn handle_system_tray_event(app: &AppHandle, event_type: &str, event_data: &str,
     }
 }
 
-fn handle_event( app: &AppHandle, event: SystemTrayEvent) {
-    
+fn handle_event(app: &AppHandle, event: SystemTrayEvent) {
     match event {
         SystemTrayEvent::MenuItemClick { id, .. } => {
             // let item_handle = app.tray_handle().get_item(&id);
 
             match id.as_str() {
                 "open-page" => {
-                    handle_system_tray_event(&app , "open-page", "", true);
+                    handle_system_tray_event(&app, "open-page", "", true);
                 }
                 "support" => {
-                    open(&app.shell_scope(), "https://github.com/sponsors/angelespejo", None).unwrap();
+                    open(
+                        &app.shell_scope(),
+                        "https://github.com/sponsors/angelespejo",
+                        None,
+                    )
+                    .unwrap();
                 }
                 "feedback" => {
-                    open(&app.shell_scope(), "https://github.com/angelespejo/macos-app-trial-extender/issues", None).unwrap();
+                    open(
+                        &app.shell_scope(),
+                        "https://github.com/angelespejo/macos-app-trial-extender/issues",
+                        None,
+                    )
+                    .unwrap();
                 }
                 "automate" => {
                     // handle_system_tray_event(&app , "automate", "", false);
                     handle_system_tray_event(&app, "open-page", "settings", true);
                 }
                 "reset" => {
-                    handle_system_tray_event(&app , "reset", "",false);
+                    handle_system_tray_event(&app, "reset", "", false);
                 }
                 "settings" => {
                     handle_system_tray_event(&app, "open-page", "settings", true);
@@ -70,18 +71,15 @@ fn handle_event( app: &AppHandle, event: SystemTrayEvent) {
         }
         _ => {}
     }
-    
 }
 
-fn create_menu() -> SystemTrayMenu{
-
+fn create_menu() -> SystemTrayMenu {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let open = CustomMenuItem::new("open-page".to_string(), "Open dashboard");
     let settings = CustomMenuItem::new("settings".to_string(), "Settings");
     let feedback = CustomMenuItem::new("feedback".to_string(), "Feedback");
     let reset = CustomMenuItem::new("reset".to_string(), "Reset trial versions");
     let automate = CustomMenuItem::new("automate".to_string(), "Automation");
-
 
     let info = CustomMenuItem::new("info".to_string(), "About");
     let support = CustomMenuItem::new("support".to_string(), "Donate");
@@ -101,27 +99,24 @@ fn create_menu() -> SystemTrayMenu{
         .add_item(quit);
 
     tray_menu
-
 }
 
 pub fn create(app: &App) -> SystemTray {
-
     let config = app.config();
-    let package_config = config.package.clone(); 
-    let tool_tip_name = package_config.product_name.clone(); 
+    let package_config = config.package.clone();
+    let tool_tip_name = package_config.product_name.clone();
     let app_handle = app.handle();
 
     let system_tray = SystemTray::new()
         .with_menu(create_menu())
-        .with_tooltip( if let Some(name) = &tool_tip_name {
+        .with_tooltip(if let Some(name) = &tool_tip_name {
             name.as_str()
         } else {
             "No App Name"
-        } )
+        })
         .on_event(move |event| {
-            handle_event( &app_handle, event);
+            handle_event(&app_handle, event);
         });
 
     system_tray
-
 }

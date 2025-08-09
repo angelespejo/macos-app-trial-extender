@@ -9,11 +9,19 @@ fn get_logic_path() -> Result<PathBuf, String> {
     Ok(path)
 }
 
+fn get_older_finalcut_path() -> Result<PathBuf, String> {
+    let mut path = home_dir().ok_or_else(|| "Failed to get home directory".to_string())?;
+
+    path.push("Library/Application Support/.ffuserdata");
+    Ok(path)
+}
+
 fn get_finalcut_path() -> Result<PathBuf, String> {
     let mut path = home_dir().ok_or_else(|| "Failed to get home directory".to_string())?;
 
     // for updated version of FinalCutTrial.
     // older path is `~/Library/Application Support/.ffuserdata`
+    // and try delete it at the same time.
     path.push(
         "Library/Containers/com.apple.FinalCutTrial/Data/Library/Application Support/.ffuserdata",
     );
@@ -24,6 +32,7 @@ fn get_finalcut_path() -> Result<PathBuf, String> {
 pub fn reset_trial_data() -> Result<(), String> {
     let logic_pro_path = get_logic_path()?;
     let final_cut_path = get_finalcut_path()?;
+    let final_cut_path_old = get_older_finalcut_path()?;
 
     if logic_pro_path.exists() {
         fs::remove_file(&logic_pro_path)
@@ -33,6 +42,15 @@ pub fn reset_trial_data() -> Result<(), String> {
     if final_cut_path.exists() {
         fs::remove_file(&final_cut_path)
             .map_err(|e| format!("Failed to remove Final Cut Pro trial data: {}", e))?;
+    }
+
+    if final_cut_path_old.exists() {
+        fs::remove_file(&final_cut_path).map_err(|e| {
+            format!(
+                "Failed to remove Final Cut Pro trial(older ver.) data: {}",
+                e
+            )
+        })?;
     }
 
     Ok(())
