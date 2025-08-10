@@ -13,15 +13,17 @@ export const load = async ( { url } ) => {
 	const Core = ( await import( '../_core/main' ) ).Core
 	const core = new Core()
 
-	try{
+	try {
 
-		core.init()		
-		
-		const { pathname }    = url
-		const { route, lang } =  await core.i18n.layoutFunct( pathname )
+		core.init()
+
+		const { pathname } = url
+		const {
+			route, lang,
+		} =  await core.i18n.layoutFunct( pathname )
 
 		return {
-			route, 
+			route,
 			lang,
 			store          : core.store,
 			t              : core.i18n.t,
@@ -33,16 +35,18 @@ export const load = async ( { url } ) => {
 			navTransitions : core.navTransitions.bind( core ),
 			isOnPage       : core.isOnPage.bind( core ),
 		}
-	
-	}catch( e ){
+
+	}
+	catch ( e ) {
 
 		console.log( e )
-		const msg = typeof e === 'object' && e !== null &&
-			'message' in e && typeof e.message === 'string' 
-			? e.message : ''
-		
+		const msg = typeof e === 'object' && e !== null
+			&& 'message' in e && typeof e.message === 'string'
+			? e.message
+			: ''
+
 		error( 505, msg )
-	
+
 	}
 
 }

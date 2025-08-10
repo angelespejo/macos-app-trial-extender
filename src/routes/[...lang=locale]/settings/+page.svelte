@@ -1,103 +1,116 @@
 <script lang="ts">
-    
-    import { LangSelect, Section, faRobot, Btn, faRefresh, faCheck } from "$lib";
 
-    import Config from "./config.svelte";
-    import { page } from "$app/stores";
+	import Config from './config.svelte'
+	import { page } from '$app/stores'
 
-    const {t, locale, locales, store} = $page.data
-    const { notification, automate, autostart } = store
-    let isClickedReset = false
-    const clickedResetFunction = () => {
-        isClickedReset = true
-        setTimeout(()=> isClickedReset = false, 2000)
-    }
+	import {
+		Btn,
+		LangSelect,
+		Section,
+		faCheck,
+		faRefresh,
+		faRobot,
+	} from '$lib'
+
+	const {
+		t, locale, locales, store,
+	} = $page.data
+	const {
+		notification, automate, autostart,
+	} = store
+	let isClickedReset         = false
+	const clickedResetFunction = () => {
+
+		isClickedReset = true
+		setTimeout( () => isClickedReset = false, 2000 )
+
+	}
 </script>
 
+<Section title="">
 
-<Section 
-    title={''}
->
+	<Config
+		config={false}
+		icon={faRefresh}
+		title={$t( 'common.settings.extendTitle' )}
+	>
+		<div slot="value">
 
-    <Config 
-        title={$t('common.settings.extendTitle')} 
-        config={false}
-        icon={faRefresh}
-    >
-    <div slot="value">
+			<Btn
+				class="text-primary-900"
+				disabled={isClickedReset}
+				icon={isClickedReset ? faCheck : undefined}
+				onClick={async () => {
 
-        <Btn 
-            icon={isClickedReset ? faCheck : undefined}
-            class="text-primary-900"
-            onClick={async () => {
-                await $page.data.resetTrial()
-                clickedResetFunction()
-            }}
-            disabled={isClickedReset}
-        >
-            {#if isClickedReset}
-                {$t('common.settings.extendBtnSuccess')}
-            {:else}
-                {$t('common.settings.extendBtn')}
-            {/if}
-        </Btn>
-    </div>     
-    </Config>
+					await $page.data.resetTrial()
+					clickedResetFunction()
 
-    <Config 
-        title={$t('common.settings.automateTitle')} 
-        icon={faRobot}
-        config={false}
-    >
-        <div slot="value">
-            <Btn 
-                color="{$automate? 'primary': 'dark'}"
-                class="{$automate? 'text-primary-900': 'text-primary-100'}"
-                onClick={() =>automate.toggle()}
-            >
-            {#if $automate}
-                {$t('common.settings.automateBtnDeactivate')}  
-            {:else}
-                {$t('common.settings.automateBtnActivate')} 
-            {/if}
-            </Btn>
-        </div>
-        
-        <div slot="desc">
-            {$t('common.settings.automateDescription')} 
-        </div>
-    </Config>
+				}}
+			>
+				{#if isClickedReset}
+					{$t( 'common.settings.extendBtnSuccess' )}
+				{:else}
+					{$t( 'common.settings.extendBtn' )}
+				{/if}
+			</Btn>
+		</div>
+	</Config>
 
+	<Config
+		config={false}
+		icon={faRobot}
+		title={$t( 'common.settings.automateTitle' )}
+	>
+		<div slot="value">
+			<Btn
+				class="{$automate ? 'text-primary-900' : 'text-primary-100'}"
+				color="{$automate ? 'primary' : 'dark'}"
+				onClick={() => automate.toggle()}
+			>
+				{#if $automate}
+					{$t( 'common.settings.automateBtnDeactivate' )}
+				{:else}
+					{$t( 'common.settings.automateBtnActivate' )}
+				{/if}
+			</Btn>
+		</div>
+
+		<div slot="desc">
+			{$t( 'common.settings.automateDescription' )}
+		</div>
+	</Config>
 
 </Section>
-<Section 
-    title={$t('common.settings.generalTitle')}
->
-    <Config 
-        title={$t('common.settings.notsTitle')}
-        config={false}
-        bind:value={$notification}
-    >
-        <div slot="desc">
-            {$t('common.settings.notsDescription')} 
-        </div>
-    </Config>
-    <Config 
-        title={$t('common.settings.autostartTitle')}
-        config={false}
-        bind:value={$autostart}
-    >  
-        <div slot="desc">
-            {$t('common.settings.autostartDescription')} 
-        </div>
-    </Config>
-    <Config 
-        title={$t('common.settings.languageTitle')}
-        config={false}
-    >  
-        <div slot="value">
-            <LangSelect {t} {locale} {locales}/>
-        </div>
-        
-    </Config>
+<Section title={$t( 'common.settings.generalTitle' )}>
+	<Config
+		config={false}
+		title={$t( 'common.settings.notsTitle' )}
+		bind:value={$notification}
+	>
+		<div slot="desc">
+			{$t( 'common.settings.notsDescription' )}
+		</div>
+	</Config>
+	<Config
+		config={false}
+		title={$t( 'common.settings.autostartTitle' )}
+		bind:value={$autostart}
+	>
+		<div slot="desc">
+			{$t( 'common.settings.autostartDescription' )}
+		</div>
+	</Config>
+	<Config
+		config={false}
+		title={$t( 'common.settings.languageTitle' )}
+	>
+		<div slot="value">
+			<LangSelect
+				{locale}
+				{locales}
+				{t}
+			/>
+		</div>
+
+	</Config>
 </Section>

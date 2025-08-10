@@ -6,26 +6,30 @@
 
 // @ts-nocheck
 import {
-	defaultLocale, loadTranslations, locales, 
+	defaultLocale,
+	loadTranslations,
+	locales,
 } from './_core/i18n/main'
+
 import { building } from '$app/environment'
 
 const routeRegex = new RegExp( /^\/[^.]*([?#].*)?$/ )
 
-export const handle = async ( { event, resolve } ) => {
+export const handle = async ( {
+	event, resolve,
+} ) => {
 
 	// this is for cloudfalre build adapter
 	// @see https://github.com/sveltejs/kit/issues/9386#issuecomment-1714660627
-	if ( building ) {
+	if ( building ) return await resolve( event ) // bailing here allows the 404 page to build
 
-		const response = await resolve( event )
-		return response // bailing here allows the 404 page to build
-		
-	}
+	const {
+		url, request, isDataRequest,
+	} = event
+	const {
+		pathname, origin,
+	}            = url
 
-	const { url, request, isDataRequest } = event
-	const { pathname, origin }            = url
-	
 	// If this request is a route request
 	if ( routeRegex.test( pathname ) ) {
 
@@ -41,20 +45,20 @@ export const handle = async ( { event, resolve } ) => {
 			const location    = `${pathname}`.replace( localeRegex, '' ) || '/'
 
 			return new Response( undefined, {
-				headers : {
-					location, 
-				}, status : 301, 
+				headers : { location },
+				status  : 301,
 			} )
 
 			// If route locale is not supported
-		
-		} else if ( !locale ) {
+
+		}
+		else if ( !locale ) {
 
 			// Get user preferred locale if it's a direct navigation
 			if ( !isDataRequest ) {
 
 				locale = `${`${request.headers.get( 'accept-language' )}`.match( /[a-zA-Z]+?(?=-|_|,|;)/ )}`.toLowerCase()
-			
+
 			}
 
 			// Set default locale if user preferred locale does not match
@@ -89,23 +93,18 @@ export const handle = async ( { event, resolve } ) => {
 
 			// 301 redirect
 			return new Response( undefined, {
-				headers : {
-					'location' : `/${locale}${pathname}`, 
-				}, status : 301, 
+				headers : { location: `/${locale}${pathname}` },
+				status  : 301,
 			} )
-		
+
 		}
 
 		// Add html `lang` attribute
 		return resolve( {
-			...event, 
-			locals : {
-				lang : locale, 
-			}, 
-		}, {
-			transformPageChunk : ( { html } ) => html.replace( '%lang%', `${locale}` ),
-		} )
-	
+			...event,
+			locals : { lang: locale },
+		}, { transformPageChunk: ( { html } ) => html.replace( '%lang%', `${locale}` ) } )
+
 	}
 
 	return resolve( event )

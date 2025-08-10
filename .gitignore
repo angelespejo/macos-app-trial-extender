@@ -19,9 +19,13 @@ lerna-debug.log*
 
 .pnpm-store
 node_modules
+/build
+**/dist
 dist
 dist-ssr
-build
+**/vendor
+/vendor
+packages/**/build
 *.local
 
 # misc
@@ -41,6 +45,10 @@ build
 /.turbo
 **/.turbo
 
+# Parcel
+/.parcel-cache
+**/.parcel-cache
+
 # Svelte
 /.svelte-kit
 **/.svelte-kit
@@ -48,10 +56,6 @@ build
 # playwright 
 /test-results
 **/test-results
-
-# tauri 
-/src-tauri/target
-**/src-tauri/target
 
 # project 
 **/dist

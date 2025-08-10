@@ -5,37 +5,41 @@
  */
 
 import {
-	enable, isEnabled, disable, 
+	enable,
+	isEnabled,
+	disable,
 } from 'tauri-plugin-autostart-api'
 
 export class Autostart {
 
-	isEnabled: boolean
+	isEnabled : boolean
 
 	constructor() {
 
-		this.isEnabled = false 
+		this.isEnabled = false
 		this.#init()
-	
+
 	}
 
 	async #init() {
 
 		this.isEnabled = await isEnabled()
-	
+
 	}
+
 	async getStatus() {
 
 		return await isEnabled()
-	
+
 	}
+
 	async enable(): Promise<boolean> {
 
 		await enable()
 		const enabled  = await isEnabled()
 		this.isEnabled = enabled
 		return enabled
-	
+
 	}
 
 	async disable(): Promise<boolean> {
@@ -44,22 +48,22 @@ export class Autostart {
 		const enabled  = await isEnabled()
 		this.isEnabled = enabled
 		return enabled
-		
+
 	}
 
 	async toggle(): Promise<boolean> {
 
 		const enabled = await isEnabled()
 
-		if ( enabled ) 
+		if ( enabled )
 			await this.enable()
-		else 
+		else
 			await this.disable()
 
 		const enabledRes = await isEnabled()
 		this.isEnabled   = enabledRes
 		return enabledRes
-	
+
 	}
 
 }

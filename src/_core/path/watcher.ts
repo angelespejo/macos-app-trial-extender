@@ -5,25 +5,28 @@
  */
 
 import {
-	watch, watchImmediate, 
+	watch,
+	watchImmediate,
 }              from 'tauri-plugin-fs-watch-api'
+
 import type {
-	PathWatcherArgs, WatcherEvent, 
+	PathWatcherArgs,
+	WatcherEvent,
 } from './types'
 
 export const pathWatcher = ( paths: string[], args: PathWatcherArgs = {} ) => new PathWatcher( paths, args )
 export class PathWatcher {
 
-	#paths: string[]
-	#watcher: undefined | Awaited<ReturnType<typeof watch>> | Awaited<ReturnType<typeof watchImmediate>>
-	#immediate: boolean
-	#recursive: boolean
-	#preset: boolean
-	#onChange: ( event: WatcherEvent ) => void
-	on: ( event: WatcherEvent ) => void
+	#paths     : string[]
+	#watcher   : undefined | Awaited<ReturnType<typeof watch>> | Awaited<ReturnType<typeof watchImmediate>>
+	#immediate : boolean
+	#recursive : boolean
+	#preset    : boolean
+	#onChange  : ( event: WatcherEvent ) => void
+	on         : ( event: WatcherEvent ) => void
 
 	constructor( paths: string[], args: PathWatcherArgs = {} ) {
-		
+
 		this.#paths     = paths
 		this.#onChange  = event => this.on( event )
 		this.#watcher   = undefined
@@ -31,7 +34,7 @@ export class PathWatcher {
 		this.#recursive = args.recursive == false ? false : true
 		this.#preset    = args.preset ? args.preset : false
 		this.on         = ( ) => {}
-	
+
 	}
 
 	async start(): Promise<void> {
@@ -50,25 +53,24 @@ export class PathWatcher {
 					if ( !e.path ) return
 					if ( e.path && e.path.endsWith( '.DS_Store' ) ) return
 					this.#onChange( e )
-				
-				} else {
+
+				}
+				else {
 
 					this.#onChange( event )
-				
+
 				}
-			
+
 			},
-			{
-				recursive : this.#recursive, 
-			},
+			{ recursive: this.#recursive },
 		)
-	
+
 	}
 
 	async stop(): Promise<void> {
 
 		if ( this.#watcher ) this.#watcher()
-	
+
 	}
 
 }

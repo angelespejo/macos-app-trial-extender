@@ -6,3 +6,4 @@ onlyBuiltDependencies:
   - es5-ext
   - esbuild
   - svelte-preprocess
+  - unrs-resolver

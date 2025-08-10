@@ -5,8 +5,8 @@
  */
 
 export class Time {
-	
-	getCurrent( ){
+
+	getCurrent( ) {
 
 		const now                   = new Date()
 		const timezoneOffsetMinutes = now.getTimezoneOffset()
@@ -20,10 +20,14 @@ export class Time {
 			minute   : now.getMinutes(),
 			second   : now.getSeconds(),
 			fullHour : now.toLocaleTimeString( [], {
-				hour : '2-digit', minute : '2-digit', second : '2-digit', 
+				hour   : '2-digit',
+				minute : '2-digit',
+				second : '2-digit',
 			} ),
 			fullDay : now.toLocaleDateString( undefined, {
-				year : 'numeric', month : 'numeric', day : 'numeric', 
+				year  : 'numeric',
+				month : 'numeric',
+				day   : 'numeric',
 			} ),
 			now,
 			TZ : {
@@ -31,7 +35,7 @@ export class Time {
 				hours : timezoneOffsetHours,
 			},
 		}
-	
+
 	}
 
 }

@@ -1,38 +1,44 @@
 <script lang="ts">
 
-    import { page } from '$app/stores';
-    import { goto } from '$app/navigation';
-    import { Select } from 'flowbite-svelte';
-    import type { Writable } from 'svelte/store';
+	import { Select } from 'flowbite-svelte'
 
-    export let t
-    export let locales
-    export let locale: Writable<String>
+	import { goto } from '$app/navigation'
+	import { page } from '$app/stores'
 
-    export let placeholder = ""
-    
-    const onChange = ({target}: Event ) => {
-        if( target && 'value' in target && typeof target.value === 'string') {
-            goto(`/${target.value}${route}`)
-			locale.set(target.value)
+	import type { Writable } from 'svelte/store'
+
+	export let t
+	export let locales
+	export let locale: Writable<String>
+
+	export let placeholder = ''
+
+	const onChange = ( { target }: Event ) => {
+
+		if ( target && 'value' in target && typeof target.value === 'string' ) {
+
+			goto( `/${target.value}${route}` )
+			locale.set( target.value )
+
 		}
-    }
-    
-    $: ({ route } = $page.data)
+
+	}
+
+	$: ( { route } = $page.data )
 
 </script>
 
-<Select 
-    size="sm"
-    {placeholder}
-    on:change={onChange}
-    class="py-1 text-xs"
+<Select
+	class="py-1 text-xs"
+	{placeholder}
+	size="sm"
+	on:change={onChange}
 >
-    {#each $locales as lc}
-        <option 
-            value="{lc}"
-            selected="{lc === $locale}"
-        >   {$t(`lang.${lc}`)}
-        </option>
-    {/each}
+	{#each $locales as lc}
+		<option
+			selected="{lc === $locale}"
+			value="{lc}"
+		>   {$t( `lang.${lc}` )}
+		</option>
+	{/each}
 </Select>

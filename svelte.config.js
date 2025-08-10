@@ -1,3 +1,5 @@
+/* eslint-disable @stylistic/object-curly-newline */
+
 /**
  * Svelte config.
  *
@@ -34,12 +36,12 @@ const config = {
 		// 	// NOTE: You can modify your exported error pages here.
 		// 	entries : supportedLocales.reduce( ( acc, locale ) => [
 		// 		...acc,
-		// 		`/${locale}/`, 
-		// 		`/${locale}/settings`, 
-		// 		`/${locale}/info`, 
-		// 		// `/${locale}/401`, 
-		// 		// `/${locale}/403`, 
-		// 		// `/${locale}/404`, 
+		// 		`/${locale}/`,
+		// 		`/${locale}/settings`,
+		// 		`/${locale}/info`,
+		// 		// `/${locale}/401`,
+		// 		// `/${locale}/403`,
+		// 		// `/${locale}/404`,
 		// 		// `/${locale}/500`,
 		// 	], [
 		// 		'*',
