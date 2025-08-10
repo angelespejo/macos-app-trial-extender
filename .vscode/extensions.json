@@ -14,12 +14,9 @@
 		"svelte.svelte-vscode",
 		"davidanson.vscode-markdownlint",
 		"gruntfuggly.todo-tree",
-		"shd101wyy.markdown-preview-enhanced",
-		"ms-playwright.playwright",
 		"dbaeumer.vscode-eslint",
 		"nhoizey.gremlins",
 		"christian-kohler.npm-intellisense",
-		"jacano.vscode-pnpm",
 		"csstools.postcss",
 		"bradlc.vscode-tailwindcss",
 		"redhat.vscode-yaml",
@@ -32,7 +29,5 @@
 		"tamasfe.even-better-toml",
 		"github.vscode-github-actions",
 		"vscjava.vscode-gradle",
-		"wix.vscode-import-cost",
-		"kisstkondoros.vscode-gutter-preview"
 	]
 }
