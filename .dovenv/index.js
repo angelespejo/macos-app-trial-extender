@@ -17,7 +17,7 @@ export default defineConfig( [
 	readmeConfig,
 	lintPlugin( { staged : {
 		'*.{js,cjs,mjs,ts,cts,mts,yaml,toml,json,css,html,md,svelte}' : 'eslint',
-		'*.{rs}'                                                      : 'cargo fmt --manifest-path ./src-tauri/Cargo.toml',
+		'*.rs'                                                        : 'cargo fmt --manifest-path ./src-tauri/Cargo.toml',
 	} } ),
 	repoPlugin( { commit : {
 		types : [
