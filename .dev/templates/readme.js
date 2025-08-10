@@ -9,6 +9,8 @@ import {
 } from '../_core.js'
 import { mark } from './mark.js'
 
+const createTableRow = ( name, type ) => `| <img src="https://github.com/${name}.png?size=72" alt="${name}" style="border-radius:100%"/> | ${name} |  ${type} | [@${name}](https://github.com/${name}) |`
+	
 const org          = pkg => {
 
 	return `
@@ -42,7 +44,8 @@ _PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating p
 |                                                                                    | Name        | Role         | GitHub                                         |
 | ---------------------------------------------------------------------------------- | ----------- | ------------ | ---------------------------------------------- |
 | <img src="${pkg.data.author.url}.png?size=72" alt="${pkg.data.author.name}" style="border-radius:100%"/> | ${pkg.data.author.name} |   Author & Development   | [@${pkg.data.author.name}](${pkg.data.author.url}) |
-| <img src="https://github.com/${pkg.data.extra.collective.name}.png?size=72" alt="${pkg.data.extra.collective.name}" style="border-radius:100%"/> | ${pkg.data.extra.collective.name} | Collective | [@${pkg.data.extra.collective.name}](https://github.com/${pkg.data.extra.collective.name}) |
+${createTableRow( 'YinMo19', 'Code Contributor' )}
+${createTableRow( pkg.data.extra.collective.name, 'Collective' )}
 
 </br>
 
