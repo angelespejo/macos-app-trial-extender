@@ -65,6 +65,9 @@ module.exports = {
 			name : 'app', 
 		},
 		{
+			name : 'env', 
+		},
+		{
 			name : 'all', 
 		},
 	],

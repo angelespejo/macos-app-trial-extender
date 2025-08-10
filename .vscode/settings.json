@@ -14,16 +14,22 @@
         "source.fixAll.eslint": "explicit"
     },
     "eslint.validate": [
-        "javascript", 
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json", 
-        "jsonc", 
-        "json5",
-        "html",
-        "yaml",
-        "toml"
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"markdown",
+		"json",
+		"jsonc",
+		"json5",
+		"yaml",
+		"toml",
+		"html",
+		"css",
+		"scss",
+		"less",
+		"svelte",
+		"vue"
     ],
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[markdown]": {

@@ -5,6 +5,9 @@
  */
 
 import { generateASCII } from '../_core.js'
+
+const mateTxt = await generateASCII( 'MATE' )
+
 export const mark = pkg => {
 
 	const data       = pkg.data
@@ -13,7 +16,7 @@ export const mark = pkg => {
 	const repoUrl    = data.repository.url 
 	const version    = data.version ? data.version : 'UNDEFINDED'
 
-	return `${generateASCII( 'MATE' )}                    
+	return `${mateTxt}                    
                                                 
 VERSION: 	${version} 
 REPOSITORY: ${repoUrl}

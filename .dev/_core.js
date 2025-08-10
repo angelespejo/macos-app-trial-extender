@@ -9,7 +9,9 @@ import {
 import { fileURLToPath } from 'url'
 import fs                from 'fs'
 import path              from 'path'
-import figlet            from 'figlet'
+
+import { Font }       from '@ascii-kit/font'
+import fontAnsiShadow from '@ascii-kit/font-ansi--shadow'
 
 export const exec = async cmd => {
 
@@ -85,14 +87,11 @@ export const writeSync = ( projectPath, txt ) => {
 	console.groupEnd()
 
 }
-export const generateASCII = ( projectName = '', collectiveName = 'PIGEON\nPOSSE', font = 'ANSI Shadow' ) => {
+export const generateASCII = async ( projectName = '', collectiveName = 'PIGEON\nPOSSE' ) => {
 
-	return figlet.textSync( `${collectiveName}\n-------\n${projectName}` , {
-		font,
-		horizontalLayout : 'default',
-		verticalLayout   : 'default',
-		whitespaceBreak  : true,
-	} )
+	const ascii = await ( new Font( fontAnsiShadow ) ).text( `${collectiveName}\n-------\n${projectName}` )
+
+	return ascii
 
 }
 export const joinPath = path.join

@@ -1,0 +1,8 @@
+onlyBuiltDependencies:
+  - '@fortawesome/fontawesome-common-types'
+  - '@fortawesome/free-brands-svg-icons'
+  - '@fortawesome/free-solid-svg-icons'
+  - '@sveltejs/kit'
+  - es5-ext
+  - esbuild
+  - svelte-preprocess
