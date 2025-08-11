@@ -1,64 +1,64 @@
 
-import {
-	enable,
-	isEnabled,
-	disable,
-} from 'tauri-plugin-autostart-api'
+// import {
+// 	enable,
+// 	isEnabled,
+// 	disable,
+// } from 'tauri-plugin-autostart-api'
 
-export class Autostart {
+// export class Autostart {
 
-	isEnabled : boolean
+// 	isEnabled : boolean
 
-	constructor() {
+// 	constructor() {
 
-		this.isEnabled = false
-		this.#init()
+// 		this.isEnabled = false
+// 		this.#init()
 
-	}
+// 	}
 
-	async #init() {
+// 	async #init() {
 
-		this.isEnabled = await isEnabled()
+// 		this.isEnabled = await isEnabled()
 
-	}
+// 	}
 
-	async getStatus() {
+// 	async getStatus() {
 
-		return await isEnabled()
+// 		return await isEnabled()
 
-	}
+// 	}
 
-	async enable(): Promise<boolean> {
+// 	async enable(): Promise<boolean> {
 
-		await enable()
-		const enabled  = await isEnabled()
-		this.isEnabled = enabled
-		return enabled
+// 		await enable()
+// 		const enabled  = await isEnabled()
+// 		this.isEnabled = enabled
+// 		return enabled
 
-	}
+// 	}
 
-	async disable(): Promise<boolean> {
+// 	async disable(): Promise<boolean> {
 
-		await disable()
-		const enabled  = await isEnabled()
-		this.isEnabled = enabled
-		return enabled
+// 		await disable()
+// 		const enabled  = await isEnabled()
+// 		this.isEnabled = enabled
+// 		return enabled
 
-	}
+// 	}
 
-	async toggle(): Promise<boolean> {
+// 	async toggle(): Promise<boolean> {
 
-		const enabled = await isEnabled()
+// 		const enabled = await isEnabled()
 
-		if ( enabled )
-			await this.enable()
-		else
-			await this.disable()
+// 		if ( enabled )
+// 			await this.enable()
+// 		else
+// 			await this.disable()
 
-		const enabledRes = await isEnabled()
-		this.isEnabled   = enabledRes
-		return enabledRes
+// 		const enabledRes = await isEnabled()
+// 		this.isEnabled   = enabledRes
+// 		return enabledRes
 
-	}
+// 	}
 
-}
+// }

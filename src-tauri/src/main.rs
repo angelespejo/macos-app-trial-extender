@@ -7,7 +7,7 @@ use tauri::Manager;
 use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
 // https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/autostart
-use tauri_plugin_autostart::MacosLauncher;
+// use tauri_plugin_autostart::MacosLauncher;
 
 // https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/single-instance
 #[derive(Clone, serde::Serialize)]
@@ -23,10 +23,10 @@ mod tray;
 pub fn main() {
     let app = tauri::Builder::default()
         // PLUGINS
-        .plugin(tauri_plugin_autostart::init(
-            MacosLauncher::LaunchAgent,
-            Some(vec!["--flag1", "--flag2"]),
-        ))
+        // .plugin(tauri_plugin_autostart::init(
+        //     MacosLauncher::LaunchAgent,
+        //     Some(vec!["--flag1", "--flag2"]),
+        // ))
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);
             app.emit_all("single-instance", Payload { args: argv, cwd })

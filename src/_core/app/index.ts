@@ -1,14 +1,14 @@
 
-import { Autostart } from './autostart'
+// import { Autostart } from './autostart'
 
 export class App {
 
-	autostart : Autostart
+	// autostart : Autostart
 
-	constructor() {
+	// constructor() {
 
-		this.autostart = new Autostart()
+	// 	this.autostart = new Autostart()
 
-	}
+	// }
 
 }

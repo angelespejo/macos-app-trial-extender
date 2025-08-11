@@ -16,7 +16,7 @@
 		t, locale, locales, store,
 	} = $page.data
 	const {
-		notification, automate, autostart,
+		notification, automate,
 	} = store
 	let isClickedReset         = false
 	const clickedResetFunction = () => {
@@ -91,7 +91,7 @@
 			{$t( 'common.settings.notsDescription' )}
 		</div>
 	</Config>
-	<Config
+	<!-- <Config
 		config={false}
 		title={$t( 'common.settings.autostartTitle' )}
 		bind:value={$autostart}
@@ -99,7 +99,7 @@
 		<div slot="desc">
 			{$t( 'common.settings.autostartDescription' )}
 		</div>
-	</Config>
+	</Config> -->
 	<Config
 		config={false}
 		title={$t( 'common.settings.languageTitle' )}

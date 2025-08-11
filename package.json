@@ -59,7 +59,6 @@
 	"dependencies": {
 		"@tauri-apps/api": "1.5.3",
 		"svelte-ripple-action": "1.0.5",
-		"tauri-plugin-autostart-api": "github:tauri-apps/tauri-plugin-autostart#v1",
 		"tauri-plugin-fs-watch-api": "github:tauri-apps/tauri-plugin-fs-watch#v1"
 	},
 	"devDependencies": {
