@@ -1,0 +1,13 @@
+###############################################################################
+# PRE COMMIT
+#
+# @description runs before creating the COMMIT message
+# @see https://typicode.github.io/husky/
+# @see https://git-scm.com/docs/git-commit#_hooks
+# @see https://www.npmjs.com/package/lint-staged
+###############################################################################
+
+# Run linters against staged git files and don't let 💩 slip into your code base!
+pnpm dovenv lint staged --silent
+
+# exec < /dev/tty && node_modules/.bin/cz --hook || true

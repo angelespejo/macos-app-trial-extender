@@ -1,7 +1,10 @@
 <script>
-    import { Badge } from "flowbite-svelte";
+	import { Badge } from 'flowbite-svelte'
 
 </script>
-<Badge {...$$restProps} class="rounded-lg {$$restProps.class ?? ''}">
-    <slot/>
+<Badge
+	{...$$restProps}
+	class="rounded-lg {$$restProps.class ?? ''}"
+>
+	<slot />
 </Badge>

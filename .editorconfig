@@ -1,0 +1,23 @@
+# #############################################################################
+# EditorConfig config.
+# #############################################################################
+#
+# @description Used to maintain consistent code formatting across different code editors and IDEs in a software project.
+# @see https://EditorConfig.org
+#
+# #############################################################################
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = tab
+indent_size = 4
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,cjs,mjs,ts,html,svelte}]
+charset = utf-8

@@ -1,47 +1,61 @@
 {
 	"name": "macos-app-trial-extender",
-	"description": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
+	"version": "0.2.0",
 	"private": true,
-	"version": "0.1.3",
-	"type": "module",
-	"packageManager": "pnpm@8.14.3",
-	"engines": {
-		"node": ">=20.0.0",
-		"pnpm": ">=8.10.0"
-	},
-	"scripts": {
-		"dev": "tauri dev",
-		"dev:web": "vite",
-		"build": "tauri build",
-		"build:web": "vite build",
-		"build:icon": "tauri icon docs/logo.png",
-		"preview:web": "vite preview",
-		"lint": "pnpm lint:eslint && pnpm lint:rust",
-		"lint:eslint": "pnpm eslint .",
-		"lint:rust": "cargo fmt --manifest-path ./src-tauri/Cargo.toml",
-		"lint:fix": "pnpm eslint . --fix",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"tauri": "tauri $@",
-		"co": "cz",
-		"dev-info": "md docs/dev-info.md",
-		"push-main": "node .dev/release.js --no-release",
-		"release": "node .dev/release.js",
-		"readme": "node .dev/readme.js",
-		"todo": "node .dev/todo.js",
-		"prepare": "husky install .dev/husky"
-	},
+	"description": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
 	"keywords": [
-		"macos",
+		"app",
+		"apple",
+		"darwin",
+		"desktop",
 		"dmg",
-		"trial",
-		"logic-pro",
-		"logic-pro-x",
 		"final-cut-pro",
 		"final-cut-x",
-		"app",
-		"tauri",
-		"js"
+		"js",
+		"logic-pro",
+		"logic-pro-x",
+		"macos",
+		"tauri"
 	],
+	"homepage": "https://github.com/angelespejo/macos-app-trial-extender",
+	"bugs": {
+		"url": "https://github.com/angelespejo/macos-app-trial-extender/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/angelespejo/macos-app-trial-extender"
+	},
+	"funding": {
+		"type": "individual",
+		"url": "https://github.com/sponsors/angelespejo"
+	},
+	"license": "GPL-3.0",
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
+	"type": "module",
+	"scripts": {
+		"build": "tauri build",
+		"build:icon": "tauri icon docs/logo.png",
+		"build:web": "vite build",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"co": "dovenv git commit",
+		"dev": "tauri dev",
+		"dev-info": "dovenv info",
+		"dev:web": "vite",
+		"lint": "pnpm lint:eslint && pnpm lint:rust",
+		"lint:eslint": "pnpm eslint .",
+		"lint:fix": "pnpm eslint . --fix && pnpm lint:rust",
+		"lint:rust": "cargo fmt --manifest-path ./src-tauri/Cargo.toml",
+		"prepare": "dovenv --silent git husky .dev/husky",
+		"preview:web": "vite preview",
+		"push": "dovenv git push --skip-update",
+		"readme": "dovenv readme --silent",
+		"release": "pnpm release-it",
+		"tauri": "tauri $@"
+	},
 	"dependencies": {
 		"@tauri-apps/api": "1.5.3",
 		"svelte-ripple-action": "1.0.5",
@@ -49,104 +63,45 @@
 		"tauri-plugin-fs-watch-api": "github:tauri-apps/tauri-plugin-fs-watch#v1"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "18.6.0",
-		"@fortawesome/free-brands-svg-icons": "6.5.1",
-		"@fortawesome/free-solid-svg-icons": "6.5.1",
-		"@release-it/bumper": "6.0.1",
+		"@ascii-kit/font": "0.0.6",
+		"@ascii-kit/font-ansi--shadow": "0.0.6",
+		"@dovenv/core": "1.6.1",
+		"@dovenv/eslint-config": "1.6.1",
+		"@dovenv/lint": "1.6.1",
+		"@dovenv/repo": "1.6.1",
+		"@fortawesome/free-brands-svg-icons": "7.0.0",
+		"@fortawesome/free-solid-svg-icons": "7.0.0",
+		"@release-it/bumper": "7.0.5",
 		"@sveltejs/adapter-static": "3.0.1",
 		"@sveltejs/kit": "2.5.0",
 		"@sveltejs/vite-plugin-svelte": "3.0.2",
 		"@tauri-apps/cli": "1.5.9",
-		"@tsconfig/svelte": "5.0.2",
-		"@typescript-eslint/eslint-plugin": "6.21.0",
-		"@typescript-eslint/parser": "6.21.0",
-		"auto-changelog": "2.4.0",
+		"@types/node": "24.2.1",
+		"auto-changelog": "2.5.0",
 		"autoprefixer": "10.4.17",
-		"browserslist": "4.22.3",
-		"cli-markdown": "3.2.2",
-		"commitizen": "4.3.0",
-		"commitlint-config-gitmoji": "2.3.1",
-		"cz-customizable": "7.0.0",
-		"cz-emoji": "1.3.2-canary.2",
-		"eslint": "8.56.0",
-		"eslint-plugin-align-assignments": "1.1.2",
-		"eslint-plugin-align-import": "1.0.0",
-		"eslint-plugin-html": "7.1.0",
-		"eslint-plugin-import": "2.29.1",
-		"eslint-plugin-jsdoc": "46.10.1",
-		"eslint-plugin-json": "3.1.0",
-		"eslint-plugin-jsonc": "2.13.0",
-		"eslint-plugin-promise": "6.1.1",
-		"eslint-plugin-react-hooks": "4.6.0",
-		"eslint-plugin-react-refresh": "0.4.5",
-		"eslint-plugin-svelte": "2.35.1",
-		"eslint-plugin-tailwindcss": "3.14.2",
-		"eslint-plugin-yaml": "0.5.0",
-		"figlet": "^1.7.0",
+		"eslint": "9.33.0",
 		"flowbite": "2.2.1",
 		"flowbite-svelte": "0.44.23",
-		"husky": "8.0.3",
-		"inquirer": "9.2.14",
 		"internal-ip": "8.0.0",
-		"jsonc-eslint-parser": "2.4.0",
-		"lint-staged": "15.2.2",
-		"markdownlint": "0.31.1",
 		"postcss": "8.4.35",
-		"release-it": "17.0.3",
-		"rimraf": "5.0.5",
+		"release-it": "19.0.4",
 		"svelte": "4.2.10",
 		"svelte-check": "3.6.4",
-		"svelte-eslint-parser": "0.33.1",
-		"svelte-fa": "3.0.4",
+		"svelte-fa": "4.0.4",
 		"svelte-persisted-store": "0.8.1",
 		"sveltekit-i18n": "2.4.2",
 		"tailwindcss": "3.4.1",
-		"tslib": "2.6.2",
-		"typescript": "5.3.3",
+		"tslib": "2.8.1",
+		"typescript": "5.9.2",
 		"vite": "5.1.1"
 	},
-	"commitlint": {
-		"extends": [
-			"gitmoji"
-		],
-		"rules": {
-			"header-max-length": [
-				0,
-				"always",
-				100
-			]
-		}
-	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-customizable"
-		},
-		"cz-customizable": {
-			"config": ".dev/cz-config.cjs"
-		}
-	},
-	"lint-staged": {
-		"*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json}": "eslint"
-	},
-	"homepage": "https://github.com/angelespejo/macos-app-trial-extender",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/angelespejo/macos-app-trial-extender"
-	},
-	"author": {
-		"name": "Angelo",
-		"email": "angelo@pigeonposse.com",
-		"url": "https://github.com/angelespejo"
-	},
-	"license": "GPL-3.0",
-	"bugs": {
-		"url": "https://github.com/angelespejo/macos-app-trial-extender/issues"
-	},
-	"funding": {
-		"type": "individual",
-		"url": "https://github.com/sponsors/angelespejo"
+	"packageManager": "pnpm@10.14.0",
+	"engines": {
+		"node": ">=20.0.0",
+		"pnpm": ">=8.10.0"
 	},
 	"extra": {
+		"id": "mate",
 		"productName": "MATE",
 		"productNameLong": "MacOS App Trial Extender",
 		"licenseUrl": "https://github.com/angelespejo/macos-app-trial-extender/blob/main/LICENSE",
@@ -155,40 +110,7 @@
 			"macosIntel": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz",
 			"macosSilicon": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_universal.app.tar.gz"
 		},
-		"software": {
-			"finalcut": {
-				"name": "Final Cut Pro",
-				"fromVersion": "10.5.4",
-				"testedVersion": {
-					"from": "11.1.1",
-					"to": "11.1.1"
-				}
-			},
-			"logicPro": {
-				"name": "Logic Pro",
-				"fromVersion": "10.6.1",
-				"testedVersion": {
-					"from": "10.8.0",
-					"to": "10.8.1"
-				}
-			}
-		},
-		"ids": {
-			"app": "mate",
-			"functions": {
-				"openPage": "open-page",
-				"reset": "reset",
-				"automate": "automate",
-				"quit": "quit",
-				"support": "support",
-				"feedback": "feddback"
-			},
-			"pages": {
-				"info": "info",
-				"infoHow": "info-how",
-				"settings": "settings"
-			}
-		},
+		"repoPath": "angelespejo/macos-app-trial-extender",
 		"collective": {
 			"id": "pigeonposse",
 			"name": "PigeonPosse",
