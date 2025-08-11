@@ -44,16 +44,15 @@ MATE is an application that allows you to reset the trial period of native macos
 
 ## Download
 
-[![Macos Universal](https://img.shields.io/badge/Macos%20Universal-black?style=for-the-badge&color=black&logoColor=white&name=Macos+Universal)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_universal.app.tar.gz)
 [![Macos Intel](https://img.shields.io/badge/Macos%20Intel-black?style=for-the-badge&color=black&logoColor=white&name=Macos+Intel)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
-[![Macos Silicon](https://img.shields.io/badge/Macos%20Silicon-black?style=for-the-badge&color=black&logoColor=white&name=Macos+Silicon)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_universal.app.tar.gz)
-
-> [!CAUTION]
-> Currently the app for Silicon is damaged, so it is advisable to install the app for macOS universal app
+[![Macos Silicon](https://img.shields.io/badge/Macos%20Silicon-black?style=for-the-badge&color=black&logoColor=white&name=Macos+Silicon)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
 
 ### All releases
 
 [![All releases](https://img.shields.io/badge/All%20releases-black?style=for-the-badge&color=black&logoColor=white&name=All+releases)](https://github.com/angelespejo/macos-app-trial-extender/releases)
+
+> [!CAUTION]
+> Currently the app for Silicon is damaged, so it is advisable to install the app for macOS universal app
 
 ## Screenshots
 

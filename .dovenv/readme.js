@@ -110,10 +110,6 @@ ${pkg.description}
 
 ${createMdLinks( [
 	createMdLink( {
-		name : 'Macos Universal',
-		url  : pkg.extra.downloadUrl.macosUniversal,
-	} ),
-	createMdLink( {
 		name : 'Macos Intel',
 		url  : pkg.extra.downloadUrl.macosIntel,
 	} ),
@@ -124,9 +120,6 @@ ${createMdLinks( [
 
 ] )}
 
-> [!CAUTION]
-> Currently the app for Silicon is damaged, so it is advisable to install the app for macOS universal app
-
 ### All releases
 
 ${createMdLinks( [
@@ -135,6 +128,9 @@ ${createMdLinks( [
 		url  : joinUrl( pkg.repository.url, 'releases' ),
 	} ),
 ] )}
+
+> [!CAUTION]
+> Currently the app for Silicon is damaged, so it is advisable to install the app for macOS universal app
 
 ## Screenshots
 
