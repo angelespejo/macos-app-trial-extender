@@ -25,7 +25,8 @@
 				"exists": true,
 				"scope": [
 					"$HOME/Library/Application Support/*",
-					"$HOME/Library/Application Support/.*"
+					"$HOME/Library/Application Support/.*",
+					"$HOME/Library/Containers/*"
 				]
 			},
 			"path": {
