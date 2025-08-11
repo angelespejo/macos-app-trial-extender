@@ -1,0 +1,6 @@
+[toolchain]
+	channel = "stable"  # Actually: 1.82.0
+	targets = [
+		"aarch64-apple-darwin",
+		"x86_64-apple-darwin" 
+	]  
