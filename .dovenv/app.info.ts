@@ -12,8 +12,9 @@ export const data : AppInfoConfig = {
 				user       : [ member.angelo ],
 			},
 			{
-				appVersion : '11.1.1',
-				user       : [ member.yinmo19 ],
+				appVersion   : '11.1.1',
+				referenceUrl : 'https://github.com/angelespejo/macos-app-trial-extender/pull/1',
+				user         : [ member.yinmo19 ],
 			},
 			{
 				appVersion : '11.1.1',
@@ -34,9 +35,10 @@ export const data : AppInfoConfig = {
 				user       : [ member.angelo ],
 			},
 			{
-				appVersion : '11.1.2',
-				osVersion  : '15.6',
-				user       : [ member.angelo ],
+				appVersion   : '11.1.2',
+				referenceUrl : 'https://github.com/angelespejo/macos-app-trial-extender/pull/1#issuecomment-3172794529',
+				osVersion    : '15.6',
+				user         : [ member.angelo ],
 			},
 		],
 	},

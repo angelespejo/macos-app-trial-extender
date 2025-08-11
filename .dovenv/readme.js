@@ -136,6 +136,12 @@ ${createMdLinks( [
 	} ),
 ] )}
 
+## Screenshots
+
+![Screen App](./docs/screenshot-app.png)
+![Screen Tray icon](./docs/screenshot-tray.png)
+![Screen App settings](./docs/screenshot-app-settings.png)
+
 ## 👨‍💻 Contribute
 
 You can contribute via **_Github_**.

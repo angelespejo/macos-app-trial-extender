@@ -55,6 +55,12 @@ MATE is an application that allows you to reset the trial period of native macos
 
 [![All releases](https://img.shields.io/badge/All%20releases-black?style=for-the-badge&color=black&logoColor=white&name=All+releases)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
+## Screenhots
+
+![Screen App](./docs/screenshot-app.png)
+![Screen Tray icon](./docs/screenshot-tray.png)
+![Screen App settings](./docs/screenshot-app-settings.png)
+
 ## 👨‍💻 Contribute
 
 You can contribute via **_Github_**.
