@@ -136,7 +136,7 @@ ${createMdLinks( [
 	} ),
 ] )}
 
-## 👨‍💻 Development
+## 👨‍💻 Contribute
 
 You can contribute via **_Github_**.
 
@@ -147,11 +147,15 @@ ${createMdLinks( [
 		color : 'gray',
 	} ),
 	createMdLink( {
-		name  : 'Issues',
-		url   : pkg.bugs.url,
+		name  : 'Pull requests',
+		url   : joinUrl( pkg.repository.url, 'pulls' ),
 		color : 'gray',
 	} ),
 ] )}
+
+### Want to contribute as a tester?
+
+Notifying that you've tested the app and that it works on your operating system, add the test information [here](.dovenv/app.info.ts) and make a **pull request**!
 
 ## ☕ Donate
 
