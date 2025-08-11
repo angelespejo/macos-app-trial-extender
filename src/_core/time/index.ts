@@ -1,9 +1,3 @@
-/**
- * Todo.
- *
- * @description Todo.
- */
-
 export class Time {
 
 	getCurrent( ) {

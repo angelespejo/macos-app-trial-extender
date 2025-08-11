@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/object-curly-newline */
 
 /**
  * Svelte config.
@@ -32,6 +31,13 @@ const config = {
 			assets   : 'build',
 			fallback : 'index.html', // Must be index for tauri app
 		} ),
+		alias : {
+			$const   : './src/const.ts',
+			$locales : './src/_locales',
+			$core    : './src/_core',
+			// assets : 'src/assets',
+			// src    : 'src',
+		},
 		// prerender : {
 		// 	// NOTE: You can modify your exported error pages here.
 		// 	entries : supportedLocales.reduce( ( acc, locale ) => [

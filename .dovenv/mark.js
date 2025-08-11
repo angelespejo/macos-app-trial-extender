@@ -1,9 +1,3 @@
-/**
- * Todo.
- *
- * @description Todo.
- */
-
 import { Font }       from '@ascii-kit/font'
 import fontAnsiShadow from '@ascii-kit/font-ansi--shadow'
 

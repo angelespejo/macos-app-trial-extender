@@ -1,8 +1,4 @@
-/**
- * Todo.
- *
- * @description Todo.
- */
+
 export class Theme {
 
 	darkmode = false

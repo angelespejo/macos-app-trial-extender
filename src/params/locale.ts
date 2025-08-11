@@ -1,9 +1,5 @@
-/**
- * TODO.
- *
- * @description TODO.
- */
-import { locales } from '../_core/i18n/main'
+
+import { locales } from '../_core/i18n'
 
 export const match = param => {
 

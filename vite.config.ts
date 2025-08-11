@@ -9,7 +9,9 @@ import { sveltekit }    from '@sveltejs/kit/vite'
 import { internalIpV4 } from 'internal-ip'
 import { defineConfig } from 'vite'
 
-import pkg from './package.json'
+import appInfo    from './.dovenv/app.info'
+import { member } from './.dovenv/contributors'
+import pkg        from './package.json' with { type: 'json' }
 
 // @ts-expect-error process is a nodejs global
 const mobile = !!/android|ios/.exec( process.env.TAURI_ENV_PLATFORM )
@@ -29,10 +31,14 @@ const server = {
 }
 
 export default defineConfig( {
-	plugins   : [ sveltekit() ],
+	plugins : [ sveltekit() ],
 	server,
-	preview   : server,
-	define    : { PKG: pkg },
+	preview : server,
+	define  : {
+		PKG             : pkg,
+		CONTRIBUTORS    : member,
+		APP_INFORMATION : appInfo,
+	},
 	envPrefix : [
 		'VITE_',
 		'TAURI_PLATFORM',

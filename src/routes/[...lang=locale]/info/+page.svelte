@@ -1,8 +1,14 @@
 <script lang="ts">
 
 	import Item from './item.svelte'
+	import TableTest from './table-test.svelte'
 	import { page } from '$app/stores'
 
+	import {
+		PACKAGE_DATA,
+		PAGE_ID,
+		PROJECT_CONTRIBUTORS,
+	} from '$const'
 	import {
 		Badge,
 		P,
@@ -27,14 +33,14 @@
 	<P>
 		<Badge
 			class="hover:bg-primary-700"
-			href="{$page.data.pkg.repository.url}"
+			href="{PACKAGE_DATA.repository.url}"
 			target="_blank"
 		>
 			{$t( 'common.btns.opensource' )}
 		</Badge>
 		<Badge
 			class="hover:bg-primary-700"
-			href="{$page.data.pkg.repository.url}"
+			href="{PACKAGE_DATA.repository.url}"
 			target="_blank"
 		>
 			{$t( 'common.btns.free' )}
@@ -57,39 +63,39 @@
 	<Item
 		icon={faSignature}
 		key={$t( 'common.btns.name' )}
-		value={$page.data.pkg.extra.productName}
+		value={PACKAGE_DATA.extra.productName}
 	/>
 	<Item
 		icon={faTag}
 		key={$t( 'common.btns.version' )}
-		value={$page.data.pkg.version}
+		value={PACKAGE_DATA.version}
 	/>
 	<Item
-		href={$page.data.pkg.extra.licenseUrl}
+		href={PACKAGE_DATA.extra.licenseUrl}
 		icon={faScroll}
 		key={$t( 'common.btns.license' )}
-		value={$page.data.pkg.license}
+		value={PACKAGE_DATA.license}
 	/>
 	<Item
-		href={$page.data.pkg.author.url}
+		href={PACKAGE_DATA.author.url}
 		icon={faUser}
 		key={$t( 'common.btns.author' )}
-		value={$page.data.pkg.author.name}
+		value={PACKAGE_DATA.author.name}
 	/>
 	<Item
-		href={$page.data.pkg.homepage}
+		href={PACKAGE_DATA.homepage}
 		icon={faGlobe}
 		key={$t( 'common.btns.homepage' )}
 		value={$t( 'common.btns.viewMore' )}
 	/>
 	<Item
-		href={$page.data.pkg.funding.url}
+		href={PACKAGE_DATA.funding.url}
 		icon={faHeart}
 		key={$t( 'common.btns.funding' )}
 		value={$t( 'common.btns.readMore' )}
 	/>
 	<Item
-		href={$page.data.pkg.bugs.url}
+		href={PACKAGE_DATA.bugs.url}
 		icon={faBug}
 		key={$t( 'common.btns.bugs' )}
 		value={$t( 'common.btns.sendIssue' )}
@@ -97,7 +103,7 @@
 
 </Section>
 <Section
-	id='{$page.data.pkg.extra.ids.pages.infoHow}'
+	id={PAGE_ID.infoHow}
 	class="!mt-8"
 	accordeon={true}
 	accordeonValue={true}
@@ -110,4 +116,30 @@
 	<P>
 		{$t( 'common.info.howResume' )}
 	</P>
+</Section>
+<Section
+	id={PAGE_ID.infoTests}
+	class="!mt-8"
+	accordeon={true}
+	accordeonValue={false}
+	title="Tests"
+>
+	<TableTest />
+</Section>
+
+<Section
+	id={PAGE_ID.infoContributors}
+	class="!mt-8"
+	accordeon={true}
+	accordeonValue={true}
+	title="{$t( 'common.info.contributors' )}"
+>
+	{#each Object.values( PROJECT_CONTRIBUTORS ) as contributor}
+		<Item
+			href={contributor.url}
+			image={contributor.avatar || contributor.ghUsername ? `https://github.com/${contributor.ghUsername}.png` : undefined}
+			key={contributor.name}
+			value={contributor.role}
+		/>
+	{/each}
 </Section>

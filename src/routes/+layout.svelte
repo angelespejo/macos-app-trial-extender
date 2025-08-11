@@ -6,6 +6,7 @@
 	import Logo from '../assets/logo.png'
 	import { page } from '$app/stores'
 
+	import { PACKAGE_DATA } from '$const'
 	import {
 		BtnSidebar,
 		H,
@@ -34,7 +35,7 @@
 					src="{Logo}"
 					width="50"
 				/>
-				<H tag="h3">{$page.data.pkg.extra.productName}</H>
+				<H tag="h3">{PACKAGE_DATA.extra.productName}</H>
 			</div>
 			<div class="py-4 flex flex-col w-full [&>button]:w-full items-start gap-2 [&>a]:w-full">
 				<BtnSidebar
@@ -61,7 +62,7 @@
 			<BtnSidebar
 				class="hover:bg-red-500/50"
 				blank={true}
-				href="{$page.data.pkg.funding.url}"
+				href="{PACKAGE_DATA.funding.url}"
 				icon={faHeart}
 			/>
 		</div>
@@ -75,7 +76,7 @@
 			<P
 				class="opacity-50 !m-0 !mt-2"
 				size="sm"
-			>v{$page.data.pkg.version}</P>
+			>v{PACKAGE_DATA.version}</P>
 		</footer>
 	</main>
 </div>

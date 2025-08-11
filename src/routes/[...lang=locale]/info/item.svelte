@@ -12,9 +12,10 @@
 	export let value: string = ''
 	export let href: string | undefined = undefined
 	export let icon: IconDefinition | undefined = undefined
+	export let image: string | undefined = undefined
 
-	let classDiv = 'flex justify-between w-full p-2 text-xs text-primary-900 dark:text-primary-50 bg-gray-300/40 dark:bg-gray-800/40 hover:bg-gray-300/60 hover:dark:bg-gray-800/60 hover:shadow-lg rounded-lg'
-
+	let classDiv   = 'flex justify-between w-full p-2 text-xs text-primary-900 dark:text-primary-50 bg-gray-300/40 dark:bg-gray-800/40 hover:bg-gray-300/60 hover:dark:bg-gray-800/60 hover:shadow-lg rounded-lg'
+	let imageClass = 'w-[40px] h-[40px] rounded-full bg-primary-950/20 object-contain'
 </script>
 
 {#if href}
@@ -32,6 +33,13 @@
 					{icon}
 				/>
 			{/if}
+			{#if image}
+				<img
+					class={imageClass}
+					alt={key}
+					src={image}
+				/>
+			{/if}
 			{key}
 		</span>
 		<Badge>{value}</Badge>
@@ -43,6 +51,13 @@
 				<Fa
 					class="opacity-50"
 					{icon}
+				/>
+			{/if}
+			{#if image}
+				<img
+					class={imageClass}
+					alt={key}
+					src={image}
 				/>
 			{/if}
 			{key}

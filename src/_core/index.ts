@@ -1,23 +1,19 @@
 
-/**
- * Todo.
- *
- * @description Todo.
- */
 import { invoke } from '@tauri-apps/api/tauri'
 
-import { App }          from './app/main'
-import * as i18n        from './i18n/main'
-import { Notification } from './notification/main'
-import { Path }         from './path/main'
-import { store }        from './store/main'
-import { Window }       from './window/main'
+import { App }          from './app'
+import * as i18n        from './i18n'
+import { Notification } from './notification'
+import { Path }         from './path'
+import { store }        from './store'
+import { Window }       from './window'
 
 import {
 	goto,
 	onNavigate,
 } from '$app/navigation'
-import { page } from '$app/stores'
+import { page }         from '$app/stores'
+import { PACKAGE_DATA } from '$const'
 
 export class Core {
 
@@ -26,7 +22,6 @@ export class Core {
 	path = new Path()
 	store = store
 	i18n = i18n
-	pkg = PKG
 
 	init() {
 
@@ -98,7 +93,7 @@ export class Core {
 		if ( !this.store.get( this.store.notification ) ) return
 		const $t = this.store.get( this.i18n.t )
 		await this.notification.send( {
-			title : this.pkg.extra.productName + ' (' + this.pkg.extra.productNameLong + ')',
+			title : PACKAGE_DATA.extra.productName + ' (' + PACKAGE_DATA.extra.productNameLong + ')',
 			body  : $t( 'common.nots.reset' ),
 		} )
 

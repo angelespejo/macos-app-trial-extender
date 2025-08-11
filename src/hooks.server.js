@@ -1,15 +1,10 @@
-/**
- * TODO.
- *
- * @description TODO.
- */
 
 // @ts-nocheck
 import {
 	defaultLocale,
 	loadTranslations,
 	locales,
-} from './_core/i18n/main'
+} from './_core/i18n'
 
 import { building } from '$app/environment'
 

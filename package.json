@@ -67,8 +67,8 @@
 		"@dovenv/eslint-config": "1.6.1",
 		"@dovenv/lint": "1.6.1",
 		"@dovenv/repo": "1.6.1",
-		"@fortawesome/free-brands-svg-icons": "6.5.1",
-		"@fortawesome/free-solid-svg-icons": "6.5.1",
+		"@fortawesome/free-brands-svg-icons": "7.0.0",
+		"@fortawesome/free-solid-svg-icons": "7.0.0",
 		"@release-it/bumper": "7.0.5",
 		"@sveltejs/adapter-static": "3.0.1",
 		"@sveltejs/kit": "2.5.0",
@@ -99,6 +99,7 @@
 		"pnpm": ">=8.10.0"
 	},
 	"extra": {
+		"id": "mate",
 		"productName": "MATE",
 		"productNameLong": "MacOS App Trial Extender",
 		"licenseUrl": "https://github.com/angelespejo/macos-app-trial-extender/blob/main/LICENSE",
@@ -108,40 +109,6 @@
 			"macosSilicon": "https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_universal.app.tar.gz"
 		},
 		"repoPath": "angelespejo/macos-app-trial-extender",
-		"software": {
-			"finalcut": {
-				"name": "Final Cut Pro",
-				"fromVersion": "10.5.4",
-				"testedVersion": {
-					"from": "11.1.1",
-					"to": "11.1.1"
-				}
-			},
-			"logicPro": {
-				"name": "Logic Pro",
-				"fromVersion": "10.6.1",
-				"testedVersion": {
-					"from": "10.8.0",
-					"to": "10.8.1"
-				}
-			}
-		},
-		"ids": {
-			"app": "mate",
-			"functions": {
-				"openPage": "open-page",
-				"reset": "reset",
-				"automate": "automate",
-				"quit": "quit",
-				"support": "support",
-				"feedback": "feddback"
-			},
-			"pages": {
-				"info": "info",
-				"infoHow": "info-how",
-				"settings": "settings"
-			}
-		},
 		"collective": {
 			"id": "pigeonposse",
 			"name": "PigeonPosse",

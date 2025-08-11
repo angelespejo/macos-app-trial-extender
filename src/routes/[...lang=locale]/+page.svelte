@@ -1,22 +1,23 @@
 <script lang="ts">
 
+	import TableCompatibleVersion from './info/table-compatible-version.svelte'
 	import Logo from '../../assets/logo.png'
 	import { page } from '$app/stores'
 
 	import {
+		PACKAGE_DATA,
+		PAGE_ID,
+	} from '$const'
+	import {
 		Btn,
 		H,
 		P,
-		TableFull,
 		faCheck,
 		faRefresh,
 		faRobot,
 	} from '$lib'
 
-	const ffcut     = $page.data.pkg.extra.software.finalcut
-	const lp        = $page.data.pkg.extra.software.logicPro
-	const softwares = [ ffcut, lp ]
-	const pageIds   = $page.data.store.pagesIds
+	const pageIds = PAGE_ID
 	const {
 		automate, notification,
 	} = $page.data.store
@@ -44,11 +45,11 @@
 		/>
 		<div class="items-start flex flex-col">
 
-			<H tag="h1">{$page.data.pkg.extra.productName}</H>
+			<H tag="h1">{PACKAGE_DATA.extra.productName}</H>
 			<H
 				class="italic"
 				tag="h2"
-			>({$page.data.pkg.extra.productNameLong})</H>
+			>({PACKAGE_DATA.extra.productNameLong})</H>
 
 			<div class="mt-4 flex flex-cols gap-2">
 				<P
@@ -72,7 +73,7 @@
 
 	<P>
 		{$t( 'common.info.shortDesciption' )}
-		<!-- <b>{$page.data.pkg.extra.productName}</b> is an application that allows you to reset the trial period of native macos applications such as <b>{ffcut.name}</b> or <b>{lp.name}</b>. -->
+		<!-- <b>{PACKAGE_DATA.extra.productName}</b> is an application that allows you to reset the trial period of native macos applications such as <b>{ffcut.name}</b> or <b>{lp.name}</b>. -->
 	</P>
 	<P>
 		{$t( 'common.info.purposes' )}
@@ -151,28 +152,22 @@
 			>
 				<b>{$t( 'common.home.tableTitle' )}</b>
 			</P>
-			<TableFull
-				items={{
-					head : [
-						$t( 'common.home.tableSoftware' ),
-						$t( 'common.home.tableFrom' ),
-						$t( 'common.home.tableTo' ),
-					],
-					cell : softwares.map( d => [
-						d.name,
-						d.fromVersion,
-						d.testedVersion.to,
-					] ),
-				}}
-			/>
+			<TableCompatibleVersion />
 		</div>
 
 		<div class="flex justify-end mb-2">
 			<Btn
 				class="{linkClass}"
+				color="none"
+				href={pageIds.info + '#' + pageIds.infoTests}
+			>
+				View tests
+			</Btn>
+			<Btn
+				class="{linkClass}"
 				blank={true}
 				color="none"
-				href={$page.data.pkg.bugs.url}
+				href={PACKAGE_DATA.bugs.url}
 			>
 				{$t( 'common.btns.foundIssues' )}
 			</Btn>

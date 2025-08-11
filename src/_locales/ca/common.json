@@ -7,6 +7,7 @@
 		"aboutDescription": "Aquesta aplicació està dirigida a desenvolupadors i testers que poden haver superat els terminis de prova i necessiten restablir el temporitzador a zero, permetent-los continuar provant l'aplicació o perfeccionant encara més els seus complements.",
 		"aboutAlert": "Per accedir il·limitadament a qualsevol programa de macOS, és essencial obtenir-lo a través de l'App Store d'Apple, ja sigui descarregant-lo de forma gratuïta o comprant-lo si és necessari.",
 		"howTitle": "Com funciona",
+		"contributors": "Contribuïdors",
 		"howDescription": "Aquesta aplicació s'encarrega d'automatitzar un procés que normalment requereix intervenció manual en la Terminal. Quan l'executes, elimina els fitxers \"userdata\" dels directoris corresponents a cada aplicació a ~/Library/Application Support. Aquests fitxers són responsables de desar dades relacionades amb la data de caducitat de la prova de cada aplicació.",
 		"howResume": "En resum, aquesta aplicació simplifica i automatitza un procés que normalment requeriria l'ús manual de la Terminal per a cada aplicació individualment."
 	},

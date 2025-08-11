@@ -1,8 +1,3 @@
-/**
- * Todo.
- *
- * @description Todo.
- */
 
 import { Autostart } from './autostart'
 

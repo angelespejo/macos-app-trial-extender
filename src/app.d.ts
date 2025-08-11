@@ -22,6 +22,8 @@ declare global {
 		// interface Stuff {}
 	}
 	declare const PKG: typeof import( '../package.json' )
+	declare const CONTRIBUTORS: typeof import( '../.dovenv/contributors' ).member
+	declare const APP_INFORMATION: typeof import( '../.dovenv/app.info' ).default
 }
 
 export {}

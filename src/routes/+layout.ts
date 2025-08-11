@@ -1,16 +1,9 @@
-/**
- * TODO.
- *
- * @description TODO.
- */
 
 import { error } from '@sveltejs/kit'
 
-// eslint-disable-next-line jsdoc/require-description
-/** @type { import('@sveltejs/kit').Load } */
 export const load = async ( { url } ) => {
 
-	const Core = ( await import( '../_core/main' ) ).Core
+	const Core = ( await import( '../_core' ) ).Core
 	const core = new Core()
 
 	try {
@@ -31,7 +24,6 @@ export const load = async ( { url } ) => {
 			locales        : core.i18n.locales,
 			resetTrial     : core.resetTrial.bind( core ),
 			goTo           : core.goTo.bind( core ),
-			pkg            : core.pkg,
 			navTransitions : core.navTransitions.bind( core ),
 			isOnPage       : core.isOnPage.bind( core ),
 		}
@@ -50,6 +42,7 @@ export const load = async ( { url } ) => {
 	}
 
 }
+
 // @see https://tauri.app/v1/guides/getting-started/setup/sveltekit
 export const prerender = 'auto' // must be true for i18n
 export const ssr = false

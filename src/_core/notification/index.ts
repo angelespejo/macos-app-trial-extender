@@ -1,8 +1,4 @@
-/**
- * Todo.
- *
- * @description Todo.
- */
+
 import {
 	isPermissionGranted,
 	requestPermission,

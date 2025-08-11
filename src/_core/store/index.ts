@@ -1,21 +1,18 @@
-/**
- * Todo.
- *
- * @description Todo.
- */
 import {
 	get,
 	writable,
 } from 'svelte/store'
 import { persisted } from 'svelte-persisted-store'
 
-const appID        = PKG.extra.ids.app
-const pagesIds     = PKG.extra.ids.pages
-const functionsIDs = PKG.extra.ids.functions
+import {
+	APP_ID,
+	FUNCTION_ID,
+	PAGE_ID,
+} from '../../const'
 
 const persistedBool = ( id: string, initValue: boolean = false ) => {
 
-	const storeId = appID + '-' + id
+	const storeId = APP_ID + '-' + id
 	const value   = persisted( storeId, initValue, {
 		storage  : 'session', // 'session' for sessionStorage, defaults to 'local'
 		syncTabs : true, // choose wether to sync localStorage across tabs, default is true
@@ -35,13 +32,14 @@ const persistedBool = ( id: string, initValue: boolean = false ) => {
 	}
 
 }
+
 export const store = {
 	get,
-	appID,
-	pagesIds,
-	functionsIDs,
+	appID        : APP_ID,
+	pagesIds     : PAGE_ID,
+	functionsIDs : FUNCTION_ID,
 	isNavigation : writable( false ),
-	autostart    : persistedBool( 'autostart', true ),
+	autostart    : persistedBool( 'autostart', false ), // The default value must be false so that the user can decide for himself whether it is necessary to activate this option
 	notification : persistedBool( 'notification', false ),
 	automate     : persistedBool( 'automate', false ),
 

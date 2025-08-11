@@ -80,13 +80,13 @@ _PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating p
 
 [![Read more](https://img.shields.io/badge/Read%20more-gray?style=for-the-badge&color=gray&logoColor=white&name=Read+more)](https://pigeonposse.com)
 
-### Collaborators
+## Contributors
 
-|                                                                                    | Name        | Role         | GitHub                                         |
-| ---------------------------------------------------------------------------------- | ----------- | ------------ | ---------------------------------------------- |
-| <img src="https://github.com/angelespejo.png?size=72" alt="Angelo" style="border-radius:100%"/> | Angelo |   Author & Development   | [@Angelo](https://github.com/angelespejo) |
-| <img src="https://github.com/YinMo19.png?size=72" alt="YinMo19" style="border-radius:100%"/> | YinMo19 |  Code Contributor | [@YinMo19](https://github.com/YinMo19) |
-| <img src="https://github.com/PigeonPosse.png?size=72" alt="PigeonPosse" style="border-radius:100%"/> | PigeonPosse |  Collective | [@PigeonPosse](https://github.com/PigeonPosse) |
+|   | Name | Role |
+| ----- | ---- | ---- |
+| ![Angelo](https://github.com/angelespejo.png?size=72) | [Angelo](https://github.com/angelespejo) | 👑 Author |
+| ![YinMo19](https://github.com/YinMo19.png?size=72) | [YinMo19](https://github.com/YinMo19) | 💻 Contributor |
+| ![PigeonPosse](https://github.com/pigeonposse.png?size=72) | [PigeonPosse](https://pigeonposse.com) | 🏢 Organization |
 
 </br>
 
