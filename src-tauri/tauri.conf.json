@@ -1,4 +1,5 @@
 {
+	"$schema": "https://schema.tauri.app/config/1.0.0",
 	"build": {
 		"beforeDevCommand": "pnpm dev:web",
 		"beforeBuildCommand": "pnpm build:web",
@@ -54,8 +55,8 @@
 				"updater"
 			],
 			"copyright": "",
-			"longDescription": "",
-			"shortDescription": "",
+			"longDescription": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
+			"shortDescription": "MacOS App Trial Extender",
 			"category": "DeveloperTool",
 			"identifier": "com.angelespejo.mate",
 			"icon": [
