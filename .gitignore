@@ -58,6 +58,7 @@ packages/**/build
 **/test-results
 
 # project 
+**/src-tauri/target
 **/dist
 **/__temp__
 /__cache__

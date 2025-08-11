@@ -1,5 +1,4 @@
 
-
 import { window as tauriWindow } from '@tauri-apps/api'
 
 type DragParams = {
