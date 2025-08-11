@@ -7,6 +7,7 @@
 		"aboutDescription": "Esta aplicación está dirigida a desarrolladores y testers que pueden haber superado los plazos de prueba y necesitan restablecer el temporizador a cero, lo que les permite seguir probando la aplicación o perfeccionar aún más sus complementos (plugins).",
 		"aboutAlert": "Para acceder ilimitadamente a cualquier programa de macOS, es esencial obtenerlo a través de la App Store de Apple, ya sea descargándolo de forma gratuita o comprándolo si es necesario.",
 		"howTitle": "Cómo funciona",
+		"contributors": "Contribuidores",
 		"howDescription": "Esta aplicación se encarga de automatizar un proceso que normalmente requiere intervención manual en la Terminal. Cuando lo ejecutas, elimina los archivos \"userdata\" de los directorios correspondientes a cada aplicación en ~/Library/Application Support. Estos archivos son responsables de almacenar datos relacionados con la fecha de vencimiento de la prueba de cada aplicación.",
 		"howResume": "En resumen, esta aplicación simplifica y automatiza un proceso que normalmente requeriría el uso manual de la Terminal para cada aplicación individualmente."
 	},

@@ -4,8 +4,10 @@ declare global {
 	namespace App {
 		/**
 		 * FOR GLOUDFLARE
+		 *
 		 * @see https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site/
 		 */
+		// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 		interface Locals {}
 		// interface Platform {
 		// 	env: {
@@ -19,7 +21,9 @@ declare global {
 		// interface Session {}
 		// interface Stuff {}
 	}
-	declare const PKG: typeof import('../package.json');
+	declare const PKG: typeof import( '../package.json' )
+	declare const CONTRIBUTORS: typeof import( '../.dovenv/contributors' ).member
+	declare const APP_INFORMATION: typeof import( '../.dovenv/app.info' ).default
 }
 
-export {};
+export {}

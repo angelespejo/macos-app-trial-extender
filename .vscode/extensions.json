@@ -1,5 +1,5 @@
 {
-	/** 
+	/**
 	* *****************************************************************************
 	* VSCODE extensions Config
 	* *****************************************************************************
@@ -10,10 +10,9 @@
 	*
 	* *****************************************************************************
 	*/
-    "recommendations": [
+	"recommendations": [
 		"svelte.svelte-vscode",
 		"davidanson.vscode-markdownlint",
-		"gruntfuggly.todo-tree",
 		"dbaeumer.vscode-eslint",
 		"nhoizey.gremlins",
 		"christian-kohler.npm-intellisense",
@@ -22,7 +21,6 @@
 		"redhat.vscode-yaml",
 		"editorconfig.editorconfig",
 		"tauri-apps.tauri-vscode",
-		"ms-azuretools.vscode-docker",
 		"rust-lang.rust-analyzer",
 		"naco-siren.gradle-language",
 		"mathiasfrohlich.kotlin",

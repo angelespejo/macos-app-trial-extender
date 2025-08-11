@@ -1,7 +1,3 @@
-#!/usr/bin/env sh
-
-. "$(dirname -- "$0")/_/husky.sh"
-
 ###############################################################################
 # COMMIT MESSAGE
 #
@@ -10,4 +6,4 @@
 # @see https://git-scm.com/docs/git-commit#_hooks
 ###############################################################################
 
-pnpm commitlint --edit $1
+pnpm dovenv commitlint --silent $1

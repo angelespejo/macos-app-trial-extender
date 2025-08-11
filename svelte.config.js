@@ -1,3 +1,4 @@
+
 /**
  * Svelte config.
  *
@@ -30,16 +31,23 @@ const config = {
 			assets   : 'build',
 			fallback : 'index.html', // Must be index for tauri app
 		} ),
+		alias : {
+			$const   : './src/const.ts',
+			$locales : './src/_locales',
+			$core    : './src/_core',
+			// assets : 'src/assets',
+			// src    : 'src',
+		},
 		// prerender : {
 		// 	// NOTE: You can modify your exported error pages here.
 		// 	entries : supportedLocales.reduce( ( acc, locale ) => [
 		// 		...acc,
-		// 		`/${locale}/`, 
-		// 		`/${locale}/settings`, 
-		// 		`/${locale}/info`, 
-		// 		// `/${locale}/401`, 
-		// 		// `/${locale}/403`, 
-		// 		// `/${locale}/404`, 
+		// 		`/${locale}/`,
+		// 		`/${locale}/settings`,
+		// 		`/${locale}/info`,
+		// 		// `/${locale}/401`,
+		// 		// `/${locale}/403`,
+		// 		// `/${locale}/404`,
 		// 		// `/${locale}/500`,
 		// 	], [
 		// 		'*',

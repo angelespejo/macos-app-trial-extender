@@ -1,4 +1,4 @@
-/** 
+/**
 * *****************************************************************************
 * vscode config.
 * *****************************************************************************
@@ -9,44 +9,80 @@
 * *****************************************************************************
 */
 {
-    "files.autoSave": "onFocusChange",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "eslint.validate": [
-        "javascript", 
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json", 
-        "jsonc", 
-        "json5",
-        "html",
-        "yaml",
-        "toml"
-    ],
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "[markdown]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnPaste": true
-    },
-    "markdownlint.ignore": [
-        "**/LICENSE"
-    ],
-    "terminal.integrated.defaultProfile.linux": "zsh", 
-    "terminal.integrated.profiles.linux": {
-        "zsh": {
-            "path": "/bin/zsh"
-        },
-    },
-    "editor.tabSize": 4,
-    "svelte.enable-ts-plugin": true,
-    "rust-analyzer.linkedProjects": [
-        "./src-tauri/Cargo.toml",
-        "./src-tauri/Cargo.toml"
-    ],
-    "[rust]": {
-        "editor.defaultFormatter": "rust-lang.rust-analyzer",
-        "editor.formatOnSave": true
-    }
-    }
+	/**
+	******************************************************************************
+	* General settings
+	******************************************************************************
+	*/
+	"editor.tabSize": 4,
+	"files.autoSave": "onFocusChange",
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.fixAll.eslint": "explicit",
+	},
+	/**
+	******************************************************************************
+	* Terminal settings
+	******************************************************************************
+	*/
+	"terminal.integrated.defaultProfile.linux": "zsh",
+	"terminal.integrated.profiles.linux": {
+		"zsh": {
+			"path": "/bin/zsh"
+		},
+	},
+	/**
+	******************************************************************************
+	* JavaScript/TypeScript settings
+	******************************************************************************
+	*/
+	"eslint.useFlatConfig": true,
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"markdown",
+		"json",
+		"jsonc",
+		"json5",
+		"yaml",
+		"toml",
+		"html",
+		"css",
+		"scss",
+		"less",
+		"svelte",
+		"vue"
+	],
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	/**
+	******************************************************************************
+	* Svelte settings
+	******************************************************************************
+	*/
+	"svelte.enable-ts-plugin": true,
+	/**
+	******************************************************************************
+	* MARKDOWN settings
+	******************************************************************************
+	*/
+	"[markdown]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true
+	},
+	/**
+	******************************************************************************
+	* Rust settings
+	******************************************************************************
+	*/
+	"rust-analyzer.linkedProjects": [
+		"./src-tauri/Cargo.toml",
+		"./src-tauri/Cargo.toml"
+	],
+	"[rust]": {
+		"editor.defaultFormatter": "rust-lang.rust-analyzer",
+		"editor.formatOnSave": true
+	},
+}
