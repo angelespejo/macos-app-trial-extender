@@ -19,9 +19,6 @@ importers:
       svelte-ripple-action:
         specifier: 1.0.5
         version: 1.0.5(svelte@4.2.19)
-      tauri-plugin-autostart-api:
-        specifier: github:tauri-apps/tauri-plugin-autostart#v1
-        version: https://codeload.github.com/tauri-apps/tauri-plugin-autostart/tar.gz/4424517fbfb76ff3eaddebaec6482a56b480a514
       tauri-plugin-fs-watch-api:
         specifier: github:tauri-apps/tauri-plugin-fs-watch#v1
         version: https://codeload.github.com/tauri-apps/tauri-plugin-fs-watch/tar.gz/9c5d1703c22f069e3dcbc3ec14eced34a1054261
@@ -4444,10 +4441,6 @@ packages:
   tar-stream@1.6.2:
     resolution: {integrity: sha512-rzS0heiNf8Xn7/mpdSVVSMAWAoy9bfb1WOTYC78Z0UQKeKa/CWS8FOq0lKGNa8DWKAn9gxjCvMLYc5PGXYlK2A==}
     engines: {node: '>= 0.8.0'}
-
-  tauri-plugin-autostart-api@https://codeload.github.com/tauri-apps/tauri-plugin-autostart/tar.gz/4424517fbfb76ff3eaddebaec6482a56b480a514:
-    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-autostart/tar.gz/4424517fbfb76ff3eaddebaec6482a56b480a514}
-    version: 0.0.0
 
   tauri-plugin-fs-watch-api@https://codeload.github.com/tauri-apps/tauri-plugin-fs-watch/tar.gz/9c5d1703c22f069e3dcbc3ec14eced34a1054261:
     resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-fs-watch/tar.gz/9c5d1703c22f069e3dcbc3ec14eced34a1054261}
@@ -9756,10 +9749,6 @@ snapshots:
       readable-stream: 2.3.8
       to-buffer: 1.2.1
       xtend: 4.0.2
-
-  tauri-plugin-autostart-api@https://codeload.github.com/tauri-apps/tauri-plugin-autostart/tar.gz/4424517fbfb76ff3eaddebaec6482a56b480a514:
-    dependencies:
-      '@tauri-apps/api': 1.6.0
 
   tauri-plugin-fs-watch-api@https://codeload.github.com/tauri-apps/tauri-plugin-fs-watch/tar.gz/9c5d1703c22f069e3dcbc3ec14eced34a1054261:
     dependencies:
