@@ -1,8 +1,11 @@
 name: Release
+
 on:
+  # Run workflow on every push to the main branch with tag `*`
   push:
     tags:
-      - '*'
+      - '*' 
+  # Run workflow manually
   workflow_dispatch:
 
 jobs:
@@ -13,8 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         settings:
-          - platform: 'macos-latest'
-            args: '--target universal-apple-darwin'
           - platform: 'macos-latest'
             args: '--target x86_64-apple-darwin'
           - platform: 'macos-latest'
@@ -28,21 +29,22 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Rust setup
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@stable 
         with:
-          targets: aarch64-apple-darwin
+          # Those targets are only used on macos runners.
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
           
       - name: Rust cache
-        uses: swatinem/rust-cache@v2
+        uses: swatinem/rust-cache@v2.8.0 # fixed version
         with:
           workspaces: './src-tauri -> target'
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4.1.0 # fixed version
         id: pnpm-install
 
       - name: Sync node version and setup cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.4.0 # fixed version
         with:
           node-version: 'lts/*'
           cache: 'pnpm' # Set this to npm, yarn or pnpm.
@@ -52,8 +54,7 @@ jobs:
         run: pnpm install # Change this to npm, yarn or pnpm.
 
       - name: Build the app
-        uses: tauri-apps/tauri-action@v0
-
+        uses: tauri-apps/tauri-action@v0.5.22 # fixed version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}

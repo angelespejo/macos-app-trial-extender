@@ -5,9 +5,9 @@
  */
 
 export interface PathWatcherArgs {
-    immediate?: boolean;
-    recursive?: boolean;
-    preset?: boolean;
+	immediate? : boolean
+	recursive? : boolean
+	preset?    : boolean
 }
 
 export type WatcherEvent = string | string[] | object

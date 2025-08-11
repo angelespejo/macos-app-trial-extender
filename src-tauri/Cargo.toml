@@ -1,11 +1,11 @@
 [package]
-name = "macos-app-trial-extender"
-version = "0.1.0"
-description = "Extend the trial time for macos apps like logicpro or finalcutpro "
-authors = ["angelo <angelo@pigeonpossse.com>"]
-license = "gpl-3"
-repository = "https://github.com/angelespejo/macos-app-trial-extender"
-edition = "2021"
+	name = "macos-app-trial-extender"
+	version = "0.1.0"
+	description = "Extend the trial time for macos apps like logicpro or finalcutpro "
+	authors = [ "angelo <angelo@pigeonpossse.com>" ]
+	license = "gpl-3"
+	repository = "https://github.com/angelespejo/macos-app-trial-extender"
+	edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 # [lib]
@@ -13,36 +13,35 @@ edition = "2021"
 # crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "1.5", features = [] }
+	tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
-tauri = { version = "1.5", features = [
-    "updater",
-    "fs-remove-file",
-    "fs-exists",
-    "path-all",
-    "shell-open",
-    "dialog-ask",
-    "dialog-confirm",
-    "notification-all",
-    "fs-write-file",
-    "window-start-dragging",
-    "macos-private-api",
-    "system-tray",
-] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
+	tauri = { version = "1.5", features = [
+		"updater",
+		"fs-remove-file",
+		"fs-exists",
+		"path-all",
+		"shell-open",
+		"dialog-ask",
+		"dialog-confirm",
+		"notification-all",
+		"fs-write-file",
+		"window-start-dragging",
+		"macos-private-api",
+		"system-tray",
+	] }
+	serde = { version = "1.0", features = [ "derive" ] }
+	serde_json = "1.0"
 
-# custom dependencies and plugins
-tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
-tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
-tauri-plugin-fs-watch = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
-
-window-vibrancy = "0.3.2"
-cocoa = "0.24"
-objc = "0.2"
+	# custom dependencies and plugins
+	tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+	tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+	tauri-plugin-fs-watch = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+	window-vibrancy = "0.3.2"
+	cocoa = "0.24"
+	objc = "0.2"
 
 [features]
-# this feature is used for production builds or when `devPath` points to the filesystem
-# DO NOT REMOVE!!
-custom-protocol = ["tauri/custom-protocol"]
+	# this feature is used for production builds or when `devPath` points to the filesystem
+	# DO NOT REMOVE!!
+	custom-protocol = [ "tauri/custom-protocol" ]

@@ -1,0 +1,9 @@
+###############################################################################
+# COMMIT MESSAGE
+#
+# @description runs after creating the COMMIT message
+# @see https://typicode.github.io/husky/
+# @see https://git-scm.com/docs/git-commit#_hooks
+###############################################################################
+
+pnpm dovenv commitlint --silent $1
