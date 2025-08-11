@@ -62,7 +62,14 @@ jobs:
         with:
           tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
           releaseName: 'MATE v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
-          releaseBody: 'See the assets to download and install this version.'
+          releaseBody: |
+            > [!CAUTION]
+            > Currently the app for **Silicon** is damaged, so it is advisable to install the macOS **x86** version, which works on both Intel (x86) Macs and Apple Silicon Macs using Rosetta 2.
+            
+            - [View CHANGELOG](https://github.com/angelespejo/macos-app-trial-extender/tree/main/CHANGELOG.md#${{ github.ref_name }})
+            - [Report issue](https://github.com/angelespejo/macos-app-trial-extender/issues)
+
+            👇 **Download the app** 👇
           releaseDraft: false
           prerelease: false
           includeUpdaterJson: true
