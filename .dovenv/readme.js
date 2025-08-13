@@ -132,7 +132,7 @@ ${createMdLinks( [
 > [!CAUTION]
 > The **Silicon** application is currently broken, so two possible solutions are recommended:
 > - Install the macOS **x86** version, which works on both Intel (x86) Macs and Apple Silicon Macs with Rosetta 2.
-> - Download ${"`MATE_0.2.0_aarch64.dmg`"} the archive dmg and run  [(#)](https://github.com/angelespejo/macos-app-trial-extender/pull/1#issuecomment-3175667453): 
+> - Download ${'`MATE_0.2.0_aarch64.dmg`'} the archive dmg and run  [(#)](https://github.com/angelespejo/macos-app-trial-extender/pull/1#issuecomment-3175667453): 
 > ${'```bash'}
 > codesign -f -s - /Applications/MATE.app/Contents/MacOS/MATE
 > xattr -dr com.apple.quarantine /Applications/MATE.app/Contents/MacOS/MATE
