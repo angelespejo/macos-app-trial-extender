@@ -10,7 +10,7 @@ on:
     inputs:
       tag:
         description: 'Tag name for the release (e.g. 0.2.0)'
-        required: true
+        required: false # False because we can add the tag or branch name manually in workflow_dispatch too
 
 jobs:
   release:
@@ -26,7 +26,6 @@ jobs:
             args: '--target x86_64-apple-darwin'
           - platform: 'macos-15'
             args: '--target aarch64-apple-darwin'
-          - platform: 'macos-15'
 
     runs-on: ${{ matrix.settings.platform }}
 
