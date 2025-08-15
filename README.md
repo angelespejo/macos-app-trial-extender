@@ -35,8 +35,8 @@ DEVELOPED BY PigeonPosse 🐦🌈
 
 [![HEADER](docs/banner.png)](https://github.com/angelespejo/macos-app-trial-extender)
 
-[![License](https://img.shields.io/github/license/angelespejo/macos-app-trial-extender?style=for-the-badge&color=green&name=License)](./LICENSE)
-[![Github Releases](https://img.shields.io/github/package-json/v/angelespejo/macos-app-trial-extender?style=for-the-badge&color=blue&name=Github+Releases)](https://github.com/angelespejo/macos-app-trial-extender)
+[![License](https://img.shields.io/github/license/angelespejo/macos-app-trial-extender?style=for-the-badge&color=green)](./LICENSE)
+[![Github Releases](https://img.shields.io/github/package-json/v/angelespejo/macos-app-trial-extender?style=for-the-badge&color=blue)](https://github.com/angelespejo/macos-app-trial-extender)
 
 MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.
 
@@ -44,12 +44,12 @@ MATE is an application that allows you to reset the trial period of native macos
 
 ## Download
 
-[![Macos Intel](https://img.shields.io/badge/Macos%20Intel-black?style=for-the-badge&color=black&logoColor=white&name=Macos+Intel)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
-[![Macos Silicon](https://img.shields.io/badge/Macos%20Silicon-black?style=for-the-badge&color=black&logoColor=white&name=Macos+Silicon)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
+[![Macos Intel](https://img.shields.io/badge/Macos%20Intel-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
+[![Macos Silicon](https://img.shields.io/badge/Macos%20Silicon-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
 
 ### All releases
 
-[![All releases](https://img.shields.io/badge/All%20releases-black?style=for-the-badge&color=black&logoColor=white&name=All+releases)](https://github.com/angelespejo/macos-app-trial-extender/releases)
+[![All releases](https://img.shields.io/badge/All%20releases-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
 > [!CAUTION]
 > The **Silicon** application is currently broken, so two possible solutions are recommended:
@@ -70,30 +70,38 @@ MATE is an application that allows you to reset the trial period of native macos
 
 You can contribute via **_Github_**.
 
-[![Issues](https://img.shields.io/badge/Issues-gray?style=for-the-badge&color=gray&logoColor=white&name=Issues)](https://github.com/angelespejo/macos-app-trial-extender/issues)
-[![Pull requests](https://img.shields.io/badge/Pull%20requests-gray?style=for-the-badge&color=gray&logoColor=white&name=Pull+requests)](https://github.com/angelespejo/macos-app-trial-extender/pulls)
+[![Issues](https://img.shields.io/badge/Issues-gray?style=for-the-badge&color=gray&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/issues)
+[![Pull requests](https://img.shields.io/badge/Pull%20requests-gray?style=for-the-badge&color=gray&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/pulls)
 
 ### Want to contribute as a tester?
 
 Notifying that you've tested the app and that it works on your operating system, add the test information [here](.dovenv/app.info.ts) and make a **pull request**!
 
+### How ?
+
+1. [**fork**](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) repository.
+2. Run `pnpm install` to install dependencies and tools.
+3. Run `pnpm add-test` to add a test.
+   All you have to do is answer the questions and the test will complete automatically.
+4. Make a [**pull request**](https://github.blog/developer-skills/github/beginners-guide-to-github-creating-a-pull-request/)
+
 ## ☕ Donate
 
 Help us to develop more interesting things.
 
-[![Donate](https://img.shields.io/badge/Donate-gray?style=for-the-badge&color=gray&logoColor=white&name=Donate)](https://github.com/sponsors/angelespejo)
+[![Donate](https://img.shields.io/badge/Donate-gray?style=for-the-badge&color=gray&logoColor=white)](https://github.com/sponsors/angelespejo)
 
 ## 📜 License
 
 This software is licensed with **[GPL-3.0](./LICENSE)**.
 
-[![Read more](https://img.shields.io/badge/Read%20more-gray?style=for-the-badge&color=gray&logoColor=white&name=Read+more)](./LICENSE)
+[![Read more](https://img.shields.io/badge/Read%20more-gray?style=for-the-badge&color=gray&logoColor=white)](./LICENSE)
 
 ## 🐦 About us
 
 _PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating practical and interesting tools that help developers and users enjoy a more agile and comfortable experience. Our projects cover various programming sectors and we do not have a thematic limitation in terms of projects.
 
-[![Read more](https://img.shields.io/badge/Read%20more-gray?style=for-the-badge&color=gray&logoColor=white&name=Read+more)](https://pigeonposse.com)
+[![Read more](https://img.shields.io/badge/Read%20more-gray?style=for-the-badge&color=gray&logoColor=white)](https://pigeonposse.com)
 
 ## Contributors
 
@@ -107,12 +115,12 @@ _PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating p
 
 <p align="center">
 
-[![Web](https://img.shields.io/badge/Web-grey?style=for-the-badge&color=grey&logoColor=white&name=Web)](https://pigeonposse.com)
-[![About Us](https://img.shields.io/badge/About%20Us-grey?style=for-the-badge&color=grey&logoColor=white&name=About+Us)](https://pigeonposse.com?popup=about)
-[![Donate](https://img.shields.io/badge/Donate-pink?style=for-the-badge&color=pink&logoColor=white&name=Donate)](https://github.com/sponsors/angelespejo)
-[![Github](https://img.shields.io/badge/Github-black?style=for-the-badge&color=black&logoColor=white&logo=github&name=Github)](https://github.com/pigeonposse)
-[![Twitter](https://img.shields.io/badge/Twitter-black?style=for-the-badge&color=black&logoColor=white&logo=x&name=Twitter)](https://twitter.com/pigeonposse_)
-[![Instagram](https://img.shields.io/badge/Instagram-black?style=for-the-badge&color=black&logoColor=white&logo=instagram&name=Instagram)](https://www.instagram.com/pigeon.posse/)
-[![Medium](https://img.shields.io/badge/Medium-black?style=for-the-badge&color=black&logoColor=white&logo=medium&name=Medium)](https://medium.com/@pigeonposse)
+[![Web](https://img.shields.io/badge/Web-grey?style=for-the-badge&color=grey&logoColor=white)](https://pigeonposse.com)
+[![About Us](https://img.shields.io/badge/About%20Us-grey?style=for-the-badge&color=grey&logoColor=white)](https://pigeonposse.com?popup=about)
+[![Donate](https://img.shields.io/badge/Donate-pink?style=for-the-badge&color=pink&logoColor=white)](https://github.com/sponsors/angelespejo)
+[![Github](https://img.shields.io/badge/Github-black?style=for-the-badge&color=black&logoColor=white&logo=github)](https://github.com/pigeonposse)
+[![Twitter](https://img.shields.io/badge/Twitter-black?style=for-the-badge&color=black&logoColor=white&logo=x)](https://twitter.com/pigeonposse_)
+[![Instagram](https://img.shields.io/badge/Instagram-black?style=for-the-badge&color=black&logoColor=white&logo=instagram)](https://www.instagram.com/pigeon.posse/)
+[![Medium](https://img.shields.io/badge/Medium-black?style=for-the-badge&color=black&logoColor=white&logo=medium)](https://medium.com/@pigeonposse)
 
 </p>

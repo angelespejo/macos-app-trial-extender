@@ -1,9 +1,13 @@
 
-import type { member } from './contributors.js'
+import type {
+	role,
+	member,
+} from './contributors.js'
+import type { ContributorsConfig } from '@dovenv/repo'
 
-type TestConfigValue = {
+export type AppInfoConfigTest = {
 	/**
-	 * Macos application version
+	 * Application version of final cut or logic pro
 	 *
 	 * @example '10.5.4'
 	 */
@@ -29,9 +33,9 @@ type TestConfigValue = {
 	/**
 	 * Users who have taken the test.
 	 *
-	 * Add a user from the `./.dovenv/contributors.js` file
+	 * Add a user ID from the `./.dovenv/contributors.js` file
 	 */
-	user?         : ( typeof member )[keyof typeof member][]
+	user?         : ( keyof typeof member )[]
 }
 
 export type AppInfoConfig = {
@@ -46,7 +50,7 @@ export type AppInfoConfig = {
 		/**
 		 * Versions of Final Cut Pro that are tested
 		 */
-		tests                  : TestConfigValue[]
+		tests                  : AppInfoConfigTest[]
 	}
 	/**
 	 * Logic Pro options
@@ -59,7 +63,15 @@ export type AppInfoConfig = {
 		/**
 		 * Versions of Logic Pro that are tested
 		 */
-		tests                  : TestConfigValue[]
+		tests                  : AppInfoConfigTest[]
 	}
 }
 
+export type AppInfoID = keyof AppInfoConfig
+
+export type Roles = typeof role
+export type Members = Record<keyof typeof member, ContributorsConfig<Roles>['member'][number]>
+export type Contributors = {
+	role   : Roles
+	member : Members
+}

@@ -1,7 +1,9 @@
 <script lang="ts">
 
-	import type { APP_INFO } from '$const'
-
+	import {
+		type APP_INFO,
+		PROJECT_CONTRIBUTORS,
+	} from '$const'
 	import { Table } from '$lib'
 
 	export let data: typeof APP_INFO[keyof typeof APP_INFO]
@@ -36,21 +38,25 @@
 				</Table.BodyCell>
 				<Table.BodyCell>
 					{#if test.user && test.user.length > 0}
-						{#each test.user as user}
-							{#if user.avatar || user.ghUsername}
-								<a
-									href="{user.url}"
-									target="_blank"
-								>
-									<img
-										class="w-[30px] h-[30px] rounded-full bg-primary-950/20 object-contain"
-										alt="{user.name}"
-										src="{user.avatar || user.ghUsername ? `https://github.com/${user.ghUsername}.png` : undefined}"
+						{#each test.user as userId}
+							{#if userId in PROJECT_CONTRIBUTORS}
+								{@const user = PROJECT_CONTRIBUTORS[userId]}
+								{#if user.avatar || user.ghUsername}
+									<a
+										href="{user.url}"
+										target="_blank"
 									>
-								</a>
-							{:else}
-								<div>none</div>
+										<img
+											class="w-[30px] h-[30px] rounded-full bg-primary-950/20 object-contain"
+											alt="{user.name}"
+											src="{user.avatar || user.ghUsername ? `https://github.com/${user.ghUsername}.png` : undefined}"
+										>
+									</a>
+								{:else}
+									<div>none</div>
+								{/if}
 							{/if}
+
 						{/each}
 					{:else}
 						<div>none</div>

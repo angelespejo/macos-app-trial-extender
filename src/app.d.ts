@@ -1,4 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
+
+import type { Members } from '../.dovenv/types'
+
 // for information about these interfaces
 declare global {
 	namespace App {
@@ -22,7 +25,7 @@ declare global {
 		// interface Stuff {}
 	}
 	declare const PKG: typeof import( '../package.json' )
-	declare const CONTRIBUTORS: typeof import( '../.dovenv/contributors' ).member
+	declare const CONTRIBUTORS: Members
 	declare const APP_INFORMATION: typeof import( '../.dovenv/app.info' ).default
 }
 

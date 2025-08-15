@@ -1,4 +1,3 @@
-
 export const APP_ID = PKG.extra.id
 
 export const FUNCTION_ID = {

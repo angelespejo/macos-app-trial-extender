@@ -63,11 +63,17 @@ jobs:
           tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
           releaseName: 'MATE v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
           releaseBody: |
-            > [!CAUTION]
-            > Currently the app for **Silicon** is damaged, so it is advisable to install the macOS **x86** version, which works on both Intel (x86) Macs and Apple Silicon Macs using Rosetta 2.
-            
-            - [View CHANGELOG](https://github.com/angelespejo/macos-app-trial-extender/tree/main/CHANGELOG.md#${{ github.ref_name }})
+            - [CHANGELOG](https://github.com/angelespejo/macos-app-trial-extender/tree/main/CHANGELOG.md#${{ github.ref_name }})
             - [Report issue](https://github.com/angelespejo/macos-app-trial-extender/issues)
+
+            > [!CAUTION]
+            > The **Silicon** application is currently broken, so two possible solutions are recommended:
+            > - Install the macOS **x86** version, which works on both Intel (x86) Macs and Apple Silicon Macs with Rosetta 2.
+            > - Download **DMG** and run [(#ref)](https://github.com/angelespejo/macos-app-trial-extender/pull/1#issuecomment-3175667453): 
+            > ```bash
+            > codesign -f -s - /Applications/MATE.app/Contents/MacOS/MATE
+            > xattr -dr com.apple.quarantine /Applications/MATE.app/Contents/MacOS/MATE
+            > ```
 
             👇 **Download the app** 👇
           releaseDraft: false

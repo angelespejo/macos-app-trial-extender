@@ -134,13 +134,13 @@ export class Core {
 
 	autostart() {
 
-		this.store.autostart.subscribe( async value => {
+		// this.store.autostart.subscribe( async value => {
 
-			const status = await this.app.autostart.getStatus()
-			if ( value && !status ) await this.app.autostart.enable()
-			else if ( !value && status ) await this.app.autostart.disable()
+		// 	const status = await this.app.autostart.getStatus()
+		// 	if ( value && !status ) await this.app.autostart.enable()
+		// 	else if ( !value && status ) await this.app.autostart.disable()
 
-		} )
+		// } )
 
 	}
 

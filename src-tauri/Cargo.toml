@@ -1,6 +1,6 @@
 [package]
 	name = "macos-app-trial-extender"
-	version = "0.1.0"
+	version = "0.2.0"
 	description = "Extend the trial time for macos apps like logicpro or finalcutpro "
 	authors = [ "angelo <angelo@pigeonpossse.com>" ]
 	license = "gpl-3"
@@ -13,10 +13,10 @@
 # crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-	tauri-build = { version = "1.5", features = [] }
+	tauri-build = { version = "1.5.4", features = [] }
 
 [dependencies]
-	tauri = { version = "1.5", features = [
+	tauri = { version = "1.5.4", features = [
 		"updater",
 		"fs-remove-file",
 		"fs-exists",
@@ -34,10 +34,13 @@
 	serde_json = "1.0"
 
 	# custom dependencies and plugins
-	tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+	# tauri-plugin-autostart = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+	# @see https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/single-instance
 	tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 	tauri-plugin-fs-watch = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
-	window-vibrancy = "0.3.2"
+	# > If you're using tauri@v1, you need to use version 0.4 of this crate.
+	# @see https://github.com/tauri-apps/window-vibrancy
+	window-vibrancy = "0.4.0"
 	cocoa = "0.24"
 	objc = "0.2"
 

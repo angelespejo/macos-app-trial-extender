@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"scripts": {
+		"add-test": "pnpx tsx ./.dovenv/add-test/index.ts",
 		"build": "tauri build",
 		"build:icon": "tauri icon docs/logo.png",
 		"build:web": "vite build",
@@ -57,7 +58,7 @@
 		"tauri": "tauri $@"
 	},
 	"dependencies": {
-		"@tauri-apps/api": "1.5.3",
+		"@tauri-apps/api": "1.5.4",
 		"svelte-ripple-action": "1.0.5",
 		"tauri-plugin-fs-watch-api": "github:tauri-apps/tauri-plugin-fs-watch#v1"
 	},
@@ -74,8 +75,10 @@
 		"@sveltejs/adapter-static": "3.0.1",
 		"@sveltejs/kit": "2.27.3",
 		"@sveltejs/vite-plugin-svelte": "3.0.2",
-		"@tauri-apps/cli": "1.5.9",
-		"@types/node": "24.2.1",
+		"@tauri-apps/cli": "1.5.14",
+		"@types/node": "24.3.0",
+		"acorn": "8.15.0",
+		"acorn-walk": "8.3.4",
 		"auto-changelog": "2.5.0",
 		"autoprefixer": "10.4.21",
 		"eslint": "9.33.0",

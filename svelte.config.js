@@ -9,14 +9,6 @@
 import adapter            from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
-// import lang from './src/_locales/lang.js'
-// const supportedLocales = Object.keys( lang )
-// const adapterConfig = {
-// 	pages    : 'build',
-// 	assets   : 'build',
-// 	fallback : 'index.html', // Must be index for tauri app
-// }
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
@@ -38,21 +30,6 @@ const config = {
 			// assets : 'src/assets',
 			// src    : 'src',
 		},
-		// prerender : {
-		// 	// NOTE: You can modify your exported error pages here.
-		// 	entries : supportedLocales.reduce( ( acc, locale ) => [
-		// 		...acc,
-		// 		`/${locale}/`,
-		// 		`/${locale}/settings`,
-		// 		`/${locale}/info`,
-		// 		// `/${locale}/401`,
-		// 		// `/${locale}/403`,
-		// 		// `/${locale}/404`,
-		// 		// `/${locale}/500`,
-		// 	], [
-		// 		'*',
-		// 	] ),
-		// },
 	},
 }
 

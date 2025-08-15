@@ -12,7 +12,7 @@ export const role = {
 }
 
 /**
- * @type {Record<'angelo' | 'yinmo19' | 'collective', import('@dovenv/repo').ContributorsConfig<typeof role>['member'][number]>}
+ * @satisfies {Record<string, import('@dovenv/repo').ContributorsConfig<typeof role>['member'][number]>}
  */
 export const member = {
 	angelo : {

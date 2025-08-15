@@ -13,12 +13,12 @@ import { getMark } from './mark.js'
 /**
  * Creates a Markdown link object with a badge image URL.
  *
- * @param   {object} params         - The parameters for creating the link.
- * @param   {string} params.name    - The name to display on the badge.
- * @param   {string} params.url     - The URL to link to.
- * @param   {string} [params.color] - The color of the badge.
- * @param   {string} [params.logo]  - The logo to use on the badge.
- * @returns {object}                - An object containing the name, URL, and badge image URL.
+ * @param   {object}                                      params         - The parameters for creating the link.
+ * @param   {string}                                      params.name    - The name to display on the badge.
+ * @param   {string}                                      params.url     - The URL to link to.
+ * @param   {string}                                      [params.color] - The color of the badge.
+ * @param   {string}                                      [params.logo]  - The logo to use on the badge.
+ * @returns {Parameters<typeof createMdLinks>[0][number]}                - An object containing the name, URL, and badge image URL.
  */
 const createMdLink = ( {
 	name, url, color = 'black', logo,
@@ -31,9 +31,9 @@ const createMdLink = ( {
 		path      : 'badge/' + encodeURIComponent( name + '-' + color ),
 		style     : 'for-the-badge',
 		logo,
-		name,
 	} ),
 } )
+
 /**
  * Validate package
  *
@@ -86,7 +86,7 @@ ${createMdLinks( [
 		imgURL : createBadgeURL( {
 			color : 'green',
 			style : 'for-the-badge',
-			name  : 'License',
+			// label : 'License',
 			path  : `github/license/${pkg.extra.repoPath}`,
 		} ),
 	},
@@ -96,7 +96,7 @@ ${createMdLinks( [
 		imgURL : createBadgeURL( {
 			color : 'blue',
 			style : 'for-the-badge',
-			name  : 'Github Releases',
+			// label : 'Github Releases',
 			path  : `github/package-json/v/${pkg.extra.repoPath}`,
 		} ),
 	},
@@ -164,6 +164,14 @@ ${createMdLinks( [
 ### Want to contribute as a tester?
 
 Notifying that you've tested the app and that it works on your operating system, add the test information [here](.dovenv/app.info.ts) and make a **pull request**!
+
+### How ?
+
+1. [**fork**](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) repository.
+2. Run ${'`pnpm install`'} to install dependencies and tools.
+3. Run ${'`pnpm add-test`'} to add a test.
+   All you have to do is answer the questions and the test will complete automatically.
+4. Make a [**pull request**](https://github.blog/developer-skills/github/beginners-guide-to-github-creating-a-pull-request/)
 
 ## ☕ Donate
 
@@ -262,8 +270,12 @@ export default defineConfig( { custom : { readme : {
 
 			const contr = new Contributors( { utils: data.utils } )
 
-			if ( !data?.utils?.config?.const?.contributors ) throw new Error( 'contributors is required. See .dovenv/contributors.js' )
-			const tableContent = await contr.getMarkdownContent( data.utils.config.const.contributors )
+			/**
+			 * @type {any}
+			 */
+			const contributors = data?.utils?.config?.const?.contributors
+			if ( !contributors ) throw new Error( 'contributors is required. See .dovenv/contributors.js' )
+			const tableContent = await contr.getMarkdownContent( contributors )
 
 			const readme = await setReadme( pkg, tableContent )
 			await writeFile( 'README.md', readme )

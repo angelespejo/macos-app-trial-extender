@@ -22,24 +22,30 @@ mod tray;
 
 pub fn main() {
     let app = tauri::Builder::default()
+        //////////////////////////////////////////////////////////////////////////////
         // PLUGINS
-        // .plugin(tauri_plugin_autostart::init(
-        //     MacosLauncher::LaunchAgent,
-        //     Some(vec!["--flag1", "--flag2"]),
-        // ))
+        //////////////////////////////////////////////////////////////////////////////
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);
             app.emit_all("single-instance", Payload { args: argv, cwd })
                 .unwrap();
         }))
         .plugin(tauri_plugin_fs_watch::init())
+        // .plugin(tauri_plugin_autostart::init(
+        //     MacosLauncher::LaunchAgent,
+        //     Some(vec!["--flag1", "--flag2"]),
+        // ))
+        //////////////////////////////////////////////////////////////////////////////
         // COMMANDS
+        //////////////////////////////////////////////////////////////////////////////
         .invoke_handler(tauri::generate_handler![
             core::backend_i18n,
             core::reset_trial_data,
             core::reset_trial_data_watcher
         ])
+        //////////////////////////////////////////////////////////////////////////////
         // SETUP
+        //////////////////////////////////////////////////////////////////////////////
         .setup(|app| {
             let window = app.get_window("main").unwrap();
 
@@ -55,7 +61,9 @@ pub fn main() {
 
             Ok(())
         })
+        //////////////////////////////////////////////////////////////////////////////
         // ON
+        //////////////////////////////////////////////////////////////////////////////
         .on_window_event(|event| match event.event() {
             tauri::WindowEvent::CloseRequested { api, .. } => {
                 event.window().hide().unwrap();
@@ -65,11 +73,15 @@ pub fn main() {
             }
             _ => {}
         })
+        //////////////////////////////////////////////////////////////////////////////
         // BUILD
+        //////////////////////////////////////////////////////////////////////////////
         .build(tauri::generate_context!())
         .expect("error while building tauri application");
 
+    //////////////////////////////////////////////////////////////////////////////
     // RUN
+    //////////////////////////////////////////////////////////////////////////////
     app.run(|_app_handle, event| match event {
         // Keep the backend running
         tauri::RunEvent::ExitRequested { api, .. } => {
