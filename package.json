@@ -1,6 +1,6 @@
 {
 	"name": "macos-app-trial-extender",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"private": true,
 	"description": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
 	"keywords": [
