@@ -7,20 +7,26 @@ on:
       - '*' 
   # Run workflow manually
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name for the release (e.g. 0.2.0)'
+        required: true
 
 jobs:
   release:
     permissions:
       contents: write
+    env:
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.ref_name }}
     strategy:
       fail-fast: false
       matrix:
         settings:
-          - platform: 'macos-latest'
+          - platform: 'macos-15'
             args: '--target x86_64-apple-darwin'
-          - platform: 'macos-latest'
+          - platform: 'macos-15'
             args: '--target aarch64-apple-darwin'
-          - platform: 'macos-latest'
+          - platform: 'macos-15'
 
     runs-on: ${{ matrix.settings.platform }}
 
@@ -31,13 +37,7 @@ jobs:
       - name: Rust setup
         uses: dtolnay/rust-toolchain@stable 
         with:
-          # Those targets are only used on macos runners.
-          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
-          
-      - name: Rust cache
-        uses: swatinem/rust-cache@v2.8.0 # fixed version
-        with:
-          workspaces: './src-tauri -> target'
+          targets: aarch64-apple-darwin,x86_64-apple-darwin
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0 # fixed version
@@ -47,11 +47,11 @@ jobs:
         uses: actions/setup-node@v4.4.0 # fixed version
         with:
           node-version: 'lts/*'
-          cache: 'pnpm' # Set this to npm, yarn or pnpm.
+          cache: 'pnpm' 
 
       - name: Install frontend dependencies
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
-        run: pnpm install # Change this to npm, yarn or pnpm.
+        run: pnpm install 
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0.5.22 # fixed version
@@ -60,10 +60,10 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
+          tagName: ${{ env.RELEASE_TAG }} # This only works if your workflow triggers on new tags.
           releaseName: 'MATE v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
           releaseBody: |
-            - [CHANGELOG](https://github.com/angelespejo/macos-app-trial-extender/tree/main/CHANGELOG.md#${{ github.ref_name }})
+            - [CHANGELOG](https://github.com/angelespejo/macos-app-trial-extender/tree/main/CHANGELOG.md#${{ env.RELEASE_TAG }})
             - [Report issue](https://github.com/angelespejo/macos-app-trial-extender/issues)
 
             > [!CAUTION]

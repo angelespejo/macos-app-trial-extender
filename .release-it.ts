@@ -20,10 +20,16 @@ if ( !pkg.devDependencies['@release-it/bumper'] ) throw new Error( '@release-it/
 
 export default {
 
-	plugins : { '@release-it/bumper' : { out : {
-		file : 'src-tauri/tauri.conf.json',
-		path : 'package.version',
-	} } },
+	plugins : { '@release-it/bumper' : { out : [
+		{
+			file : 'src-tauri/tauri.conf.json',
+			path : 'package.version',
+		},
+		{
+			file : 'src-tauri/Cargo.toml',
+			path : 'package.version',
+		},
+	] } },
 	git : {
 		requireBranch : 'main',
 		commitMessage : `:bookmark: feat(all): Release ${ver}`,
