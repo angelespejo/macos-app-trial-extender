@@ -26,22 +26,26 @@ jobs:
             args: '--target x86_64-apple-darwin'
           - platform: 'macos-15'
             args: '--target aarch64-apple-darwin'
-
     runs-on: ${{ matrix.settings.platform }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Verify release tag exists
+        run: |
+          git fetch --tags
+          if ! git rev-parse "refs/tags/${{ env.RELEASE_TAG }}" >/dev/null 2>&1; then
+            echo "Error: Tag '${{ env.RELEASE_TAG }}' does not exist in the repository."
+            exit 1
+          fi
+        shell: bash
       - name: Rust setup
         uses: dtolnay/rust-toolchain@stable 
         with:
           targets: aarch64-apple-darwin,x86_64-apple-darwin
-
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0 # fixed version
         id: pnpm-install
-
       - name: Sync node version and setup cache
         uses: actions/setup-node@v4.4.0 # fixed version
         with:

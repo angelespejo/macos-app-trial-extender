@@ -30,10 +30,15 @@ export default {
 			path : 'package.version',
 		},
 	] } },
+
 	git : {
 		requireBranch : 'main',
 		commitMessage : `:bookmark: feat(all): Release ${ver}`,
+		tag           : true, // for workflow
+		commit        : true,
+		push          : true,
 	},
+
 	hooks : {
 		'before:init'       : [ 'git push', 'pnpm lint:fix' ],
 		'after:bump'        : [ 'pnpm auto-changelog -p', 'pnpm readme' ],
@@ -47,4 +52,5 @@ export default {
 
 	github : { release: false },
 	npm    : { publish: false },
+
 } satisfies Config
