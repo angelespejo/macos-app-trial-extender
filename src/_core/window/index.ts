@@ -24,8 +24,16 @@ export class Window {
 			// @ts-ignore
 			if ( e.target.closest( noDragSelectors ) ) return
 
-			// @ts-ignore
-			if ( window.__TAURI__ ) await tauriWindow.appWindow.startDragging()
+			try {
+
+				await tauriWindow.appWindow.startDragging()
+
+			}
+			catch ( _e ) {
+
+				console.warn( 'error starting window drag', _e )
+
+			}
 
 		} )
 

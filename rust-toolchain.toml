@@ -1,6 +1,11 @@
 [toolchain]
-	channel = "stable"  # Actually: 1.82.0
+	channel = "1.82.0"  # Fixed version
 	targets = [
 		"aarch64-apple-darwin",
 		"x86_64-apple-darwin" 
 	]  
+	components = [
+		"rust-analyzer",
+		"rustfmt",
+		"clippy" 
+	]

@@ -1,11 +1,11 @@
 {
-	"$schema": "https://schema.tauri.app/config/1.0.0",
+	"$schema": "https://schema.tauri.app/config/1.5.4",
 	"build": {
 		"beforeDevCommand": "pnpm dev:web",
 		"beforeBuildCommand": "pnpm build:web",
 		"devPath": "http://localhost:13129",
 		"distDir": "../build",
-		"withGlobalTauri": true
+		"withGlobalTauri": false
 	},
 	"package": {
 		"productName": "MATE",
@@ -55,7 +55,7 @@
 				"dmg",
 				"updater"
 			],
-			"copyright": "",
+			"copyright": "Licensed under GPL-3.0.",
 			"longDescription": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
 			"shortDescription": "MacOS App Trial Extender",
 			"category": "DeveloperTool",

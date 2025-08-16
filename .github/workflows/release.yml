@@ -7,13 +7,10 @@ on:
       - '*' 
   # Run workflow manually
   workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Tag name for the release (e.g. 0.2.0)'
-        required: false # False because we can add the tag or branch name manually in workflow_dispatch too
 
 jobs:
   release:
+    if: startsWith(github.ref, 'refs/tags/')
     permissions:
       contents: write
     env:
@@ -31,18 +28,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Verify release tag exists
-        run: |
-          git fetch --tags
-          if ! git rev-parse "refs/tags/${{ env.RELEASE_TAG }}" >/dev/null 2>&1; then
-            echo "Error: Tag '${{ env.RELEASE_TAG }}' does not exist in the repository."
-            exit 1
-          fi
-        shell: bash
       - name: Rust setup
-        uses: dtolnay/rust-toolchain@stable 
-        with:
-          targets: aarch64-apple-darwin,x86_64-apple-darwin
+        run: rustup toolchain install
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0 # fixed version
         id: pnpm-install
