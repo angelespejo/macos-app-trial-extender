@@ -16,6 +16,9 @@ importers:
       '@tauri-apps/api':
         specifier: 1.5.4
         version: 1.5.4
+      macos-app-trial-extender:
+        specifier: 'link:'
+        version: 'link:'
       svelte-ripple-action:
         specifier: 1.0.5
         version: 1.0.5(svelte@4.2.19)
