@@ -46,19 +46,7 @@ MATE is an application that allows you to reset the trial period of native macos
 
 [![Macos Intel](https://img.shields.io/badge/Macos%20Intel-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
 [![Macos Silicon](https://img.shields.io/badge/Macos%20Silicon-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/MATE_x64.app.tar.gz)
-
-### All releases
-
-[![All releases](https://img.shields.io/badge/All%20releases-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases)
-
-> [!CAUTION]
-> The **Silicon** application is currently broken, so two possible solutions are recommended:
-> - Install the macOS **x86** version, which works on both Intel (x86) Macs and Apple Silicon Macs with Rosetta 2.
-> - Download **DMG** and run [(#ref)](https://github.com/angelespejo/macos-app-trial-extender/pull/1#issuecomment-3175667453): 
-> ```bash
-> codesign -f -s - /Applications/MATE.app/Contents/MacOS/MATE
-> xattr -dr com.apple.quarantine /Applications/MATE.app/Contents/MacOS/MATE
-> ```
+[![See all](https://img.shields.io/badge/See%20all-black?style=for-the-badge&color=black&logoColor=white)](https://github.com/angelespejo/macos-app-trial-extender/releases)
 
 ## Screenshots
 

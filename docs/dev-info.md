@@ -38,28 +38,30 @@ pnpm release
 ## 🚢 Push in **MAIN** branch
 
 ```bash
-pnpm push-main
+pnpm push
 ```
 
 > **INFO**  This command automate git add, commit and push with commintlint
 
 ## 🛳 How do I _deploy_, _publish_ or _release_ the necessary packages?
 
-If you want to perform any of these actions you have to first update the necessary packages with ```pnpm update-version``` and then push with ```pnpm push-main```.
+If you want to perform any of these actions you have to first update the necessary packages with ```pnpm push``` and then ```pnpm release```.
 
 Once the push is done, the _Github actions_ will execute it automatically.
 
 > **INFO** This command automate git add, commit and push with commintlint
 
-## ✅ Add or complete tasks
+## ✅ Add test
 
-All tasks including project ideas can be found by running the following command:
+To add a test, run the following command:
 
 ```bash
-pnpm todo
+pnpm add-test
 ```
 
-you can also see the list of everyone in this [section](<http://localhost:5173/todo/v1>)
+## ✅ Add or complete tasks
+
+See the list of everyone in this [section](<todo/v1>)
 
 ---
 
