@@ -1,9 +1,9 @@
+import { homeDir }       from '@tauri-apps/api/path'
 import {
 	BaseDirectory,
 	exists,
-	removeFile,
-} from '@tauri-apps/api/fs'
-import { homeDir } from '@tauri-apps/api/path'
+	remove as removeFile,
+} from '@tauri-apps/plugin-fs'
 
 import { pathWatcher } from './watcher'
 
@@ -13,13 +13,13 @@ export class Path {
 	homeDir = homeDir
 	async existsHomePath( path: string ) {
 
-		return await exists( path, { dir: BaseDirectory.Home } )
+		return await exists( path, { baseDir: BaseDirectory.Home } )
 
 	}
 
 	async removeHomeFile( path: string ) {
 
-		await removeFile( path, { dir: BaseDirectory.Home } )
+		await removeFile( path, { baseDir: BaseDirectory.Home } )
 
 	}
 

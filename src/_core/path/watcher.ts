@@ -2,7 +2,7 @@
 import {
 	watch,
 	watchImmediate,
-}              from 'tauri-plugin-fs-watch-api'
+}              from '@tauri-apps/plugin-fs'
 
 import type {
 	PathWatcherArgs,
