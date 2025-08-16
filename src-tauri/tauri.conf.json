@@ -69,7 +69,8 @@
 			],
 			"macOS": {
 				"minimumSystemVersion": "10.13",
-				"license": "../LICENSE"
+				"license": "../LICENSE",
+				"signingIdentity": "-"
 			}
 		},
 		"updater": {

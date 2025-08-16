@@ -23,8 +23,8 @@ A clear and concise description of what you expected to happen.
 
 **Version (please complete the following information):**
 
-- My macOS Version: [e.g. 10.6]
-- My MATE Version [e.g. 0.2.0]
+- Current macOS Version: [e.g. 10.6]
+- Current MATE Version [e.g. 0.2.0]
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
