@@ -19,7 +19,12 @@ export default defineConfig(
 		html   : true,
 		toml   : true,
 		md     : true,
-		ignore : [ '**/README.md', '**/CHANGELOG.md' ],
+		ignore : [
+			'**/README.md',
+			'**/CHANGELOG.md',
+			'docs/dev-info.md',
+			'src-tauri/gen/**/*.json',
+		],
 
 	} ),
 	await setSvelteConfig( { ts: true } ),
