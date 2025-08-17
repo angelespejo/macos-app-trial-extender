@@ -1,44 +1,39 @@
 [package]
-	name = "macos-app-trial-extender"
+	name = "mate"
 	version = "0.2.4"
-	description = "Extend the trial time for macos apps like logicpro or finalcutpro "
+	description = "Extend the trial time for macos apps like logicpro or finalcutpro"
 	authors = [ "angelo <angelo@pigeonpossse.com>" ]
 	license = "gpl-3"
 	repository = "https://github.com/angelespejo/macos-app-trial-extender"
 	edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-# [lib]
-# name="mate_lib"
-# crate-type = ["staticlib", "cdylib", "rlib"]
-
 [build-dependencies]
-	tauri-build = { version = "2", features = [] }
+	tauri-build = { version = "2.3.1", features = [] }
 
 [dependencies]
-	tauri = { version = "2", features = [
+	tauri = { version = "2.7.0", features = [
 		"macos-private-api",
 		"tray-icon",
+		"image-png"
 	] }
 	serde = { version = "1.0", features = [ "derive" ] }
 	serde_json = "1.0"
 
 	# custom dependencies and plugins
-	tauri-plugin-single-instance = "2"
-	# > If you're using tauri@v1, you need to use version 0.4 of this crate.
+	tauri-plugin-single-instance = "2.3.2"
+	tauri-plugin-dialog = "2.3.2"
+	tauri-plugin-fs = { version = "2.4.1", features = [ "watch" ] }
+	tauri-plugin-notification = "2.3.0"
+	tauri-plugin-updater = "2.9.0"
+	tauri-plugin-shell = "2.3.0"
+
 	# @see https://github.com/tauri-apps/window-vibrancy
-	window-vibrancy = "0.4.0"
-	cocoa = "0.24"
-	objc = "0.2"
-	tauri-plugin-dialog = "2"
-	tauri-plugin-fs = "2"
-	tauri-plugin-notification = "2"
-	tauri-plugin-shell = "2"
+	window-vibrancy = "0.6.0"
+
 
 [features]
 	# this feature is used for production builds or when `devPath` points to the filesystem
 	# DO NOT REMOVE!!
 	custom-protocol = [ "tauri/custom-protocol" ]
 
-[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
-	tauri-plugin-updater = "2"
+

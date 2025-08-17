@@ -55,6 +55,19 @@
 		"bugs": "Errors"
 	},
 	"nots": {
-		"reset": "Resetejades les versions de prova per a les apps natives de macOS"
+		"reset": {
+			"general": {
+				"success": "Versions de prova reiniciades",
+				"fail": "Error en reiniciar les versions de prova"
+			},
+			"logic": {
+				"success": "Versions de prova de Logic Pro reiniciades",
+				"fail": "Error en reiniciar les versions de prova de Logic Pro"
+			},
+			"fcp": {
+				"success": "Versions de prova de Final Cut Pro reiniciades",
+				"fail": "Error en reiniciar les versions de prova de Final Cut Pro"
+			}
+		}
 	}
 }

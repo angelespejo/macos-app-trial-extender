@@ -8,12 +8,11 @@ export const load = async ( { url } ) => {
 
 	try {
 
-		core.init()
-
 		const { pathname } = url
+
 		const {
 			route, lang,
-		} =  await core.i18n.layoutFunct( pathname )
+		} = await core.init( { pathname } )
 
 		return {
 			route,
@@ -22,10 +21,10 @@ export const load = async ( { url } ) => {
 			t              : core.i18n.t,
 			locale         : core.i18n.locale,
 			locales        : core.i18n.locales,
-			resetTrial     : core.resetTrial.bind( core ),
-			goTo           : core.goTo.bind( core ),
-			navTransitions : core.navTransitions.bind( core ),
-			isOnPage       : core.isOnPage.bind( core ),
+			resetTrial     : core.reset.removeFiles.bind( core.reset ),
+			goTo           : core.window.goTo.bind( core.window ),
+			navTransitions : core.window.navTransitions.bind( core.window ),
+			isOnPage       : core.window.isOnPage.bind( core.window ),
 		}
 
 	}

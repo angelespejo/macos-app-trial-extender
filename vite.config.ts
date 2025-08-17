@@ -13,6 +13,8 @@ import appInfo    from './.dovenv/app.info'
 import { member } from './.dovenv/contributors'
 import pkg        from './package.json' with { type: 'json' }
 
+import type { Members } from './.dovenv/types'
+
 // @ts-expect-error process is a nodejs global
 const mobile = !!/android|ios/.exec( process.env.TAURI_ENV_PLATFORM )
 const host   = await internalIpV4()
@@ -30,15 +32,18 @@ const server = {
 		: undefined,
 }
 
+export const APP_DATA = {
+	PKG             : pkg,
+	CONTRIBUTORS    : member as Members,
+	APP_INFORMATION : appInfo,
+}
+
 export default defineConfig( {
-	plugins : [ sveltekit() ],
+	// @ts-expect-error vite is not typed
+	plugins   : [ sveltekit() ],
 	server,
-	preview : server,
-	define  : {
-		PKG             : pkg,
-		CONTRIBUTORS    : member,
-		APP_INFORMATION : appInfo,
-	},
+	preview   : server,
+	define    : { APP_DATA },
 	envPrefix : [
 		'VITE_',
 		'TAURI_PLATFORM',

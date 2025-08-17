@@ -2,7 +2,7 @@
 import {
 	watch,
 	watchImmediate,
-}              from '@tauri-apps/plugin-fs'
+} from '@tauri-apps/plugin-fs'
 
 import type {
 	PathWatcherArgs,
@@ -10,6 +10,7 @@ import type {
 } from './types'
 
 export const pathWatcher = ( paths: string[], args: PathWatcherArgs = {} ) => new PathWatcher( paths, args )
+
 export class PathWatcher {
 
 	#paths     : string[]
@@ -17,17 +18,16 @@ export class PathWatcher {
 	#immediate : boolean
 	#recursive : boolean
 	#preset    : boolean
-	#onChange  : ( event: WatcherEvent ) => void
 	on         : ( event: WatcherEvent ) => void
-
+	#baseDir
 	constructor( paths: string[], args: PathWatcherArgs = {} ) {
 
 		this.#paths     = paths
-		this.#onChange  = event => this.on( event )
 		this.#watcher   = undefined
 		this.#immediate = args.immediate ? args.immediate : false
 		this.#recursive = args.recursive == false ? false : true
 		this.#preset    = args.preset ? args.preset : false
+		this.#baseDir   = args.baseDir
 		this.on         = ( ) => {}
 
 	}
@@ -38,26 +38,28 @@ export class PathWatcher {
 
 		this.#watcher = await watchFunct(
 			this.#paths,
-			( event: WatcherEvent ) => {
+			event => {
 
 				if ( this.#preset ) {
 
-					if ( !Array.isArray( event ) ) return
+					const e =  !Array.isArray( event ) ? event : event[event.length - 1]
 
-					const e = event[event.length - 1]
-					if ( !e.path ) return
-					if ( e.path && e.path.endsWith( '.DS_Store' ) ) return
-					this.#onChange( e )
+					if ( !e.paths ) return
+
+					this.on( event )
 
 				}
 				else {
 
-					this.#onChange( event )
+					this.on( event )
 
 				}
 
 			},
-			{ recursive: this.#recursive },
+			{
+				recursive : this.#recursive,
+				baseDir   : this.#baseDir,
+			},
 		)
 
 	}

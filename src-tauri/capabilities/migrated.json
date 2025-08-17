@@ -7,25 +7,37 @@
 	],
 	"permissions": [
 		"core:default",
-		"fs:allow-write-file",
+		"core:window:allow-start-dragging",
+		"core:window:allow-set-focus",
+		"core:app:allow-default-window-icon",
+		"core:window:allow-hide",
+		"core:window:allow-show",
+		"fs:default",
+		"fs:allow-watch",
+		"fs:allow-unwatch",
 		"fs:allow-remove",
 		"fs:allow-exists",
 		{
 			"identifier": "fs:scope",
 			"allow": [
-				"$HOME/Library/Application Support/*",
-				"$HOME/Library/Application Support/.*",
-				"$HOME/Library/Containers/*"
+				{ "path": "$HOME/**/*" }
 			]
 		},
-		"core:window:allow-start-dragging",
+		"shell:default",
 		"shell:allow-open",
+		{
+			"identifier": "shell:allow-execute",
+			"allow": [
+				{
+					"name": "rm",
+					"cmd": "rm",
+					"args": true
+				}
+			]
+		},
+		"dialog:default",
 		"dialog:allow-ask",
 		"dialog:allow-confirm",
-		"notification:default",
-		"dialog:default",
-		"fs:default",
-		"notification:default",
-		"shell:default"
+		"notification:default"
 	]
 }

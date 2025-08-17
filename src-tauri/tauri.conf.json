@@ -40,6 +40,9 @@
 				"https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/latest.json"
 			],
 			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEEwOTY5OTQxRkVCNjE5QjkKUldTNUdiYitRWm1Xb0R6SW9RcEg2aTZ6M0lFNlQyeEtFeWZmeVZ3YU9HNk9ldFNCaWlvOFZnTjEK"
+		},
+		"fs": {
+			"requireLiteralLeadingDot": false
 		}
 	},
 	"app": {
@@ -52,18 +55,19 @@
 				"title": "",
 				"width": 450,
 				"minWidth": 800,
-				"maxWidth": 800,
 				"height": 600,
 				"minHeight": 400,
 				"useHttpsScheme": true
 			}
 		],
-		"withGlobalTauri": false,
-		"macOSPrivateApi": true,
 		"trayIcon": {
+			"id": "main",
+			"tooltip": "MATE",
 			"iconPath": "icons/tray-icon.png",
 			"iconAsTemplate": true
 		},
+		"withGlobalTauri": false,
+		"macOSPrivateApi": true,
 		"security": {
 			"csp": null
 		}

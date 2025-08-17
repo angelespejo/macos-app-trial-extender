@@ -1,9 +1,3 @@
-/**
- * Lang index.
- *
- * @description Lang index.
- */
-
 import commonCa  from './ca/common.json'
 import trayObjCa from './ca/tray.json'
 import commonEn  from './en/common.json'
@@ -12,26 +6,20 @@ import commonEs  from './es/common.json'
 import trayObjEs from './es/tray.json'
 import lang      from './lang.json'
 
-type Tray = { [key: string]: string }
-
-const trayCa: Tray = trayObjCa
-const trayEs: Tray = trayObjEs
-const trayEn: Tray = trayObjEn
-
 export default {
 	ca : {
 		common : commonCa,
-		tray   : trayCa,
+		tray   : trayObjCa,
 		lang,
 	},
 	es : {
 		common : commonEs,
-		tray   : trayEs,
+		tray   : trayObjEs,
 		lang,
 	},
 	en : {
 		common : commonEn,
-		tray   : trayEn,
+		tray   : trayObjEn,
 		lang,
 	},
 }

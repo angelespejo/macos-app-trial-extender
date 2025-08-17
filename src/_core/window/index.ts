@@ -1,14 +1,32 @@
-
-import { window as tauriWindow } from '@tauri-apps/api'
+import { invoke }           from '@tauri-apps/api/core'
+import { getCurrentWindow } from '@tauri-apps/api/window'
 
 type DragParams = {
 	element?         : Element | Document
 	noDragSelectors? : string
 }
 
+import type { store } from '$core/store'
+
+import {
+	goto,
+	onNavigate,
+} from '$app/navigation'
+import { page } from '$app/stores'
+
+type WindowOpts = { store: typeof store }
+
 export class Window {
 
-	drag( {
+	#opts
+
+	constructor( opts: WindowOpts ) {
+
+		this.#opts = opts
+
+	}
+
+	#drag( {
 		element = undefined, noDragSelectors = undefined,
 	}: DragParams ) {
 
@@ -26,7 +44,7 @@ export class Window {
 
 			try {
 
-				await tauriWindow.appWindow.startDragging()
+				await getCurrentWindow().startDragging()
 
 			}
 			catch ( _e ) {
@@ -39,22 +57,82 @@ export class Window {
 
 	}
 
-	onSystemtray( cb: ( args:{
-		type : string
-		data : string
-	} ) => void ) {
+	async goTo( pageID: string ) {
 
-		window?.addEventListener( 'system-tray-event', ( event: Event ) => {
+		const currentWindow = await getCurrentWindow()
+		const isVisible     = await currentWindow.isVisible()
+		if ( !isVisible ) await currentWindow.show()
 
-			const customEvent = event as CustomEvent
-			if ( customEvent && customEvent.detail && customEvent.detail.from === 'system-tray' ) {
+		const $page = this.#opts.store.get( page )
+		pageID      = pageID.startsWith( '/' ) ? pageID : '/' + pageID
+		goto( `/${$page.data.lang}${pageID}` )
 
-				cb( {
-					type : customEvent.detail.type as string,
-					data : customEvent.detail.data as string,
+		const isFocused = await currentWindow.isFocused()
+		if ( !isFocused ) await currentWindow.setFocus()
+
+	}
+
+	isOnPage( pageID: string ) {
+
+		const $page = this.#opts.store.get( page )
+
+		const activeUrl = $page.url.pathname.replace( '/' + $page.data.lang, '' )
+		const pageRoute = pageID === '' ? pageID : '/' + pageID
+
+		return activeUrl === pageRoute
+
+	}
+
+	navTransitions() {
+
+		onNavigate( navigation => {
+
+			this.#opts.store.isNavigation.set( true )
+
+			// @ts-ignore
+			if ( !document.startViewTransition ) return
+
+			return new Promise( resolve => {
+
+				// @ts-ignore
+				document.startViewTransition( async () => {
+
+					resolve()
+					await navigation.complete
+
 				} )
 
-			}
+			} )
+
+		} )
+
+	}
+
+	async init( ) {
+
+		this.#drag( {} )
+		const currentWindow = await getCurrentWindow()
+		currentWindow.onFocusChanged( async e => {
+
+			if ( !e.payload ) return
+
+			const docIconExists = await invoke( 'get_icon_visibility' )
+			if ( !docIconExists ) await invoke( 'icon_visibility', { showIcon: e.payload } )
+
+			console.log( 'onFocusChanged', {
+				event : e.payload,
+				docIconExists,
+			} )
+
+		} )
+
+		await currentWindow.onCloseRequested( async e => {
+
+			e.preventDefault()
+			await currentWindow.hide()
+			await invoke( 'icon_visibility', { showIcon: false } )
+
+			console.log( 'onCloseRequested', e )
 
 		} )
 

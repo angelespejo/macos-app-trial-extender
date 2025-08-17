@@ -21,6 +21,7 @@
 		t, store,
 	} = $page.data
 	const pageIds = store.pagesIds
+	window.addEventListener( 'unload', () => {} )
 
 	$page.data.navTransitions()
 
@@ -32,7 +33,7 @@
 			<div class="flex items-center gap-2">
 				<img
 					alt="logo"
-					src="{Logo}"
+					src={Logo}
 					width="50"
 				/>
 				<H tag="h3">{PACKAGE_DATA.extra.productName}</H>

@@ -55,6 +55,19 @@
 		"bugs": "Bugs"
 	},
 	"nots": {
-		"reset": "Trial versions for native macOS apps have been reset"
+		"reset": {
+			"general": {
+				"success": "Trial versions reset successfully",
+				"fail": "Error resetting trial versions"
+			},
+			"logic": {
+				"success": "Logic Pro trial versions reset",
+				"fail": "Error resetting Logic Pro trial versions"
+			},
+			"fcp": {
+				"success": "Final Cut Pro trial versions reset",
+				"fail": "Error resetting Final Cut Pro trial versions"
+			}
+		}
 	}
 }
