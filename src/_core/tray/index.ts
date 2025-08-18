@@ -10,11 +10,15 @@ import { open }     from '@tauri-apps/plugin-shell'
 
 import type { store } from '$core/store'
 
-import { PACKAGE_DATA } from '$const'
-import { t }            from '$core/i18n'
+import {
+	FUNCTION_ID,
+	PACKAGE_DATA,
+	PAGE_ID,
+} from '$const'
+import { t } from '$core/i18n'
 
 type TrayOpts = {
-	goto       : ( p:string ) => void
+	goto       : ( p: string ) => void
 	store      : typeof store
 	resetTrial : () => Promise<void>
 }
@@ -46,49 +50,49 @@ export class Tray {
 
 		const menuItem = {
 			open : await MenuItem.new( {
-				id     : store.functionsIDs.openPage,
-				text   : $t( `tray.${store.functionsIDs.openPage}` ),
+				id     : FUNCTION_ID.openPage,
+				text   : $t( `tray.${FUNCTION_ID.openPage}` ),
 				action : () => goto( '/' ),
 			} ),
 			reset : await MenuItem.new( {
-				id     : store.functionsIDs.reset,
-				text   : $t( `tray.${store.functionsIDs.reset}` ),
+				id     : FUNCTION_ID.reset,
+				text   : $t( `tray.${FUNCTION_ID.reset}` ),
 				action : () => resetTrial(),
 			} ),
 			automate : await CheckMenuItem.new( {
-				id      : store.functionsIDs.automate,
-				text    : $t( `tray.${store.functionsIDs.automate}` ),
+				id      : FUNCTION_ID.automate,
+				text    : $t( `tray.${FUNCTION_ID.automate}` ),
 				checked : this.#opts.store.get( store.automate ),
 				action  : () => store.automate.toggle(),
 			} ),
 			settings : await MenuItem.new( {
-				id     : store.pagesIds.settings,
-				text   : $t( `tray.${store.pagesIds.settings}` ),
-				action : () => goto( store.pagesIds.settings ),
+				id     : PAGE_ID.settings,
+				text   : $t( `tray.${PAGE_ID.settings}` ),
+				action : () => goto( PAGE_ID.settings ),
 			} ),
 			info : await MenuItem.new( {
-				id     : $t( `tray.${store.pagesIds.info}` ),
-				text   : $t( `tray.${store.pagesIds.info}` ),
-				action : () => goto( store.pagesIds.info ),
+				id     : $t( `tray.${PAGE_ID.info}` ),
+				text   : $t( `tray.${PAGE_ID.info}` ),
+				action : () => goto( PAGE_ID.info ),
 			} ),
 			feedback : await MenuItem.new( {
-				id     : store.functionsIDs.feedback,
-				text   : '✯  ' + $t( `tray.${store.functionsIDs.feedback}` ),
+				id     : FUNCTION_ID.feedback,
+				text   : '✯  ' + $t( `tray.${FUNCTION_ID.feedback}` ),
 				action : () => open( PACKAGE_DATA.homepage ),
 			} ),
 			issues : await MenuItem.new( {
-				id     : store.functionsIDs.feedback,
-				text   : '⚠︎  Report Issues',
+				id     : FUNCTION_ID.feedback,
+				text   : '⚠︎  Report Issue',
 				action : () => open( PACKAGE_DATA.bugs.url ),
 			} ),
 			support : await MenuItem.new( {
-				id     : store.functionsIDs.support,
-				text   : '❤︎  ' + $t( `tray.${store.functionsIDs.support}` ),
+				id     : FUNCTION_ID.support,
+				text   : '❤︎  ' + $t( `tray.${FUNCTION_ID.support}` ),
 				action : () => open( PACKAGE_DATA.funding.url ),
 			} ),
 			quit : await PredefinedMenuItem.new( {
 				item : 'Quit',
-				text : $t( `tray.${store.functionsIDs.quit}` ),
+				text : $t( `tray.${FUNCTION_ID.quit}` ),
 
 			} ),
 		}

@@ -35,6 +35,7 @@
 				}
 			]
 		},
+		"os:allow-locale",
 		"dialog:default",
 		"dialog:allow-ask",
 		"dialog:allow-confirm",

@@ -2,14 +2,9 @@ mod dock;
 use tauri::Manager;
 use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
-// #[derive(Clone, serde::Serialize)]
-// struct Payload {
-//     args: Vec<String>,
-//     cwd: String,
-// }
-
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_notification::init())

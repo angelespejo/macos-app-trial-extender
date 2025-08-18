@@ -17,11 +17,13 @@
 		faRobot,
 	} from '$lib'
 
-	const pageIds = PAGE_ID
 	const {
-		automate, notification,
-	} = $page.data.store
-
+		t,
+		store: {
+			automate,
+			notification,
+		},
+	} = $page.data
 	const dotClass  = ( active:boolean ) => `ml-2 w-1 h-1 p-1 flex rounded-full ${active ? 'shadow-dot bg-green-600 dark:bg-green-400 shadow-green-500/90' : 'bg-gray-500 dark:bg-gray-200'}`
 	const linkClass = 'text-gray-800 dark:text-gray-50 underline italic'
 	const btnClass  = 'text-primary-50 dark:text-primary-900'
@@ -33,7 +35,7 @@
 		setTimeout( () => isClickedReset = false, 2000 )
 
 	}
-	const { t } = $page.data
+
 </script>
 
 <div class="flex flex-col items-start text-start justify-center ">
@@ -80,7 +82,7 @@
 		<Btn
 			class="{linkClass} pl-2"
 			color="none"
-			href={pageIds.info}
+			href={PAGE_ID.info}
 		>
 			{$t( 'common.btns.readMore' )}
 		</Btn>
@@ -123,7 +125,7 @@
 			<Btn
 				class="{linkClass}"
 				color="none"
-				href={pageIds.info}
+				href={PAGE_ID.info}
 			>
 				{$t( 'common.info.aboutTitle' )}
 			</Btn>
@@ -131,7 +133,7 @@
 			<Btn
 				class="{linkClass}"
 				color="none"
-				href={pageIds.info + '#' + pageIds.infoHow}
+				href={PAGE_ID.info + '#' + PAGE_ID.infoHow}
 			>
 				{$t( 'common.info.howTitle' )}
 			</Btn>
@@ -139,7 +141,7 @@
 			<Btn
 				class="{linkClass}"
 				color="none"
-				href={pageIds.settings}
+				href={PAGE_ID.settings}
 			>
 				{$t( 'common.settings.title' )}
 			</Btn>
@@ -159,7 +161,7 @@
 			<Btn
 				class="{linkClass}"
 				color="none"
-				href={pageIds.info + '#' + pageIds.infoTests}
+				href={PAGE_ID.info + '#' + PAGE_ID.infoTests}
 			>
 				View tests
 			</Btn>

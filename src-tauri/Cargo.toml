@@ -29,6 +29,7 @@
 
 	# @see https://github.com/tauri-apps/window-vibrancy
 	window-vibrancy = "0.6.0"
+	tauri-plugin-os = "2.3.0"
 
 
 [features]

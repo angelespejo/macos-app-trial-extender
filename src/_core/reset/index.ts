@@ -50,15 +50,15 @@ export class Reset {
 			GENERAL  : 'Library/Application Support',
 			FINALCUT : 'Library/Containers/com.apple.FinalCutTrial/Data/Library/Application Support',
 		} as const
+		const PATH_NAME                 = {
+			LOGIC    : '.lpxuserdata',
+			FINALCUT : '.ffuserdata',
+		} as const
 		const SUPPORT_PATH              = {
 			GENERAL  : await path.join( home, SUPPORT_PATH_WITHOUT_HOME.GENERAL ),
 			FINALCUT : await path.join( home, SUPPORT_PATH_WITHOUT_HOME.FINALCUT ),
 		} as const
 
-		const PATH_NAME               = {
-			LOGIC    : '.lpxuserdata',
-			FINALCUT : '.ffuserdata',
-		} as const
 		const CHECK_PATH_WITHOUT_HOME = {
 			logic       : await path.join( SUPPORT_PATH_WITHOUT_HOME.GENERAL, PATH_NAME.LOGIC ),
 			finalcut    : await path.join( SUPPORT_PATH_WITHOUT_HOME.GENERAL, PATH_NAME.FINALCUT ),
@@ -80,19 +80,31 @@ export class Reset {
 
 	}
 
+	#processedPaths = new Set<string>()
+
 	async #resetHomeFile( path: string, type?: 'logic' | 'fcp' | undefined ) {
 
 		try {
 
-			console.log( { resetHomeFile: path } )
-			if ( !await this.#opts.path.exists( path ) ) return true
+			if ( !await this.#opts.path.exists( path ) ) return undefined
+			if ( this.#processedPaths.has( path ) ) return undefined
+
+			this.#processedPaths.add( path )
+
+			console.log( {
+				resetHomeFile         : path,
+				type,
+				currentProcessedPaths : [ ...this.#processedPaths ],
+			} )
 
 			await this.#opts.path.removeFile( path )
 			await this.#sendNot( {
 				type : 'success',
 				app  : type,
 			} )
-			return true
+			this.#processedPaths.delete( path )
+
+			return { success: true }
 
 		}
 		catch ( _e ) {
@@ -100,10 +112,12 @@ export class Reset {
 			console.warn( 'Using shell', path )
 
 			const executed = await Command.create( 'rm', [ path ] ).execute()
+
 			if ( executed.code === 0 ) {
 
 				console.log( { executed } )
-				return true
+				this.#processedPaths.delete( path )
+				return { success: true }
 
 			}
 
@@ -111,10 +125,20 @@ export class Reset {
 				type : 'fail',
 				app  : type,
 			} )
+
 			console.warn( 'error removing files', _e, { executed } )
-			return false
+			this.#processedPaths.delete( path )
+			return { success: false }
 
 		}
+
+	}
+
+	#gettypeNot( key: string ) {
+
+		const type = key.includes( 'finalcut' ) ? 'fcp' : key.includes( 'logic' ) ? 'logic' : undefined
+
+		return type
 
 	}
 
@@ -126,11 +150,13 @@ export class Reset {
 			let isReset          = false
 			for ( const [ key, path ] of Object.entries( CHECK_PATH ) ) {
 
-				const type = key.includes( 'finalcut' ) ? 'fcp' : key.includes( 'logic' ) ? 'logic' : undefined
-				isReset    = await this.#resetHomeFile( path, type )
+				const type = this.#gettypeNot( key )
+				const res  = await this.#resetHomeFile( path, type )
+				if ( res ) isReset = true
 
 			}
-			if ( !isReset ) await this.#sendNot( { type: 'fail' } )
+
+			if ( !isReset ) await this.#sendNot( { type: 'success' } )
 
 		}
 		catch ( _e ) {
@@ -149,9 +175,10 @@ export class Reset {
 		} = await this.#getHomePaths()
 
 		const automate = this.#opts.store.automate
-		const watcher  = this.#opts.path.watcher( [ SUPPORT_PATH_WITHOUT_HOME.GENERAL ], {
-			preset  : true,
-			baseDir : BaseDirectory.Home,
+		const watcher  = this.#opts.path.watcher( Object.values( SUPPORT_PATH_WITHOUT_HOME ), {
+			preset    : true,
+			baseDir   : BaseDirectory.Home,
+			recursive : false,
 		} )
 
 		watcher.on = async e => {
@@ -159,18 +186,20 @@ export class Reset {
 			// @ts-ignore
 			const paths = e.paths as string[]
 
-			const matchedPath = Object.values( CHECK_PATH ).find( value => paths.includes( value ) )
+			const mached = Object.entries( CHECK_PATH ).find( ( [ _k, value ] ) => paths.includes( value ) )
 
-			if ( matchedPath ) {
+			if ( mached ) {
 
+				const machedKey   = this.#gettypeNot( mached[0] )
+				const matchedPath = mached[1]
 				console.log( {
 					watcherEvent : e,
 					paths,
 					matchedPath,
 				} )
-				await this.#resetHomeFile( matchedPath )
+				await this.#resetHomeFile( matchedPath, machedKey )
 
-				console.log( e, matchedPath )
+				// console.log( e, matchedPath )
 
 			}
 

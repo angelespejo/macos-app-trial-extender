@@ -17,14 +17,15 @@ export const load = async ( { url } ) => {
 		return {
 			route,
 			lang,
-			store          : core.store,
-			t              : core.i18n.t,
-			locale         : core.i18n.locale,
-			locales        : core.i18n.locales,
-			resetTrial     : core.reset.removeFiles.bind( core.reset ),
-			goTo           : core.window.goTo.bind( core.window ),
-			navTransitions : core.window.navTransitions.bind( core.window ),
-			isOnPage       : core.window.isOnPage.bind( core.window ),
+			store                : core.store,
+			t                    : core.i18n.t,
+			locale               : core.i18n.locale,
+			locales              : core.i18n.locales,
+			resetTrial           : core.reset.removeFiles.bind( core.reset ),
+			goTo                 : core.window.goTo.bind( core.window ),
+			navTransitions       : core.window.navTransitions.bind( core.window ),
+			changeToSystemLocale : core.changeToSystemLocale.bind( core ),
+			isOnPage             : core.window.isOnPage.bind( core.window ),
 		}
 
 	}

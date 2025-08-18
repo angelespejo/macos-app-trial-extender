@@ -1,12 +1,16 @@
 <script lang="ts">
 
+	import { onMount } from 'svelte'
 	import 'svelte-ripple-action/ripple.css'
 
 	import '../app.css'
 	import Logo from '../assets/logo.png'
 	import { page } from '$app/stores'
 
-	import { PACKAGE_DATA } from '$const'
+	import {
+		PACKAGE_DATA,
+		PAGE_ID,
+	} from '$const'
 	import {
 		BtnSidebar,
 		H,
@@ -17,13 +21,14 @@
 		faInfo,
 	} from '$lib'
 
-	const {
-		t, store,
-	} = $page.data
-	const pageIds = store.pagesIds
-	window.addEventListener( 'unload', () => {} )
+	const { t } = $page.data
 
-	$page.data.navTransitions()
+	onMount( () => {
+
+		$page.data.changeToSystemLocale()
+		$page.data.navTransitions()
+
+	} )
 
 </script>
 
@@ -46,14 +51,14 @@
 					title={$t( 'common.home.title' )}
 				/>
 				<BtnSidebar
-					active={$page.data.isOnPage( pageIds.settings )}
-					href={pageIds.settings}
+					active={$page.data.isOnPage( PAGE_ID.settings )}
+					href={PAGE_ID.settings}
 					icon={faGears}
 					title={$t( 'common.settings.title' )}
 				/>
 				<BtnSidebar
-					active={$page.data.isOnPage( pageIds.info )}
-					href={pageIds.info}
+					active={$page.data.isOnPage( PAGE_ID.info )}
+					href={PAGE_ID.info}
 					icon={faInfo}
 					title={$t( 'common.info.title' )}
 				/>

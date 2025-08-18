@@ -39,7 +39,6 @@ export const APP_DATA = {
 }
 
 export default defineConfig( {
-	// @ts-expect-error vite is not typed
 	plugins   : [ sveltekit() ],
 	server,
 	preview   : server,

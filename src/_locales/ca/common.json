@@ -61,12 +61,12 @@
 				"fail": "Error en reiniciar les versions de prova"
 			},
 			"logic": {
-				"success": "Versions de prova de Logic Pro reiniciades",
-				"fail": "Error en reiniciar les versions de prova de Logic Pro"
+				"success": "Versió de prova de Logic Pro reiniciada",
+				"fail": "Error en reiniciar la versió de prova de Logic Pro"
 			},
 			"fcp": {
-				"success": "Versions de prova de Final Cut Pro reiniciades",
-				"fail": "Error en reiniciar les versions de prova de Final Cut Pro"
+				"success": "Versió de prova de Final Cut Pro reiniciada",
+				"fail": "Error en reiniciar la versió de prova de Final Cut Pro"
 			}
 		}
 	}

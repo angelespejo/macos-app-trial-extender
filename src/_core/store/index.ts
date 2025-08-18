@@ -42,5 +42,6 @@ export const store = {
 	autostart    : persistedBool( 'autostart', false ), // The default value must be false so that the user can decide for himself whether it is necessary to activate this option
 	notification : persistedBool( 'notification', false ),
 	automate     : persistedBool( 'automate', false ),
+	init         : writable( false ),
 
 }

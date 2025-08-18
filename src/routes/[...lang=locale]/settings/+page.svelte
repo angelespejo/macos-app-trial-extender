@@ -35,7 +35,6 @@
 		title={$t( 'common.settings.extendTitle' )}
 	>
 		<div slot="value">
-
 			<Btn
 				class="text-primary-900"
 				disabled={isClickedReset}

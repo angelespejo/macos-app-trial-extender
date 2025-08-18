@@ -46,6 +46,11 @@ export class Core {
 			route, lang,
 		} = await this.i18n.layoutFunct( pathname )
 
+		if ( this.store.get( this.store.init ) ) return {
+			route,
+			lang,
+		}
+
 		console.log( { init : {
 			automate     : this.store.get( this.store.automate ),
 			notification : this.store.get( this.store.notification ),
@@ -57,10 +62,28 @@ export class Core {
 		await this.tray.init()
 		await this.reset.init()
 		await this.autostart()
+
+		this.store.init.set( true )
+
 		return {
 			route,
 			lang,
 		}
+
+	}
+
+	async changeToSystemLocale() {
+
+		const availableLocales = this.i18n.locales.get()
+		const locale           = await this.app.getLocale()
+		if ( !locale ) return
+		for ( const l of availableLocales ) {
+
+			if ( l === locale ) return this.i18n.setLocale( l )
+			if ( l.startsWith( locale ) ) return this.i18n.setLocale( l )
+
+		}
+		return
 
 	}
 

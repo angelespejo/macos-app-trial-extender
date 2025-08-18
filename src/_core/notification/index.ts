@@ -25,14 +25,10 @@ export class Notification {
 
 		}
 
-		if ( permissionGranted ) {
-
-			sendNotification( {
-				title,
-				body,
-			} )
-
-		}
+		if ( permissionGranted )sendNotification( {
+			title,
+			body,
+		} )
 
 	}
 

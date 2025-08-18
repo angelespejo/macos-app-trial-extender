@@ -119,10 +119,10 @@ export class Window {
 			const docIconExists = await invoke( 'get_icon_visibility' )
 			if ( !docIconExists ) await invoke( 'icon_visibility', { showIcon: e.payload } )
 
-			console.log( 'onFocusChanged', {
-				event : e.payload,
-				docIconExists,
-			} )
+			// console.log( 'onFocusChanged', {
+			// 	event : e.payload,
+			// 	docIconExists,
+			// } )
 
 		} )
 
@@ -132,7 +132,7 @@ export class Window {
 			await currentWindow.hide()
 			await invoke( 'icon_visibility', { showIcon: false } )
 
-			console.log( 'onCloseRequested', e )
+			// console.log( 'onCloseRequested', e )
 
 		} )
 

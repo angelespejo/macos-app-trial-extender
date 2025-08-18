@@ -61,12 +61,12 @@
 				"fail": "Error al restablecer las versiones de prueba"
 			},
 			"logic": {
-				"success": "Reseteadas las versiones de prueba de Logic Pro",
-				"fail": "Error al restablecer las versiones de prueba de Logic Pro"
+				"success": "Reseteada la version de prueba de Logic Pro",
+				"fail": "Error al restablecer la version de prueba de Logic Pro"
 			},
 			"fcp": {
-				"success": "Reseteadas las versiones de prueba de Final Cut Pro",
-				"fail": "Error al restablecer las versiones de prueba de Final Cut Pro"
+				"success": "Reseteada la version de prueba de Final Cut Pro",
+				"fail": "Error al restablecer la version de prueba de Final Cut Pro"
 			}
 		}
 	}
