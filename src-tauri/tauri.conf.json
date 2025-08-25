@@ -1,10 +1,11 @@
 {
-	"$schema": "https://schema.tauri.app/config/2.7.0",
+	"$schema": "https://schema.tauri.app/config/2.8.2",
 	"build": {
 		"beforeDevCommand": "pnpm dev:web",
 		"beforeBuildCommand": "pnpm build:web",
 		"frontendDist": "../build",
-		"devUrl": "http://localhost:13129"
+		"devUrl": "http://localhost:13129",
+		"removeUnusedCommands": false
 	},
 	"bundle": {
 		"active": true,
@@ -50,9 +51,8 @@
 			{
 				"fullscreen": false,
 				"resizable": true,
-				"transparent": true,
-				"titleBarStyle": "Overlay",
 				"title": "",
+				"titleBarStyle": "Overlay",
 				"width": 450,
 				"minWidth": 800,
 				"height": 600,
@@ -62,12 +62,11 @@
 		],
 		"trayIcon": {
 			"id": "main",
-			"tooltip": "MATE",
-			"iconPath": "icons/tray-icon.png",
+			"iconPath": "../docs/icon-tray.png",
 			"iconAsTemplate": true
 		},
-		"withGlobalTauri": false,
 		"macOSPrivateApi": true,
+		"withGlobalTauri": false,
 		"security": {
 			"csp": null
 		}

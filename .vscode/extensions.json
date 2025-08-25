@@ -12,10 +12,8 @@
 	*/
 	"recommendations": [
 		"svelte.svelte-vscode",
-		"davidanson.vscode-markdownlint",
 		"dbaeumer.vscode-eslint",
 		"nhoizey.gremlins",
-		"christian-kohler.npm-intellisense",
 		"csstools.postcss",
 		"bradlc.vscode-tailwindcss",
 		"redhat.vscode-yaml",

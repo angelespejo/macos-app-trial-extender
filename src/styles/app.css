@@ -1,0 +1,67 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+    margin:0;
+    font-family: helvetica;
+}
+
+svg:focus {
+    outline: none;
+}
+
+html::view-transition-old(main) {
+  animation-name: -ua-view-transition-fade-out;
+  animation-duration: inherit;
+  animation-fill-mode: inherit;
+}
+
+html::view-transition-new(main) {
+  animation-name: -ua-view-transition-fade-in;
+  animation-duration: inherit;
+  animation-fill-mode: inherit;
+}
+::view-transition-old(main),
+::view-transition-new(main) {
+  animation-duration: 1s;
+}
+
+@keyframes changeHue {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+}
+.change-hue {
+    animation: changeHue 5s linear infinite;
+}
+.hover-change-hue:hover {
+    animation: changeHue 5s linear infinite;
+}
+
+/* PARAGRAPHS, HEADING */
+h1 {
+	@apply font-bold text-4xl sm:text-3xl md:text-5xl text-primary-800 dark:text-primary-50;
+}
+h2 {
+	@apply font-extrabold text-xl text-primary-800 dark:text-primary-50;
+}
+h3 {
+	@apply font-extrabold text-[25px] text-primary-900 dark:text-primary-50;
+}
+h4 {
+@apply font-extrabold text-[25px] text-primary-950 dark:text-primary-300;
+}
+h5 {
+@apply font-extrabold text-[25px] text-primary-950 dark:text-primary-200;
+}
+h6 {
+@apply font-extrabold text-[25px] text-primary-950 dark:text-primary-200;
+}
+p {
+	@apply text-primary-900/80 dark:text-primary-100/50 m-2 opacity-50 text-md;
+}
+

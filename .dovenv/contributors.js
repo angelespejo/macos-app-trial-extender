@@ -4,7 +4,12 @@ import pkg from '../package.json' with { type: 'json' }
 
 export const role = {
 	...CONTRIBUTOR_ROLE,
-	tester : {
+	'brand-designer' : {
+		name  : 'Brand Designer',
+		emoji : '🎨',
+		desc  : 'Contributor who design the brand (logo, banner, etc.)',
+	},
+	'tester' : {
 		name  : 'Tester',
 		emoji : '🧪',
 		desc  : 'Contributor who test the application',
@@ -20,6 +25,12 @@ export const member = {
 		ghUsername : 'angelespejo',
 		role       : 'author',
 		url        : 'https://github.com/angelespejo',
+	},
+	alejo : {
+		name       : 'Alejo Malia',
+		ghUsername : 'alejomalia',
+		role       : 'brand-designer',
+		url        : 'https://github.com/alejomalia',
 	},
 	yinmo19 : {
 		name       : 'YinMo19',

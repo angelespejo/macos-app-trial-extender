@@ -12,7 +12,7 @@ export default defineConfig(
 		package   : true,
 		json      : true,
 		css       : {
-			tailwind : 3,
+			tailwind : 4,
 			postcss  : true,
 			rules    : { 'css/use-baseline': 'off' },
 		},
@@ -28,4 +28,22 @@ export default defineConfig(
 
 	} ),
 	await setSvelteConfig( { ts: true } ),
+	{
+		files : [ 'src/core/_super/**' ],
+		rules : { 'no-restricted-imports' : [
+			'error',
+			{ patterns : [
+				{
+					group : [
+						'../**', // bloquea subir directorios
+						'!../_shared', // permite el entrypoint
+						'!../_shared/**', // permite todo dentro de _shared
+						'!../_shared/*.svelte',
+					],
+					message : 'Usage of "../" private modules not allowed. Use "$core" instead',
+				},
+			] },
+		] },
+	},
 )
+
