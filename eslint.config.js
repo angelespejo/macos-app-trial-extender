@@ -24,6 +24,7 @@ export default defineConfig(
 			'**/README.md',
 			'**/CHANGELOG.md',
 			'docs/dev-info.md',
+			'src/i18n/**',
 			'src-tauri/gen/**/*.json',
 		],
 

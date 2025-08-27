@@ -1,5 +1,4 @@
-import { onchangeState }  from './_super/_shared/onchange.svelte'
-import { persistedState } from './_super/_shared/persisted.svelte'
+import { onchangeState } from './_super/_shared/onchange.svelte'
 import {
 	appWindow,
 	os,

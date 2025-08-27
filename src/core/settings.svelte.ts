@@ -1,5 +1,3 @@
-
-import { persistedState }     from './_super/_shared/persisted.svelte'
 import { appPersistentState } from './store.svelte'
 
 import {
