@@ -29,12 +29,11 @@
 			"icons/icon.ico"
 		],
 		"licenseFile": "../LICENSE",
-		"createUpdaterArtifacts": "v1Compatible",
-		"version": "1.0.1"
+		"createUpdaterArtifacts": "v1Compatible"
 	},
 	"productName": "MATE",
 	"mainBinaryName": "MATE",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"identifier": "com.angelespejo.mate",
 	"plugins": {
 		"updater": {
