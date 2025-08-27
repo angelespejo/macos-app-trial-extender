@@ -1,12 +1,12 @@
 table {
-  @apply w-full border-0 text-sm text-primary-300 overflow-hidden;
+  @apply w-full border-0 text-sm overflow-hidden;
   border-radius: var(--theme-radius);
 }
 table thead {
   @apply bg-primary-800 font-bold;
 }
 table tbody {
-  @apply bg-primary-900/50 text-primary-400;
+  @apply bg-primary-900/50;
 } 
 table tr {
 	@apply border-primary-800 border-b-1

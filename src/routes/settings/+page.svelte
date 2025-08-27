@@ -84,18 +84,18 @@
 	</Config>
 	<Config
 		icon={{ src: ICON_CLASS_THEME }}
-		title="Interface theme"
+		title={m['settings.themeTitle']( )}
 	>
 		<Select
 			id="select-theme"
 			options={[
 				{
 					value : APP_THEME.DEFAULT,
-					text  : 'Default',
+					text  : 'MATE',
 				},
 				{
 					value : APP_THEME.MINIMAL,
-					text  : 'Minimal',
+					text  : 'Macintosh 1',
 				},
 				{
 					value : APP_THEME.FINALCUT,

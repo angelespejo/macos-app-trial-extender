@@ -2,10 +2,12 @@
  * TOOGLE
 */
 .toggle {
-	@apply flex items-center justify-start w-10 bg-primary-800 h-6 p-1 rounded-full cursor-pointer;
+	@apply flex items-center justify-start w-10 bg-primary-800 h-6 p-1 cursor-pointer;
+	border-radius: var(--theme-radius);
 }
 .toggle .toggle--point {
-	@apply w-4 h-4 bg-primary-500 rounded-full;
+	@apply w-4 h-4 bg-primary-500;
+	border-radius: var(--theme-radius);
 }
 .toggle.checked {
 	justify-content: flex-end;
@@ -65,13 +67,4 @@
 }
 .button--primary[data-active] {
 	@apply bg-primary-500;
-}
-.button--sidebar {
-	@apply flex items-center !justify-between !py-1 px-4 rounded-full gap-2 !bg-primary-800;
-}
-.button--sidebar[data-active=true] {
-	@apply !bg-primary-300 text-primary-900;
-}
-.button--sidebar:not([data-active=true]) {
-	@apply bg-primary-900/50 text-primary-50 border-primary-50/10
 }

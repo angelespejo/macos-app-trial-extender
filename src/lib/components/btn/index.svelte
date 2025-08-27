@@ -30,7 +30,7 @@
 <button
 	{@attach e => {
 
-		e.hasAttribute( 'disabled' ) ? ripple( e ) : null
+		!e.hasAttribute( 'disabled' ) ? ripple( e ) : null
 
 	}}
 	{disabled}

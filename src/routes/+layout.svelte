@@ -24,10 +24,10 @@
 </script>
 
 <div
-	class="h-screen w-full flex flex-row items-center justify-between"
+	class="app"
 	data-theme={app.settings.theme.current}
 >
-	<header class="h-full w-full max-w-[200px] flex flex-col items-start justify-between py-8 px-4">
+	<header class="header">
 		<nav class="w-full">
 			<div class="flex items-center gap-2 mt-3">
 				<img
@@ -67,17 +67,17 @@
 			/>
 		</div>
 	</header>
-	<main class="w-full h-screen flex flex-col p-8 bg-primary-800/20 rounded-s-2xl shadow-primary-700/10 backdrop-blur-md">
+	<main class="content">
 		{#await app.init()}
-			<div class="flex flex-col h-full justify-center items-center ">
+			<section class="flex flex-col h-full justify-center items-center ">
 				<span class="spinner"></span>
-			</div>
+			</section>
 		{:then _}
 			<section class="w-full h-full overflow-y-scroll p-2">
 				<svelte:boundary>
 					{@render children?.()}
 					{#snippet pending()}
-						<div class="flex flex-col h-full justify-center items-center"><span class="spinner"></span></div>
+						<section class="flex flex-col h-full justify-center items-center"><span class="spinner"></span></section>
 					{/snippet}
 					{#snippet failed( e )}
 						<ErrorContent title="💥 Page Error 💥">
@@ -91,8 +91,8 @@
 				<p>{e instanceof Error ? e.message : 'Unexpected error'}</p>
 			</ErrorContent>
 		{/await}
-		<footer class="flex justify-end">
-			<p class="opacity-50 !m-0 !mt-2 text-xs">v{DATA.PKG.version}</p>
+		<footer class="footer">
+			<p>v{DATA.PKG.version}</p>
 		</footer>
 	</main>
 </div>

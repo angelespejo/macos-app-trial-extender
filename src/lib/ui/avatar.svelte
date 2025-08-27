@@ -23,7 +23,8 @@
 
 <div
 	style="--avatar-width: {width}; --avatar-height: {height};"
-	class="avatar"
+	class={[ 'avatar' ]}
+	data-fallback={image ? 'false' : 'true'}
 >
 
 	{#if image}

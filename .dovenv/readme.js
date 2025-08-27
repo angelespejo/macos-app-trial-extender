@@ -126,8 +126,33 @@ ${createMdLinks( [
 ## Screenshots
 
 ![Screen App](./docs/screenshot-app.png)
+
+### macOS Menu Bar
+
+You can use the app in the background without opening the main window from the menu bar icon.
+
 ![Screen Tray icon](./docs/screenshot-tray.png)
+
+### App settings
+The application has a configuration section so you can configure the app as you like.
+
 ![Screen App settings](./docs/screenshot-app-settings.png)
+
+## Custom themes
+As a bonus, and thanks to [alejomalia](https://github.com/alejomalia) for creating the icons, we've added a feature to change the app's theme 🌈.
+Since the app is based on **Final Cut** and **Logic Pro**, we've included a theme honoring each, as well as an extra theme in homage to the **Macintosh 1**, reflecting the shape of its iconic logo.
+
+### MATE Theme (default)
+![App (MATE theme)](./docs/screenshot-app.png)
+
+### Finalcut Theme
+![App (finalcut theme)](./docs/screenshot-app-finalcut.png)
+
+### Logic Pro Theme
+![App (logicpro theme)](./docs/screenshot-app-logic.png)
+
+### Macintosh Theme
+![App (Macintosh theme)](./docs/screenshot-app-macintosh.png)
 
 ## 👨‍💻 Contribute
 

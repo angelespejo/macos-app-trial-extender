@@ -1,5 +1,6 @@
 .badge {
-	@apply px-2 py-0.5 text-xs bg-primary-950 rounded-full;
+	@apply px-2 py-0.5 text-xs bg-primary-950;
+	border-radius: var(--theme-radius);
 }
 .badge--primary {
 	@apply text-primary-200;

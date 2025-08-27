@@ -46,7 +46,7 @@
 		{@render content()}
 	</Btn>
 {:else}
-	<div class={[ 'item-info', 'theme-radius' ]}>
+	<div class={[ 'item-info' ]}>
 		{@render content()}
 	</div>
 {/if}

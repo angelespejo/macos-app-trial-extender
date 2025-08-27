@@ -25,11 +25,11 @@
 
 </script>
 
-<div class="flex flex-col w-full p-4 bg-primary-800/40 hover:bg-primary-800/60 hover:shadow-lg theme-radius">
-	<div class="flex justify-between w-full">
-		<div class="text-primary-50 flex items-center gap-2">
+<div class="section--config">
+	<div class="section--config--header">
+		<div class="section--config--title">
 			{#if icon}
-				<div class="p-2 rounded-full bg-primary-950/50 flex justify-center items-center w-[30px] h-[30px]">
+				<div class="section--config--title--image">
 					{#if typeof icon !== 'string'}
 						<Icon {...icon} />
 					{:else}
@@ -40,12 +40,12 @@
 					{/if}
 				</div>
 			{/if}
-			{title}
+			<div>{title}</div>
 		</div>
-		<div class="flex flex-row gap-1 items-center">
+		<div class="section--config--content">
 			{#if description}
 				<Btn
-					class={[ `!rounded-full flex items-center justify-center mr-1 text-gray-50 !p-2` ]}
+					class={[ `section--config--content--info-btn` ]}
 					color="dark"
 					data-active={activeDesc ? 'true' : undefined}
 					icon={{
@@ -62,7 +62,7 @@
 		</div>
 	</div>
 	{#if activeDesc}
-		<p class="mt-4 text-xs">
+		<p class="section--config--description">
 			{@render description?.()}
 		</p>
 	{/if}

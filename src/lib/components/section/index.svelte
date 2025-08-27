@@ -13,26 +13,27 @@
 		accordeon = false,
 		accordeonValue = false,
 		children,
+		class: Klass,
 		...rest
 	}: SectionProps = $props()
 
 </script>
 
-<div {...rest}>
+<div
+	class={[ 'section', Klass ]}
+	{...rest}
+>
 	<button
-		class="w-full flex justify-between"
+		class="section--header"
 		onclick={() => accordeonValue = accordeonValue ? false : true}
 		type="button"
 	>
 		<h2>{title}</h2>
 		{#if accordeon}
-			<Icon
-				class="opacity-25 text-primary-50"
-				src={accordeonValue ? ICON_CLASS_UP : ICON_CLASS_DOWN}
-			/>
+			<Icon src={accordeonValue ? ICON_CLASS_UP : ICON_CLASS_DOWN} />
 		{/if}
 	</button>
-	<div class="my-2 flex flex-col gap-2">
+	<div class="section--content">
 		{#if !accordeon}
 			{@render children?.()}
 		{:else if accordeon && accordeonValue}

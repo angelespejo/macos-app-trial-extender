@@ -89,7 +89,7 @@ export default defineConfig( {
 		sveltekit(),
 		paraglideVitePlugin( {
 			cleanOutdir     : true,
-			project         : './project.inlang',
+			project         : './.dovenv/project.inlang',
 			outdir          : './src/i18n',
 			additionalFiles : { 'eslint.config.js': `export default [ { ignores : [ '*' ] } ]` },
 			strategy        : [ 'url', 'baseLocale' ],

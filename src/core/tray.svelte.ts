@@ -51,7 +51,11 @@ class Tray {
 				[FUNCTION_ID.automate] : {
 					text    : text.automate,
 					checked : settings.automate.current,
-					action  : () => page.goto( PAGE_ID.infoHow ),
+					action  : () => {
+
+						settings.automate.current = !settings.automate.current
+
+					},
 				},
 				separator2 : { action: 'Separator' },
 				submenu    : {

@@ -30,7 +30,7 @@
 	color="none"
 	{href}
 >
-	<div class={title && title != '' ? '!h-7 -ml-3 !w-7 object-contain rounded-full flex items-center justify-center bg-primary-50/10' : ''}>
+	<div class={title && title != '' ? 'button--sidebar--icon-with-title' : ''}>
 		<Icon src={icon} />
 	</div>
 
