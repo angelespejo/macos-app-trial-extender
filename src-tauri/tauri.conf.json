@@ -33,7 +33,7 @@
 	},
 	"productName": "MATE",
 	"mainBinaryName": "MATE",
-	"version": "0.2.4",
+	"version": "1.0.0",
 	"identifier": "com.angelespejo.mate",
 	"plugins": {
 		"updater": {
@@ -69,8 +69,5 @@
 		"security": {
 			"csp": null
 		}
-	},
-	"package": {
-		"version": "1.0.0"
 	}
 }

@@ -23,7 +23,7 @@ export default {
 	plugins : { '@release-it/bumper' : { out : [
 		{
 			file : 'src-tauri/tauri.conf.json',
-			path : 'package.version',
+			path : 'bundle.version',
 		},
 		{
 			file : 'src-tauri/Cargo.toml',
