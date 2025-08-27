@@ -25,7 +25,9 @@
 		{
 			"identifier": "fs:scope",
 			"allow": [
-				{ "path": "$HOME/**/*" }
+				{
+					"path": "$HOME/**/*"
+				}
 			]
 		},
 		"shell:default",
@@ -46,6 +48,7 @@
 		"dialog:allow-confirm",
 		"notification:default",
 		"log:allow-log",
-		"log:default"
+		"log:default",
+		"store:default"
 	]
 }

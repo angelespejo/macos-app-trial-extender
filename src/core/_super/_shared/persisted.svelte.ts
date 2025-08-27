@@ -280,6 +280,7 @@ export const persistedState = <T>( data: PersistedParams<T> ): PersistedResult<T
 		return () => {}
 
 	} )
+
 	const hasValueInStorage = (): boolean => {
 
 		try {

@@ -4,6 +4,7 @@ import {
 	appWindow,
 	os,
 }  from './_super.svelte'
+import { appPersistentState } from './store.svelte'
 
 import { goto }              from '$app/navigation'
 import { page as pageState } from '$app/state'
@@ -61,10 +62,9 @@ const updateLocale = async ( to: typeof locales[number] ) => {
 class Page {
 
 	locales = locales
-	locale = persistedState( {
+	locale = appPersistentState( {
 		key          : 'locale',
 		initialValue : getLocale(),
-		options      : { storage: 'session' },
 	} )
 
 	t = $state( () => {} )

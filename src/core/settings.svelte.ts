@@ -1,5 +1,6 @@
 
-import { persistedState } from './_super/_shared/persisted.svelte'
+import { persistedState }     from './_super/_shared/persisted.svelte'
+import { appPersistentState } from './store.svelte'
 
 import {
 	iconFinalcutSrc,
@@ -15,28 +16,24 @@ import {
 class SettingsState {
 
 	init = $state( false )
-	automate = persistedState( {
+	automate = appPersistentState( {
 		key          : FUNCTION_ID.automate,
 		initialValue : false,
-		options      : { storage: 'session' },
 	} )
 
-	autostart = persistedState( {
+	autostart = appPersistentState( {
 		key          : FUNCTION_ID.autostart,
 		initialValue : false,
-		options      : { storage: 'session' },
 	} )
 
-	notification = persistedState( {
+	notification = appPersistentState( {
 		key          : FUNCTION_ID.notification,
 		initialValue : false,
-		options      : { storage: 'session' },
 	} )
 
-	theme = persistedState<typeof APP_THEME[keyof typeof APP_THEME]>( {
+	theme = appPersistentState<typeof APP_THEME[keyof typeof APP_THEME]>( {
 		key          : FUNCTION_ID.theme,
 		initialValue : APP_THEME.DEFAULT,
-		options      : { storage: 'session' },
 	} )
 
 	APP_LOGO_SRC = $derived(

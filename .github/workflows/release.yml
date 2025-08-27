@@ -58,7 +58,7 @@ jobs:
             - [CHANGELOG](https://github.com/angelespejo/macos-app-trial-extender/tree/main/CHANGELOG.md#${{ env.RELEASE_TAG }})
             - [Report issue](https://github.com/angelespejo/macos-app-trial-extender/issues)
 
-            👇 **Download the app** 👇
+            **Download the app** 👇
           releaseDraft: false
           prerelease: false
           includeUpdaterJson: true
