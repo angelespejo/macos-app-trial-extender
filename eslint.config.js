@@ -11,15 +11,16 @@ export default defineConfig(
 		gitignore : true,
 		package   : true,
 		json      : true,
-		css       : {
-			tailwind : 4,
-			postcss  : true,
-			rules    : { 'css/use-baseline': 'off' },
-		},
-		html   : true,
-		toml   : true,
-		md     : true,
-		ignore : [
+		// css       : {
+		// 	tailwind : 4,
+		// 	postcss  : true,
+		// 	rules    : { 'css/use-baseline': 'off' },
+		// },
+		css       : false,
+		html      : true,
+		toml      : true,
+		md        : true,
+		ignore    : [
 			'**/README.md',
 			'**/CHANGELOG.md',
 			'docs/dev-info.md',
