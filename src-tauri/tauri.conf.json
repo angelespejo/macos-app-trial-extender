@@ -29,7 +29,7 @@
 			"icons/icon.ico"
 		],
 		"licenseFile": "../LICENSE",
-		"createUpdaterArtifacts": "v1Compatible"
+		"createUpdaterArtifacts": true
 	},
 	"productName": "MATE",
 	"mainBinaryName": "MATE",
