@@ -1,7 +1,11 @@
 <script lang="ts">
 
 	import { DATA } from '$const'
-	import { Table } from '$lib'
+	import {
+		Avatar,
+		Badge,
+		Table,
+	} from '$lib'
 
 	type Props = { data: typeof DATA.APP_INFORMATION[keyof typeof DATA.APP_INFORMATION] }
 
@@ -10,31 +14,26 @@
 </script>
 
 {#snippet statusDiv( status?:string )}
-	<div
-		class={[
-			status === 'skipped'
-				? 'bg-yellow-600'
-				: status === 'failure' ? 'bg-red-600' : 'bg-green-600',
-			'text-xs flex items-center py-1 px-2 rounded-full w-fit',
-		]}
-	>
+	<Badge type={status === 'skipped' ? 'warning' : status === 'failure' ? 'error' : 'success'}>
 		{status || 'success'}
-	</div>
+	</Badge>
 {/snippet}
 
 <Table.Root>
 	<Table.Head>
-		<Table.HeadCell>App version</Table.HeadCell>
-		<Table.HeadCell>OS version</Table.HeadCell>
-		<Table.HeadCell>Test status</Table.HeadCell>
-		<Table.HeadCell>Users</Table.HeadCell>
+		<Table.R>
+			<Table.H>App version</Table.H>
+			<Table.H>OS version</Table.H>
+			<Table.H>Test status</Table.H>
+			<Table.H>Users</Table.H>
+		</Table.R>
 	</Table.Head>
 	<Table.Body>
 		{#each data.tests as test}
-			<Table.BodyRow>
-				<Table.BodyCell>{test.appVersion}</Table.BodyCell>
-				<Table.BodyCell>{test.osVersion || 'none'}</Table.BodyCell>
-				<Table.BodyCell>
+			<Table.R>
+				<Table.D>{test.appVersion}</Table.D>
+				<Table.D>{test.osVersion || 'none'}</Table.D>
+				<Table.D>
 					{#if test.referenceUrl}
 						<a
 							href="{test.referenceUrl}"
@@ -46,8 +45,8 @@
 						{@render statusDiv( test.status )}
 					{/if}
 
-				</Table.BodyCell>
-				<Table.BodyCell>
+				</Table.D>
+				<Table.D>
 					{#if test.user && test.user.length > 0}
 						{#each test.user as userId}
 							{#if userId in DATA.CONTRIBUTORS}
@@ -57,11 +56,12 @@
 										href="{user.url}"
 										target="_blank"
 									>
-										<img
-											class="w-[30px] h-[30px] rounded-full bg-primary-950/20 object-contain"
-											alt="{user.name}"
-											src="{user.avatar || user.ghUsername ? `https://github.com/${user.ghUsername}.png` : undefined}"
-										>
+										<Avatar
+											alt={user.name}
+											height="30px"
+											image={user.avatar || user.ghUsername ? `https://github.com/${user.ghUsername}.png` : undefined}
+											width="30px"
+										/>
 									</a>
 								{:else}
 									<div>none</div>
@@ -72,8 +72,8 @@
 					{:else}
 						<div>none</div>
 					{/if}
-				</Table.BodyCell>
-			</Table.BodyRow>
+				</Table.D>
+			</Table.R>
 		{/each}
 	</Table.Body>
 </Table.Root>

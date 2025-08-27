@@ -4,5 +4,6 @@ export { default as InfoItem } from './info-item.svelte'
 export { default as BtnSidebar } from './btn-sidebar.svelte'
 export { default as Btn } from './btn.svelte'
 export { default as ErrorContent } from './error-content.svelte'
-
+export { default as Avatar } from './avatar.svelte'
+export { default as Dot } from './dot.svelte'
 export * from './table'

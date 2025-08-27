@@ -25,5 +25,6 @@
 		"tamasfe.even-better-toml",
 		"github.vscode-github-actions",
 		"vscjava.vscode-gradle",
+		"inlang.vs-code-extension"
 	]
 }

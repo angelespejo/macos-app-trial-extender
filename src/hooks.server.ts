@@ -10,7 +10,7 @@
 
 import type { Handle } from '@sveltejs/kit'
 
-import { paraglideMiddleware } from '$lib/paraglide/server'
+import { paraglideMiddleware } from '$i18n/server'
 
 // creating a handle to use the paraglide middleware
 const paraglideHandle: Handle = ( {

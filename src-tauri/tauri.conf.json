@@ -65,7 +65,6 @@
 			"iconPath": "../docs/icon-tray.png",
 			"iconAsTemplate": true
 		},
-		"macOSPrivateApi": true,
 		"withGlobalTauri": false,
 		"security": {
 			"csp": null

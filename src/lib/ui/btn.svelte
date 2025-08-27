@@ -16,17 +16,16 @@
 		onclick,
 		href,
 		blank,
+		class: klass,
 		...rest
-	}: Props & {
-		href?  : string
-		blank? : boolean
-	} = $props()
+	}: Props & Record<string, any> = $props()
 
 </script>
 
-{#if blank}
+{#if blank === true}
 	<ButtonLink
-		href
+		class={[ 'theme-radius', klass ]}
+		{href}
 		target="_blank"
 		{...rest as any}
 	>
@@ -34,11 +33,12 @@
 	</ButtonLink>
 {:else}
 	<Button
+		class={[ 'theme-radius', klass ]}
 		onclick={async e => {
 
 			// @ts-ignore
 			if ( onclick ) await onclick( e )
-			if ( href ) await app.window.page.goto( href )
+			if ( href ) await app.page.goto( href )
 
 		}}
 		{...rest as any}

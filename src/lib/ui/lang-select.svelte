@@ -1,18 +1,18 @@
 <script lang="ts">
+	import { m } from '$i18n/messages'
 
 	import { app } from '$core'
-
 </script>
 
 <select
 	class="select"
-	bind:value={app.locale}
+	bind:value={app.page.locale.current}
 >
-	{#each app.locales as lc}
+	{#each app.page.locales as lc}
 		<option
-			selected={lc === app.locale}
+			selected={lc === app.page.locale.current}
 			value={lc}
-		>   {app.t( `lang.${lc}` )}
+		>   {m[`lang.${lc}`]()}
 		</option>
 	{/each}
 </select>

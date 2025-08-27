@@ -113,13 +113,19 @@ export type PersistedResult<T> = {
 	/**
 	 * The current value of the persisted state
 	 */
-	current : T
+	current  : T
 	/**
 	 * Function to RESET the persisted state
 	 *
 	 * @returns {void} - Reset the persisted state
 	 */
-	reset   : () => void
+	reset    : () => void
+	/**
+	 * Check if a value already exists in storage, ignoring the default initial value.
+	 *
+	 * @returns {boolean} True if a value exists in storage, false otherwise.
+	 */
+	isStored : () => boolean
 }
 
 export type PersistedParams<T> = {
@@ -274,7 +280,21 @@ export const persistedState = <T>( data: PersistedParams<T> ): PersistedResult<T
 		return () => {}
 
 	} )
+	const hasValueInStorage = (): boolean => {
 
+		try {
+
+			const item = storageArea?.getItem( key )
+			return item !== null // existe en storage
+
+		}
+		catch {
+
+			return false
+
+		}
+
+	}
 	return {
 		/**
 		 *
@@ -299,6 +319,11 @@ export const persistedState = <T>( data: PersistedParams<T> ): PersistedResult<T
 		reset() {
 
 			state = initialValue
+
+		},
+		isStored(): boolean {
+
+			return hasValueInStorage()
 
 		},
 	}

@@ -15,53 +15,63 @@
 	@apply bg-primary-100;
 }
 
-.select {
-	@apply w-full px-3 py-2 rounded-full text-xs appearance-none cursor-pointer
-	bg-primary-50 text-primary-100 dark:bg-primary-800 dark:text-primary-100;
-}
 /**
  * SELECT
  */
+.select {
+	@apply px-3 py-2 text-xs appearance-none cursor-pointer text-center flex justify-center items-center
+	bg-primary-800 text-primary-100;
+	text-align-last: center;
+	-moz-text-align-last: center;
+	border-radius: var(--theme-radius);
+}
 .select:focus {
   @apply outline-none ring-2 ring-primary-500 ring-offset-1;
 }
 
 .select:disabled {
-  @apply bg-primary-200 dark:bg-primary-700 text-primary-500 dark:text-primary-400 cursor-not-allowed;
+  @apply bg-primary-700 text-primary-400 cursor-not-allowed;
 }
 .select.error {
-  @apply border-red-500 text-red-700 dark:text-red-400;
+  @apply border-red-500 text-red-400;
 }
 
 /**
  * BUTTONS
 */
-
+.button[disabled]{
+	@apply cursor-auto
+}
 .button {
-	@apply cursor-pointer text-center focus-within:ring-4 focus-within:outline-none font-bold inline-flex items-center justify-center px-3 py-2 text-xs rounded-full 
+	@apply cursor-pointer text-center focus-within:ring-4 focus-within:outline-none font-bold inline-flex items-center justify-center px-3 py-2 text-xs 
 	transition duration-150 ease-in-out
-	text-primary-100 dark:text-primary-100 
+	text-primary-100 
 }
 
 .button--dark {
-	@apply bg-primary-800 dark:bg-primary-800 hover:bg-primary-900 dark:hover:bg-primary-900 focus-within:ring-primary-400 dark:focus-within:ring-primary-900;
+	@apply bg-primary-800/50 hover:bg-primary-700/80 focus-within:ring-primary-900;
 }
 .button--dark.button--shadow {
 	@apply shadow-btn shadow-primary-600/50;
 }
+.button--dark[data-active] {
+	@apply bg-primary-700/80;
+}
 .button--primary {
-	@apply bg-primary-700 hover:bg-primary-800 dark:bg-primary-600 dark:hover:bg-primary-700 focus-within:ring-primary-300 dark:focus-within:ring-primary-800;
+	@apply bg-primary-600 hover:bg-primary-500 focus-within:ring-primary-800;
 }
 .button--primary.button--shadow {
 	@apply shadow-btn shadow-primary-500/50;
 }
-
+.button--primary[data-active] {
+	@apply bg-primary-500;
+}
 .button--sidebar {
 	@apply flex items-center !justify-between !py-1 px-4 rounded-full gap-2 !bg-primary-800;
 }
-.button--sidebar.active {
+.button--sidebar[data-active=true] {
 	@apply !bg-primary-300 text-primary-900;
 }
-.button--sidebar:not(.active) {
-	@apply bg-primary-600/30 dark:bg-primary-900/50 text-white border-primary-400/10 dark:border-primary-50/10
+.button--sidebar:not([data-active=true]) {
+	@apply bg-primary-900/50 text-primary-50 border-primary-50/10
 }

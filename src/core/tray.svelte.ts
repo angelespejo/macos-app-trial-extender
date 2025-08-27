@@ -1,50 +1,33 @@
-import { get } from 'svelte/store'
-
+import { onchangeState }     from './_super/_shared/onchange.svelte'
 import { Tray as TraySuper } from './_super/tray'
+import { os }                from './_super.svelte'
+import { page }              from './page.svelte'
+import { reset }             from './reset.svelte'
 import { settings }          from './settings.svelte'
-
-import type { Os } from './_super/os'
 
 import {
 	FUNCTION_ID,
 	PAGE_ID,
 	DATA,
 } from '$const'
-import {
-	t,
-	locale,
-} from '$lib/i18n'
+import { m } from '$i18n/messages'
 
-type TrayOpts = {
-	os         : Os
-	goto       : ( p: string ) => void
-	resetTrial : () => Promise<void>
-}
-
-export class Tray {
-
-	#opts
-
-	constructor( opts: TrayOpts ) {
-
-		this.#opts = opts
-
-	}
+class Tray {
 
 	#getTransKeys() {
 
-		const trans = get( t ) as ( key: string ) => string
-
 		return {
-			open     : trans( `tray.${FUNCTION_ID.openPage}` ),
-			reset    : trans( `tray.${FUNCTION_ID.reset}` ),
-			automate : trans( `tray.${FUNCTION_ID.automate}` ),
-			settings : '⚙︎  ' + trans( `tray.${PAGE_ID.settings}` ),
-			info     : 'ℹ︎  ' + trans( `tray.${PAGE_ID.info}` ),
-			feedback : '✯  ' + trans( `tray.${FUNCTION_ID.feedback}` ),
-			issues   : '⚠︎  ' + trans( `tray.${FUNCTION_ID.issues}` ),
-			support  : '❤︎  ' + trans( `tray.${FUNCTION_ID.support}` ),
-			quit     : trans( `tray.${FUNCTION_ID.quit}` ),
+			more     : m[`tray.more`](),
+			open     : m[`tray.${FUNCTION_ID.openPage}`](),
+			reset    : m[`tray.${FUNCTION_ID.reset}`](),
+			automate : m[`tray.${FUNCTION_ID.automate}`](),
+			settings : '⚙︎  ' + m[`tray.${PAGE_ID.settings}`](),
+			home     : '✦  ' + m[`tray.home`](),
+			info     : 'ℹ︎  ' + m[`tray.${PAGE_ID.info}`](),
+			feedback : '✯  ' + m[`tray.${FUNCTION_ID.feedback}`](),
+			issues   : '⚠︎  ' + m[`tray.${FUNCTION_ID.issues}`](),
+			support  : '❤︎  ' + m[`tray.${FUNCTION_ID.support}`](),
+			quit     : m[`tray.${FUNCTION_ID.quit}`](),
 		}
 
 	}
@@ -58,42 +41,46 @@ export class Tray {
 			menu    : {
 				[FUNCTION_ID.openPage] : {
 					text   : text.open,
-					action : () => this.#opts.goto( PAGE_ID.info ),
+					action : () => page.goto( PAGE_ID.info ),
 				},
 				separator           : { action: 'Separator' },
 				[FUNCTION_ID.reset] : {
 					text   : text.reset,
-					action : () => this.#opts.resetTrial(),
+					action : () => reset.removeFiles(),
 				},
 				[FUNCTION_ID.automate] : {
 					text    : text.automate,
 					checked : settings.automate.current,
-					action  : () => this.#opts.goto( PAGE_ID.infoHow ),
+					action  : () => page.goto( PAGE_ID.infoHow ),
 				},
 				separator2 : { action: 'Separator' },
 				submenu    : {
-					text   : 'More',
+					text   : text.more,
 					action : {
+						home : {
+							text   : text.home,
+							action : () => page.goto( '/' ),
+						},
 						[PAGE_ID.settings] : {
 							text   : text.settings,
-							action : () => this.#opts.goto( PAGE_ID.settings ),
+							action : () => page.goto( PAGE_ID.settings ),
 						},
 						[PAGE_ID.info] : {
 							text   : text.info,
-							action : () => this.#opts.goto( PAGE_ID.info ),
+							action : () => page.goto( PAGE_ID.info ),
 						},
 						separatorSub           : { action: 'Separator' },
 						[FUNCTION_ID.feedback] : {
 							text   : text.feedback,
-							action : () => this.#opts.os.open( DATA.PKG.homepage ),
+							action : () => os.open( DATA.PKG.homepage ),
 						},
 						[FUNCTION_ID.issues] : {
 							text   : text.issues,
-							action : () => this.#opts.os.open( DATA.PKG.bugs.url ),
+							action : () => os.open( DATA.PKG.bugs.url ),
 						},
 						[FUNCTION_ID.support] : {
 							text   : text.support,
-							action : () => this.#opts.os.open( DATA.PKG.funding.url ),
+							action : () => os.open( DATA.PKG.funding.url ),
 						},
 					},
 				},
@@ -106,45 +93,72 @@ export class Tray {
 			},
 		} )
 
-		locale.subscribe( () => {
+		// locale.subscribe( () => {
 
-			const key = this.#getTransKeys()
-			tray.getItem( FUNCTION_ID.automate )?.setText( key.automate )
-			tray.getItem( FUNCTION_ID.openPage )?.setText( key.open )
-			tray.getItem( FUNCTION_ID.reset )?.setText( key.reset )
-			tray.getItem( PAGE_ID.settings )?.setText( key.settings )
-			tray.getItem( PAGE_ID.info )?.setText( key.info )
-			tray.getItem( FUNCTION_ID.feedback )?.setText( key.feedback )
-			tray.getItem( FUNCTION_ID.issues )?.setText( key.issues )
-			tray.getItem( FUNCTION_ID.support )?.setText( key.support )
-			tray.getItem( FUNCTION_ID.quit )?.setText( key.quit )
+		// 	const key = this.#getTransKeys()
+		// 	tray.getItem( FUNCTION_ID.automate )?.setText( key.automate )
+		// 	tray.getItem( FUNCTION_ID.openPage )?.setText( key.open )
+		// 	tray.getItem( FUNCTION_ID.reset )?.setText( key.reset )
+		// 	tray.getItem( PAGE_ID.settings )?.setText( key.settings )
+		// 	tray.getItem( PAGE_ID.info )?.setText( key.info )
+		// 	tray.getItem( FUNCTION_ID.feedback )?.setText( key.feedback )
+		// 	tray.getItem( FUNCTION_ID.issues )?.setText( key.issues )
+		// 	tray.getItem( FUNCTION_ID.support )?.setText( key.support )
+		// 	tray.getItem( FUNCTION_ID.quit )?.setText( key.quit )
 
-		} )
+		// } )
 
 		const updateChecked = async ( value: boolean ) => {
 
 			const menuItem = await tray.getItem( FUNCTION_ID.automate )
+			// console.log( 'updateChecked', value, menuItem )
 			// @ts-ignore
 			const set = async ( value: boolean ) => await menuItem?.setChecked?.( value )
 			if ( value ) await set( true )
 			else await set( false )
 
-			return value
+			// return value
 
 		}
+		// const disableItem = async ( value?: ( 'home' | typeof PAGE_ID.settings | typeof PAGE_ID.info ) ) => {
 
-		$effect.root( () => {
+		// 	console.log( value );
 
-			$effect( () => {
+		// 	// @ts-ignore
+		// 	( await tray.getItem( 'home' ) )?.setEnabled?.( value === 'home' ? false : true );
+		// 	// @ts-ignore
+		// 	( await tray.getItem( PAGE_ID.settings ) )?.setEnabled?.( value === PAGE_ID.settings ? false : true );
+		// 	// @ts-ignore
+		// 	( await tray.getItem( PAGE_ID.info ) )?.setEnabled?.( value === PAGE_ID.info ? false : true )
 
-				updateChecked( settings.automate.current )
+		// }
 
-			} )
+		// const updateItemVisibility = async ( c: typeof page.current ) => {
 
-		} )
+		// 	const isVisible = await ( await appWindow.get() ).isVisible()
+		// 	console.log( 'isVisible', isVisible, c )
+		// 	if ( !isVisible ) {
 
+		// 		await disableItem()
+		// 		return
+
+		// 	}
+		// 	else {
+
+		// 		if ( c.home ) await disableItem( 'home' )
+		// 		else if ( c[PAGE_ID.settings] ) await disableItem( PAGE_ID.settings )
+		// 		else if ( c[PAGE_ID.info] ) await disableItem( PAGE_ID.info )
+		// 		else await disableItem()
+
+		// 	}
+
+		// }
+
+		onchangeState( () => updateChecked( settings.automate.current ) )
+		// onchangeState( () => updateItemVisibility( page.current ) )
 		await tray.init()
 
 	}
 
 }
+export const tray = new Tray()

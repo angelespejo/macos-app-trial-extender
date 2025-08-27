@@ -1,14 +1,14 @@
-import type { IconDefinition } from '@fortawesome/free-brands-svg-icons'
-import type { Snippet }        from 'svelte'
+import type { IconProps } from '$lib'
+import type { Snippet }   from 'svelte'
 import type {
 	HTMLAnchorAttributes,
 	HTMLButtonAttributes,
 } from 'svelte/elements'
 
 export type ButtonContentProps = {
-	icon?         : IconDefinition
+	icon?         : IconProps
 	iconPosition? : 'left' | 'right'
-	children      : Snippet
+	children?     : Snippet
 }
 type ButtonSharedProps = ButtonContentProps & {
 	color?  : 'none' | 'primary' | 'dark'

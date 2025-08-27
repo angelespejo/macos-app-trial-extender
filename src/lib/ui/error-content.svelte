@@ -1,13 +1,15 @@
 <script lang="ts">
 
+	import { m } from '$i18n/messages'
+
 	import type { Snippet } from 'svelte'
 
 	import { DATA } from '$const'
 	import { app } from '$core'
 	import {
 		Btn,
-		faBug,
-		faHouse,
+		ICON_CLASS_HOME,
+		ICON_CLASS_ISSUES,
 	} from '$lib'
 
 	let {
@@ -31,17 +33,17 @@
 	<div class="gap-2 flex flex-row mt-8">
 		<Btn
 			href="/"
-			icon={faHouse}
+			icon={{ src: ICON_CLASS_HOME }}
 		>
-			{app.t( 'common.btns.goHome' )}
+			{m['btns.goHome']()}
 		</Btn>
 		<Btn
 			blank={true}
 			color="dark"
-			href={DATA.PKG.funding.url}
-			icon={faBug}
+			href={DATA.PKG.bugs.url}
+			icon={{ src: ICON_CLASS_ISSUES }}
 		>
-			Bugs
+			Report issue
 		</Btn>
 	</div>
 </div>

@@ -1,0 +1,20 @@
+table {
+  @apply w-full border-0 text-sm text-primary-300 overflow-hidden;
+  border-radius: var(--theme-radius);
+}
+table thead {
+  @apply bg-primary-800 font-bold;
+}
+table tbody {
+  @apply bg-primary-900/50 text-primary-400;
+} 
+table tr {
+	@apply border-primary-800 border-b-1
+}
+table th,
+table td {
+  @apply px-5 py-3 text-left;
+}
+table tr:last-child {
+  @apply border-b-0;
+}

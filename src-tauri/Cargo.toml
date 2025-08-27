@@ -12,7 +12,6 @@
 
 [dependencies]
 	tauri = { version = "2.8.4", features = [
-		"macos-private-api",
 		"tray-icon",
 		"image-ico",
 		"image-png",
@@ -30,9 +29,6 @@
 	tauri-plugin-os = "2.3.1"
 	tauri-plugin-autostart = "2.5.0"
 	tauri-plugin-log = "2.6.0"
-
-	# @see https://github.com/tauri-apps/window-vibrancy
-	window-vibrancy = "0.6.0"
 
 [features]
 	# this feature is used for production builds or when `devPath` points to the filesystem

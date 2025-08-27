@@ -12,6 +12,7 @@
 		children,
 		color = 'primary',
 		shadow = false,
+		disabled = $bindable( false ),
 		class: klass,
 		...rest
 	}: ButtonProps = $props()
@@ -27,8 +28,14 @@
 </script>
 
 <button
+	{@attach e => {
+
+		e.hasAttribute( 'disabled' ) ? ripple( e ) : null
+
+	}}
+	{disabled}
 	type="button"
-	use:ripple
+
 	{...rest}
 	class={classes}
 >

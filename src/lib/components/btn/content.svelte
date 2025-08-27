@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {
 		type ButtonContentProps,
-		Fa,
+		Icon,
 	} from '$lib'
 
 	let {
@@ -13,17 +13,17 @@
 </script>
 
 {#if icon && iconPosition === 'left'}
-	<Fa
-		class="mr-2"
-		icon={icon}
+	<Icon
+		class={[ children ? 'mr-2' : '' ]}
+		{...icon}
 	/>
 {/if}
 
 {@render children?.()}
 
 {#if icon && iconPosition === 'right'}
-	<Fa
-		class="ml-2"
-		icon={icon}
+	<Icon
+		class={[ children ? 'ml-2' : '' ]}
+		{...icon}
 	/>
 {/if}

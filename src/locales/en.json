@@ -1,4 +1,5 @@
 {
+	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"info": {
 		"title": "Info",
 		"shortDesciption": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
@@ -27,6 +28,7 @@
 		"extendTitle": "Extend trial version",
 		"extendBtn": "Extend",
 		"extendBtnSuccess": "Success",
+		"extendBtnRemoving": "Removing",
 		"automateTitle": "Automation (beta)",
 		"automateDescription": "Automatically maintains the trial version on the first day. It is recommended to activate autostart if this is activated",
 		"automateBtnActivate": "Activate",
@@ -69,5 +71,23 @@
 				"fail": "Error resetting the Final Cut Pro trial version"
 			}
 		}
+	},
+	"tray": {
+		"home": "Home",
+		"more": "More",
+		"open-page": "Open Dashboard",
+		"reset": "Reset Trial versions",
+		"automate": "Automatic",
+		"info": "About",
+		"support": "Donate",
+		"settings": "Settings",
+		"feedback": "Feedback",
+		"issues": "Report an issue",
+		"quit": "Quit"
+	},
+	"lang": {
+		"en": "English",
+		"es": "Español",
+		"ca": "Català"
 	}
 }

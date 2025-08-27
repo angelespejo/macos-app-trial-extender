@@ -11,6 +11,7 @@ import {
 	transformerDirectives,
 	extractorSvelte,
 	presetWind4,
+	presetIcons,
 } from '@svaio/unocss/utils'
 import { sveltekit }    from '@sveltejs/kit/vite'
 import { internalIpV4 } from 'internal-ip'
@@ -69,19 +70,29 @@ export default defineConfig( {
 						theme : 'on-demand',
 					},
 				} ),
+				presetIcons( {
+					prefix      : 'i-',
+					collections : {
+						'fa7-solid'  : () => import( '@iconify-json/fa7-solid/icons.json' ).then( i => i.default ),
+						'fa7-brands' : () => import( '@iconify-json/fa7-brands/icons.json' ).then( i => i.default ),
+					},
+					extraProperties : {
+						'display'        : 'inline-block',
+						'vertical-align' : 'middle',
+					},
+				} ),
 			],
-			content : { pipeline : { include : [
-				/\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/,
-				'src/**/*.{js,ts}',
-				'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
-			] } },
+			content      : { pipeline: { include: [ /\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/, 'src/**/*.{js,ts}' ] } },
 			extractors   : [ extractorSvelte() ],
 			transformers : [ transformerDirectives() ],
 		} ),
 		sveltekit(),
 		paraglideVitePlugin( {
-			project : './project.inlang',
-			outdir  : './src/locales',
+			cleanOutdir     : true,
+			project         : './project.inlang',
+			outdir          : './src/i18n',
+			additionalFiles : { 'eslint.config.js': `export default [ { ignores : [ '*' ] } ]` },
+			strategy        : [ 'url', 'baseLocale' ],
 		} ),
 	],
 	server,

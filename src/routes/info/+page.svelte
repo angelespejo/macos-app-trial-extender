@@ -1,29 +1,31 @@
 <script lang="ts">
 
+	import { m } from '$i18n/messages'
+
 	import {
 		DATA,
 		PAGE_ID,
 	} from '$const'
-	import { app } from '$core'
 	import {
 		Badge,
+		ICON_CLASS_FUNDING,
+		ICON_CLASS_ISSUES,
+		ICON_CLASS_LICENSE,
+		ICON_CLASS_NAME,
+		ICON_CLASS_USER,
+		ICON_CLASS_VERSION,
+		ICON_CLASS_WEB,
 		InfoItem as Item,
 		Section,
 		TableTest,
-		faBug,
-		faGlobe,
-		faHeart,
-		faScroll,
-		faSignature,
-		faTag,
-		faUser,
+
 	} from '$lib'
 
 </script>
 
 <Section
 	id='about'
-	title={app.t( 'common.info.aboutTitle' )}
+	title={m['info.aboutTitle']( )}
 >
 	<p>
 		<Badge
@@ -34,7 +36,7 @@
 			}}
 			type="secondary"
 		>
-			{app.t( 'common.btns.opensource' )}
+			{m['btns.opensource']( )}
 		</Badge>
 		<Badge
 			class="hover:bg-primary-700"
@@ -44,14 +46,14 @@
 			}}
 			type="secondary"
 		>
-			{app.t( 'common.btns.free' )}
+			{m['btns.free']( )}
 		</Badge>
 	</p>
 	<p>
-		{app.t( 'common.info.aboutDescription' )}
+		{m['info.aboutDescription']( )}
 	</p>
 	<p>
-		{app.t( 'common.info.aboutAlert' )}
+		{m['info.aboutAlert']( )}
 	</p>
 
 </Section>
@@ -59,47 +61,47 @@
 	class="!mt-8"
 	accordeon={true}
 	accordeonValue={true}
-	title={app.t( 'common.info.title' )}
+	title={m['info.title']( )}
 >
 	<Item
-		icon={faSignature}
-		key={app.t( 'common.btns.name' )}
+		icon={ICON_CLASS_NAME}
+		key={m['btns.name']( )}
 		value={DATA.PKG.extra.productName}
 	/>
 	<Item
-		icon={faTag}
-		key={app.t( 'common.btns.version' )}
+		icon={ICON_CLASS_VERSION}
+		key={m['btns.version']( )}
 		value={DATA.PKG.version}
 	/>
 	<Item
 		href={DATA.PKG.extra.licenseUrl}
-		icon={faScroll}
-		key={app.t( 'common.btns.license' )}
+		icon={ICON_CLASS_LICENSE}
+		key={m['btns.license']( )}
 		value={DATA.PKG.license}
 	/>
 	<Item
 		href={DATA.PKG.author.url}
-		icon={faUser}
-		key={app.t( 'common.btns.author' )}
+		icon={ICON_CLASS_USER}
+		key={m['btns.author']( )}
 		value={DATA.PKG.author.name}
 	/>
 	<Item
 		href={DATA.PKG.homepage}
-		icon={faGlobe}
-		key={app.t( 'common.btns.homepage' )}
-		value={app.t( 'common.btns.viewMore' )}
+		icon={ICON_CLASS_WEB}
+		key={m['btns.homepage']( )}
+		value={m['btns.viewMore']( )}
 	/>
 	<Item
 		href={DATA.PKG.funding.url}
-		icon={faHeart}
-		key={app.t( 'common.btns.funding' )}
-		value={app.t( 'common.btns.readMore' )}
+		icon={ICON_CLASS_FUNDING}
+		key={m['btns.funding']( )}
+		value={m['btns.readMore']( )}
 	/>
 	<Item
 		href={DATA.PKG.bugs.url}
-		icon={faBug}
-		key={app.t( 'common.btns.bugs' )}
-		value={app.t( 'common.btns.sendIssue' )}
+		icon={ICON_CLASS_ISSUES}
+		key={m['btns.bugs']( )}
+		value={m['btns.sendIssue']( )}
 	/>
 
 </Section>
@@ -108,14 +110,13 @@
 	class="!mt-8"
 	accordeon={true}
 	accordeonValue={true}
-	title={app.t( 'common.info.howTitle' )}
+	title={m['info.howTitle']( )}
 >
-
 	<p>
-		{app.t( 'common.info.howDescription' )}
+		{m['info.howDescription']( )}
 	</p>
 	<p>
-		{app.t( 'common.info.howResume' )}
+		{m['info.howResume']( )}
 	</p>
 </Section>
 <Section
@@ -133,7 +134,7 @@
 	class="!mt-8"
 	accordeon={true}
 	accordeonValue={true}
-	title="{app.t( 'common.info.contributors' )}"
+	title={m['info.contributors']()}
 >
 	{#each Object.values( DATA.CONTRIBUTORS ) as contributor}
 		<Item

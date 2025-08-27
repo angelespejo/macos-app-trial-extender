@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
+
+	import { m } from '$i18n/messages'
 
 	import {
 		DATA,
@@ -9,26 +10,21 @@
 	import {
 		BtnSidebar,
 		ErrorContent,
-		faGears,
-		faHeart,
-		faHouse,
-		faInfo,
+		ICON_CLASS_FUNDING,
+		ICON_CLASS_HOME,
+		ICON_CLASS_INFO,
+		ICON_CLASS_TOOLS,
 	} from '$lib'
 	import '$styles'
 
 	let { children } = $props()
 
 	app.window.addViewTransition()
-	onMount( async () => {
-
-		await app.init()
-
-	} )
 
 </script>
 
 <div
-	class="h-screen w-full flex flex-row items-center justify-between bg-primary-950 selection:bg-primary-800 selection:text-primary-50 font-sans"
+	class="h-screen w-full flex flex-row items-center justify-between"
 	data-theme={app.settings.theme.current}
 >
 	<header class="h-full w-full max-w-[200px] flex flex-col items-start justify-between py-8 px-4">
@@ -37,28 +33,28 @@
 				<img
 					alt="logo"
 					src={app.settings.APP_LOGO_SRC}
-					width="40"
+					width="30"
 				/>
 				<h3>{DATA.PKG.extra.productName}</h3>
 			</div>
 			<div class="py-4 flex flex-col w-full [&>button]:w-full items-start gap-2 [&>a]:w-full">
 				<BtnSidebar
-					active={app.window.page.isOn( '' )}
+					active={app.page.current.home}
 					href="/"
-					icon={faHouse}
-					title={app.t( 'common.home.title' )}
+					icon={ICON_CLASS_HOME}
+					title={m['tray.home']()}
 				/>
 				<BtnSidebar
-					active={app.window.page.isOn( PAGE_ID.settings )}
+					active={app.page.current.settings}
 					href={PAGE_ID.settings}
-					icon={faGears}
-					title={app.t( 'common.settings.title' )}
+					icon={ICON_CLASS_TOOLS}
+					title={m['settings.title']()}
 				/>
 				<BtnSidebar
-					active={app.window.page.isOn( PAGE_ID.info )}
+					active={app.page.current.info}
 					href={PAGE_ID.info}
-					icon={faInfo}
-					title={app.t( 'common.info.title' )}
+					icon={ICON_CLASS_INFO}
+					title={m['info.title']()}
 				/>
 			</div>
 		</nav>
@@ -67,25 +63,34 @@
 				class="hover:!bg-red-500/50"
 				blank={true}
 				href={DATA.PKG.funding.url}
-				icon={faHeart}
+				icon={ICON_CLASS_FUNDING}
 			/>
 		</div>
 	</header>
 	<main class="w-full h-screen flex flex-col p-8 bg-primary-800/20 rounded-s-2xl shadow-primary-700/10 backdrop-blur-md">
-		<section class="w-full h-full overflow-y-scroll p-2">
-			<svelte:boundary>
-
-				{@render children?.()}
-				{#snippet pending()}
-					<div class="flex flex-col h-full justify-center items-center">...loading</div>
-				{/snippet}
-				{#snippet failed( e )}
-					<ErrorContent title="💥 Page Error 💥">
-						<p>{e instanceof Error ? e.message : 'Unexpected error'}</p>
-					</ErrorContent>
-				{/snippet}
-			</svelte:boundary>
-		</section>
+		{#await app.init()}
+			<div class="flex flex-col h-full justify-center items-center ">
+				<span class="spinner"></span>
+			</div>
+		{:then _}
+			<section class="w-full h-full overflow-y-scroll p-2">
+				<svelte:boundary>
+					{@render children?.()}
+					{#snippet pending()}
+						<div class="flex flex-col h-full justify-center items-center"><span class="spinner"></span></div>
+					{/snippet}
+					{#snippet failed( e )}
+						<ErrorContent title="💥 Page Error 💥">
+							<p>{e instanceof Error ? e.message : 'Unexpected error'}</p>
+						</ErrorContent>
+					{/snippet}
+				</svelte:boundary>
+			</section>
+		{:catch e}
+			<ErrorContent title="💥 Init App Error 💥">
+				<p>{e instanceof Error ? e.message : 'Unexpected error'}</p>
+			</ErrorContent>
+		{/await}
 		<footer class="flex justify-end">
 			<p class="opacity-50 !m-0 !mt-2 text-xs">v{DATA.PKG.version}</p>
 		</footer>

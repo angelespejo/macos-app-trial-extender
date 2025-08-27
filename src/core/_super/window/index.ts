@@ -1,83 +1,15 @@
 import { getCurrentWindow } from '@tauri-apps/api/window'
-import { get }              from 'svelte/store'
 
-import {
-	goto,
-	onNavigate,
-} from '$app/navigation'
-import { page } from '$app/stores'
+import { onNavigate } from '$app/navigation'
 
 type DragParams = {
 	element?         : Element | Document
 	noDragSelectors? : string
 }
 
-class Page {
-
-	#getWindow
-	suffix
-
-	constructor( opts:	{
-		getWindow : () => Promise<ReturnType<typeof getCurrentWindow>>
-		suffix?   : string
-	} )	{
-
-		this.#getWindow = opts.getWindow
-		this.suffix     = opts.suffix ? ( opts.suffix.startsWith( '/' ) ? opts.suffix : '/' + opts.suffix ) : ''
-
-	}
-
-	getCurrent( ) {
-
-		const $page = get( page )
-		return $page.url.pathname.replace( '/' + this.suffix, '' )
-
-	}
-
-	async goto( pageID: string ) {
-
-		const w         = await this.#getWindow()
-		const isVisible = await w.isVisible()
-		if ( !isVisible ) await w.show()
-
-		pageID     = pageID.startsWith( '/' ) ? pageID : '/' + pageID
-		const path = `${this.suffix}${pageID}`
-
-		console.log( { goto : {
-			id : pageID,
-			path,
-			isVisible,
-		} } )
-
-		goto( `${this.suffix}${pageID}` )
-
-		const isFocused = await w.isFocused()
-		if ( !isFocused ) await w.setFocus()
-
-	}
-
-	isOn( pageID: string ) {
-
-		const activeUrl = this.getCurrent( )
-		const pageRoute = pageID === '' ? pageID : '/' + pageID
-
-		return activeUrl === pageRoute
-
-	}
-
-}
-
 export class Window {
 
-	page
-	constructor( opts: { suffix?: string } ) {
-
-		this.page = new Page( {
-			getWindow : this.get.bind( this ),
-			...opts,
-		} )
-
-	}
+	constructor( ) { }
 
 	#window : ReturnType<typeof getCurrentWindow> | undefined
 

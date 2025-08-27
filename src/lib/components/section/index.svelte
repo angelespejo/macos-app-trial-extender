@@ -3,9 +3,9 @@
 	import type { SectionProps } from './types'
 
 	import {
-		Fa,
-		faChevronDown,
-		faChevronUp,
+		ICON_CLASS_DOWN,
+		ICON_CLASS_UP,
+		Icon,
 	} from '$lib'
 
 	let {
@@ -26,9 +26,9 @@
 	>
 		<h2>{title}</h2>
 		{#if accordeon}
-			<Fa
-				class="opacity-25 text-primary-800 dark:text-primary-50"
-				icon={accordeonValue ? faChevronUp : faChevronDown}
+			<Icon
+				class="opacity-25 text-primary-50"
+				src={accordeonValue ? ICON_CLASS_UP : ICON_CLASS_DOWN}
 			/>
 		{/if}
 	</button>

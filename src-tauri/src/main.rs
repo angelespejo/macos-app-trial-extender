@@ -1,11 +1,10 @@
 mod dock;
 use tauri::Manager;
-use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
 
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_log::Builder::new().build())
-        .plugin(tauri_plugin_autostart::Builder::new().build())
+        // .plugin(tauri_plugin_autostart::Builder::new().build())
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_shell::init())
@@ -27,10 +26,6 @@ fn main() {
 
             #[cfg(debug_assertions)]
             window.open_devtools();
-
-            #[cfg(target_os = "macos")]
-            apply_vibrancy(&window, NSVisualEffectMaterial::HudWindow, None, None)
-                .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
 
             Ok(())
         })

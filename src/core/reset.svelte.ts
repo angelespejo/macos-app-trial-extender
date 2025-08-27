@@ -1,25 +1,17 @@
-import { i18n }     from './i18n.svelte'
+
+import {
+	fs,
+	notification,
+	os,
+} from './_super.svelte'
 import { settings } from './settings.svelte'
 
-import type { Fs }           from './_super/fs'
-import type { Notification } from './_super/notification'
-import type { Os }           from './_super/os'
-
 import { DATA } from '$const'
+import { m }    from '$i18n/messages'
 
-type ResetOpts = {
-	fs  : Fs
-	not : Notification
-	os  : Os
-}
+class Reset {
 
-export class Reset {
-
-	#opts
-
-	constructor( opts: ResetOpts ) {
-
-		this.#opts = opts
+	constructor( ) {
 
 	}
 
@@ -33,9 +25,9 @@ export class Reset {
 
 		if ( !settings.notification.current ) return
 
-		await this.#opts.not.send( {
+		await notification.send( {
 			title : DATA.PKG.extra.productName + ' (' + DATA.PKG.extra.productNameLong + ')',
-			body  : i18n.t( `common.nots.reset.${app || 'general'}.${type}` ) + ( message ? ' ' + message : '' ),
+			body  : m[`nots.reset.${app || 'general'}.${type}`]() + ( message ? ' ' + message : '' ),
 
 		} )
 
@@ -43,7 +35,6 @@ export class Reset {
 
 	async #getHomePaths() {
 
-		const { fs }                    = this.#opts
 		const home                      = await fs.homeDir()
 		const SUPPORT_PATH_WITHOUT_HOME = {
 			GENERAL  : 'Library/Application Support',
@@ -85,7 +76,7 @@ export class Reset {
 
 		try {
 
-			if ( !await this.#opts.fs.exists( path ) ) return undefined
+			if ( !await fs.exists( path ) ) return undefined
 			if ( this.#processedPaths.has( path ) ) return undefined
 
 			this.#processedPaths.add( path )
@@ -96,7 +87,7 @@ export class Reset {
 				currentProcessedPaths : [ ...this.#processedPaths ],
 			} )
 
-			await this.#opts.fs.removeFile( path )
+			await fs.removeFile( path )
 			await this.#sendNot( {
 				type : 'success',
 				app  : type,
@@ -110,7 +101,7 @@ export class Reset {
 
 			console.warn( 'Using shell', path )
 
-			const executed = await this.#opts.os.executeCommand( 'rm', [ path ] )
+			const executed = await os.executeCommand( 'rm', [ path ] )
 
 			if ( executed.code === 0 ) {
 
@@ -141,6 +132,12 @@ export class Reset {
 	}
 
 	isRemoving = $state( false )
+	#setIsRemoving = async ( value: boolean ) => {
+
+		await new Promise( resolve => setTimeout( resolve, 1000 ) )
+		this.isRemoving = value
+
+	}
 
 	async removeFiles() {
 
@@ -160,13 +157,13 @@ export class Reset {
 			}
 
 			if ( !isReset ) await this.#sendNot( { type: 'success' } )
-			this.isRemoving = false
+			this.#setIsRemoving( false )
 
 		}
 		catch ( _e ) {
 
 			await this.#sendNot( { type: 'fail' } )
-			this.isRemoving = false
+			this.#setIsRemoving( false )
 
 		}
 
@@ -179,9 +176,9 @@ export class Reset {
 			CHECK_PATH,
 		} = await this.#getHomePaths()
 
-		const watcher = this.#opts.fs.watcher( Object.values( SUPPORT_PATH_WITHOUT_HOME ), {
+		const watcher = fs.watcher( Object.values( SUPPORT_PATH_WITHOUT_HOME ), {
 			preset    : true,
-			baseDir   : this.#opts.fs.baseDir.Home,
+			baseDir   : fs.baseDir.Home,
 			recursive : false,
 		} )
 
@@ -240,3 +237,4 @@ export class Reset {
 	}
 
 }
+export const reset = new Reset()

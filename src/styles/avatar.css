@@ -1,0 +1,16 @@
+.avatar {
+	@apply rounded-full bg-primary-950/50 p-0.5 flex items-center justify-center max-w-fit;
+	width: var(--avatar-width);
+	height: var(--avatar-height);
+}
+.avatar .fallback {
+	@apply opacity-50 flex object-contain p-0.5;
+	width: var(--avatar-width);
+	height: var(--avatar-height);
+}
+.avatar .fallback .icon {
+	@apply flex w-full h-full items-center justify-center min-h-full min-w-full max-w-full max-h-full;
+}
+.avatar img {
+	@apply rounded-full object-contain
+}

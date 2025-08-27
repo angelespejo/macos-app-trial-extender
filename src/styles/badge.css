@@ -11,5 +11,11 @@
 	@apply text-primary-300 bg-primary-600;
 }
 .badge--warning {
-	@apply text-yellow-500 bg-yellow-600;
+	@apply text-primary-200/80 bg-yellow-800;
+}
+.badge--error {
+	@apply text-primary-200/80 bg-red-800;
+}
+.badge--success {
+	@apply text-primary-200/80 bg-green-800/80;
 }

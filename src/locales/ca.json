@@ -1,4 +1,5 @@
 {
+	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"info": {
 		"title": "Informació",
 		"shortDesciption": "MATE és una aplicació que et permet restablir el període de prova d'aplicacions natives de macOS com Final Cut Pro o Logic Pro.",
@@ -26,6 +27,7 @@
 		"title": "Configuració",
 		"extendTitle": "Estendre la versió de prova",
 		"extendBtn": "Estendre",
+		"extendBtnRemoving": "Eliminant",
 		"extendBtnSuccess": "Éxit",
 		"automateTitle": "Automatització (beta)",
 		"automateDescription": "Manté automàticament la versió de prova el primer dia. Es recomana activar l'inici automàtic si està activat.",
@@ -69,5 +71,23 @@
 				"fail": "Error en reiniciar la versió de prova de Final Cut Pro"
 			}
 		}
+	},
+	"tray": {
+		"home": "Inici",
+		"more": "Més",
+		"open-page": "Obrir el tauler de control",
+		"reset": "Restableix les versions de prova",
+		"automate": "Automàtic",
+		"info": "Informació",
+		"support": "Donar",
+		"settings": "Configuració",
+		"feedback": "Feedback",
+		"quit": "Eixir",
+		"issues": "Reporta un problema"
+	},
+	"lang": {
+		"en": "English",
+		"es": "Español",
+		"ca": "Català"
 	}
 }

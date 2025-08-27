@@ -10,9 +10,17 @@ import adapter from '@sveltejs/adapter-static'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// compilerOptions : { experimental: { async: true } },
-	preprocess : {},
-	kit        : {
+	preprocess      : {},
+	compilerOptions : { runes: true },
+	vitePlugin      : { dynamicCompileOptions( {
+		filename, compileOptions,
+	} ) {
+
+		if ( filename.includes( 'node_modules' ) ) return { runes: undefined }
+		return compileOptions
+
+	} },
+	kit : {
 		adapter : adapter( {
 			pages    : 'build',
 			assets   : 'build',
@@ -24,7 +32,7 @@ const config = {
 			$core    : './src/core/index.svelte.ts',
 			$assets  : './src/lib/assets',
 			$styles  : './src/styles',
-			$i18n    : './src/lib/i18n',
+			$i18n    : './src/i18n',
 			// src    : 'src',
 		},
 	},

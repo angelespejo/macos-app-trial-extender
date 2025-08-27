@@ -1,5 +1,8 @@
 <script lang="ts">
 
+	import { m } from '$i18n/messages'
+	import Dot from '$lib/ui/dot.svelte'
+
 	import {
 		DATA,
 		PAGE_ID,
@@ -7,13 +10,12 @@
 	import { app } from '$core'
 	import {
 		Btn,
+		ICON_CLASS_AUTOMATE,
+		ICON_CLASS_CHECK,
+		ICON_CLASS_RESET,
 		TableCompatibleVersion,
-		faCheck,
-		faRefresh,
-		faRobot,
 	} from '$lib'
 
-	const dotClass  = ( active:boolean ) => `ml-2 w-1 h-1 p-1 flex rounded-full ${active ? 'shadow-dot bg-green-600 dark:bg-green-400 shadow-green-500/90' : 'bg-gray-500 dark:bg-gray-200'}`
 	const linkClass = 'text-primary-800 dark:text-primary-50 underline italic'
 	const btnClass  = 'text-primary-50 dark:text-primary-900'
 
@@ -34,12 +36,12 @@
 
 			<div class="mt-4 flex flex-cols gap-2">
 				<p class="!m-0  flex items-center text-xs">
-					<span class="opacity-80">{app.t( 'common.settings.automateTitle' )}</span>
-					<span class="{dotClass( app.settings.automate.current )}"></span>
+					<span class="opacity-80">{m['settings.automateTitle']()}</span>
+					<Dot active={app.settings.automate.current} />
 				</p>
 				<p class="!m-0 flex items-center text-xs">
-					<span class="opacity-80">{app.t( 'common.settings.notsTitle' )}</span>
-					<span class="{dotClass( app.settings.notification.current )}"></span>
+					<span class="opacity-80">{m['settings.notsTitle']()}</span>
+					<Dot active={app.settings.notification.current} />
 				</p>
 			</div>
 
@@ -47,42 +49,42 @@
 	</div>
 
 	<p>
-		{app.t( 'common.info.shortDesciption' )}
+		{m['info.shortDesciption']()}
 		<!-- <b>{DATA.PKG.extra.productName}</b> is an application that allows you to reset the trial period of native macos applications such as <b>{ffcut.name}</b> or <b>{lp.name}</b>. -->
 	</p>
 	<p>
-		{app.t( 'common.info.purposes' )}
+		{m['info.purposes']()}
 		<Btn
 			class={[ linkClass, 'pl-2' ]}
 			color="none"
 			href={PAGE_ID.info}
 		>
-			{app.t( 'common.btns.readMore' )}
+			{m['btns.readMore']()}
 		</Btn>
 	</p>
 	<div class="my-4 flex flex-col w-full gap-2">
 		<Btn
 			class={btnClass}
 			disabled={app.reset.isRemoving}
-			icon={app.reset.isRemoving ? faCheck : faRefresh}
+			icon={{ src: app.reset.isRemoving ? ICON_CLASS_CHECK : ICON_CLASS_RESET }}
 			onclick={() => app.reset.removeFiles()}
 		>
 			{#if app.reset.isRemoving}
-				{app.t( 'common.home.resetBtnSucces' )}
+				{m['home.resetBtnSucces']()}
 			{:else}
-				{app.t( 'common.home.resetBtn' )}
+				{m['home.resetBtn']()}
 			{/if}
 		</Btn>
 		<Btn
 			class={btnClass}
 			color="dark"
-			icon={faRobot}
+			icon={{ src: ICON_CLASS_AUTOMATE }}
 			onclick={() => app.settings.automate.current = !app.settings.automate.current}
 		>
 			{#if !app.settings.automate.current}
-				{app.t( 'common.home.automationBtn' )}
+				{m['home.automationBtn']()}
 			{:else}
-				{app.t( 'common.home.automationBtnDesactive' )}
+				{m['home.automationBtnDesactive']()}
 			{/if}
 		</Btn>
 	</div>
@@ -95,7 +97,7 @@
 				color="none"
 				href={PAGE_ID.info}
 			>
-				{app.t( 'common.info.aboutTitle' )}
+				{m['info.aboutTitle']()}
 			</Btn>
 
 			<Btn
@@ -103,7 +105,7 @@
 				color="none"
 				href={PAGE_ID.info + '#' + PAGE_ID.infoHow}
 			>
-				{app.t( 'common.info.howTitle' )}
+				{m['info.howTitle']()}
 			</Btn>
 
 			<Btn
@@ -111,18 +113,18 @@
 				color="none"
 				href={PAGE_ID.settings}
 			>
-				{app.t( 'common.settings.title' )}
+				{m['settings.title']()}
 			</Btn>
 
 		</div>
 		<div class="my-4">
 			<p class="ml-0 text-xs">
-				<b>{app.t( 'common.home.tableTitle' )}</b>
+				<b>{m['home.tableTitle']()}</b>
 			</p>
 			<TableCompatibleVersion />
 		</div>
 
-		<div class="flex justify-end mb-2">
+		<div class="flex justify-end my-4">
 			<Btn
 				class={linkClass}
 				color="none"
@@ -136,7 +138,7 @@
 				color="none"
 				href={DATA.PKG.bugs.url}
 			>
-				{app.t( 'common.btns.foundIssues' )}
+				{m['btns.foundIssues']()}
 			</Btn>
 		</div>
 

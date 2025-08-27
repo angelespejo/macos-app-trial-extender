@@ -6,6 +6,6 @@ import type {
 
 export type BadgeContentProps = {
 	children? : Snippet
-	type?     : 'warning' | 'primary' | 'secondary' | 'tertiary'
+	type?     : 'warning' | 'primary' | 'secondary' | 'tertiary' | 'error' | 'success'
 	link?     : HTMLAnchorAttributes
 } & HTMLAttributes<HTMLSpanElement>

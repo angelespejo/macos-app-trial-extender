@@ -11,6 +11,16 @@ svg:focus {
     outline: none;
 }
 
+/* Theme */
+:root {
+	@apply selection:bg-primary-800 selection:text-primary-50 font-sans bg-primary-950;
+	--theme-radius: 1rem;
+}
+
+.theme-radius {
+	border-radius: 1rem !important; /* 16px */
+}
+
 html::view-transition-old(main) {
   animation-name: -ua-view-transition-fade-out;
   animation-duration: inherit;
@@ -44,24 +54,42 @@ html::view-transition-new(main) {
 
 /* PARAGRAPHS, HEADING */
 h1 {
-	@apply font-bold text-4xl sm:text-3xl md:text-5xl text-primary-800 dark:text-primary-50;
+	@apply font-bold text-4xl sm:text-3xl md:text-5xl text-primary-50;
 }
 h2 {
-	@apply font-extrabold text-xl text-primary-800 dark:text-primary-50;
+	@apply font-extrabold text-xl text-primary-50;
 }
 h3 {
-	@apply font-extrabold text-[25px] text-primary-900 dark:text-primary-50;
+	@apply font-extrabold text-[25px] text-primary-50;
 }
 h4 {
-@apply font-extrabold text-[25px] text-primary-950 dark:text-primary-300;
+@apply font-extrabold text-[25px] text-primary-300;
 }
 h5 {
-@apply font-extrabold text-[25px] text-primary-950 dark:text-primary-200;
+@apply font-extrabold text-[25px] text-primary-200;
 }
 h6 {
-@apply font-extrabold text-[25px] text-primary-950 dark:text-primary-200;
+@apply font-extrabold text-[25px] text-primary-200;
 }
 p {
-	@apply text-primary-900/80 dark:text-primary-100/50 m-2 opacity-50 text-md;
+	@apply text-primary-100/50 m-2 opacity-50 text-md;
 }
 
+.spinner {
+  border: 4px solid;
+  animation: spin 1s ease infinite;
+  @apply b-primary-800 b-l-primary-50 w-10 h-10 rounded-full;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.item-info {
+	@apply flex !justify-between w-full p-2 text-xs text-primary-50 bg-primary-800/40 hover:bg-primary-800/60 hover:shadow-lg;
+}

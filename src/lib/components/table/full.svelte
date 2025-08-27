@@ -1,38 +1,35 @@
 <script lang="ts">
 
-	import {
-		TableBodyCell,
-		TableBodyRow,
-		TableHeadCell,
-	} from 'flowbite-svelte'
-
 	import Body      from './body.svelte'
+	import Data from './data.svelte'
 	import Head      from './head.svelte'
 	import Root      from './root.svelte'
+	import Row from './row.svelte'
 
 	type Items = {
 		head : string[]
 		cell : ( string[] )[]
 	}
-	export let items: Items
+	let { items }: { items: Items } = $props()
 
 </script>
 
 <Root>
-
 	<Head>
-		{#each items.head as head}
-			<TableHeadCell>{head}</TableHeadCell>
-		{/each}
+		<Row>
+			{#each items.head as head}
+				<Data>{head}</Data>
+			{/each}
+		</Row>
 	</Head>
 
 	<Body>
 		{#each items.cell as row}
-			<TableBodyRow>
+			<Row>
 				{#each row as cell}
-					<TableBodyCell>{cell}</TableBodyCell>
+					<Data>{cell}</Data>
 				{/each}
-			</TableBodyRow>
+			</Row>
 		{/each}
 	</Body>
 
