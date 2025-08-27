@@ -1,6 +1,6 @@
 [package]
 	name = "mate"
-	version = "0.2.4"
+	version = "1.0.0"
 	description = "Extend the trial time for macos apps like logicpro or finalcutpro"
 	authors = [ "angelo <angelo@pigeonpossse.com>" ]
 	license = "gpl-3"
