@@ -10,4 +10,4 @@
 # Run linters against staged git files and don't let 💩 slip into your code base!
 pnpm dovenv lint staged --silent
 
-# exec < /dev/tty && node_modules/.bin/cz --hook || true
+

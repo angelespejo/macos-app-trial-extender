@@ -1,5 +1,5 @@
 [toolchain]
-	channel = "1.82.0"  # Fixed version
+	channel = "1.89.0"  # Fixed version
 	targets = [
 		"aarch64-apple-darwin",
 		"x86_64-apple-darwin" 
@@ -9,3 +9,4 @@
 		"rustfmt",
 		"clippy" 
 	]
+	

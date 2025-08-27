@@ -1,0 +1,94 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"info": {
+		"title": "Info",
+		"shortDesciption": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
+		"purposes": "This application is for development purposes only.",
+		"aboutTitle": "About project",
+		"aboutDescription": "This app caters to developers and testers who may have exceeded trial deadlines and need to reset the timer to zero, enabling them to continue testing the app or further refining their plugins.",
+		"aboutAlert": "For unlimited access to any macOS program, it's essential to obtain it through the Apple Store, either by downloading it for free or purchasing it if required.",
+		"howTitle": "How it works",
+		"contributors": "Contributors",
+		"howDescription": "This application is responsible for automating a process that normally requires manual intervention in the Terminal. When you run it, it deletes the \"userdata\" files from the directories corresponding to each application in ~/Library/Application Support. These files are responsible for storing data related to the trial expiration date of each application.",
+		"howResume": "In short, this application simplifies and automates a process that would normally require manual use of the Terminal for each application individually."
+	},
+	"home": {
+		"title": "Main",
+		"automationBtn": "Activate automation",
+		"automationBtnDesactive": "Deactivate automation",
+		"resetBtnSucces": "Successed reset trial versions",
+		"resetBtn": "Click to reset trial versions",
+		"tableTitle": "Compatible with:",
+		"tableSoftware": "Software",
+		"tableFrom": "Version",
+		"tableTo": "Tested to"
+	},
+	"settings": {
+		"title": "Settings",
+		"extendTitle": "Extend trial version",
+		"extendBtn": "Extend",
+		"extendBtnSuccess": "Success",
+		"extendBtnRemoving": "Removing",
+		"automateTitle": "Automation",
+		"automateDescription": "Automatically maintains the trial version on the first day. It is recommended to activate autostart if this is activated",
+		"automateBtnActivate": "Activate",
+		"automateBtnDeactivate": "Deactivate",
+		"themeTitle": "Theme",
+		"generalTitle": "General",
+		"notsTitle": "Notification",
+		"notsDescription": "If it is activated, notifications will appear when the trial version is extended.",
+		"autostartTitle": "Autostart",
+		"autostartDescription": "makes the application start automatically when you log in.",
+		"languageTitle": "Language"
+	},
+	"btns": {
+		"foundIssues": "Do you found any issues?",
+		"goHome": "Go Home",
+		"readMore": "Read more",
+		"viewMore": "View more",
+		"opensource": "Open Source",
+		"free": "Free",
+		"sendIssue": "Send issues",
+		"name": "Name",
+		"version": "Version",
+		"license": "License",
+		"author": "Author",
+		"homepage": "homepage",
+		"funding": "Funding",
+		"bugs": "Bugs"
+	},
+	"nots": {
+		"reset": {
+			"general": {
+				"success": "Trial versions reset",
+				"fail": "Error resetting trial versions"
+			},
+			"logic": {
+				"success": "Logic Pro trial version reset",
+				"fail": "Error resetting the Logic Pro trial version"
+			},
+			"fcp": {
+				"success": "Final Cut Pro trial version reset",
+				"fail": "Error resetting the Final Cut Pro trial version"
+			}
+		}
+	},
+	"tray": {
+		"home": "Home",
+		"more": "More",
+		"open-page": "Open Dashboard",
+		"reset": "Reset Trial versions",
+		"automate": "Automatic",
+		"info": "About",
+		"support": "Donate",
+		"settings": "Settings",
+		"feedback": "Feedback",
+		"issues": "Report an issue",
+		"quit": "Quit"
+	},
+	"lang": {
+		"en": "English",
+		"es": "Español",
+		"ca": "Català"
+	}
+}

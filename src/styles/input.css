@@ -1,0 +1,70 @@
+/**
+ * TOOGLE
+*/
+.toggle {
+	@apply flex items-center justify-start w-10 bg-primary-800 h-6 p-1 cursor-pointer;
+	border-radius: var(--theme-radius);
+}
+.toggle .toggle--point {
+	@apply w-4 h-4 bg-primary-500;
+	border-radius: var(--theme-radius);
+}
+.toggle.checked {
+	justify-content: flex-end;
+	@apply bg-primary-500;
+}
+.toggle.checked .toggle--point{
+	@apply bg-primary-100;
+}
+
+/**
+ * SELECT
+ */
+.select {
+	@apply px-3 py-2 text-xs appearance-none cursor-pointer text-center flex justify-center items-center
+	bg-primary-800 text-primary-100;
+	text-align-last: center;
+	-moz-text-align-last: center;
+	border-radius: var(--theme-radius);
+}
+.select:focus {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-1;
+}
+
+.select:disabled {
+  @apply bg-primary-700 text-primary-400 cursor-not-allowed;
+}
+.select.error {
+  @apply border-red-500 text-red-400;
+}
+
+/**
+ * BUTTONS
+*/
+.button[disabled]{
+	@apply cursor-auto
+}
+.button {
+	@apply cursor-pointer text-center focus-within:ring-4 focus-within:outline-none font-bold inline-flex items-center justify-center px-3 py-2 text-xs 
+	transition duration-150 ease-in-out
+	text-primary-100 
+}
+
+.button--dark {
+	@apply bg-primary-800/50 hover:bg-primary-700/80 focus-within:ring-primary-900;
+}
+.button--dark.button--shadow {
+	@apply shadow-btn shadow-primary-600/50;
+}
+.button--dark[data-active] {
+	@apply bg-primary-700/80;
+}
+.button--primary {
+	@apply bg-primary-600 hover:bg-primary-500 focus-within:ring-primary-800;
+}
+.button--primary.button--shadow {
+	@apply shadow-btn shadow-primary-500/50;
+}
+.button--primary[data-active] {
+	@apply bg-primary-500;
+}

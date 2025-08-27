@@ -1,32 +1,41 @@
+////////////////////////////////////////////////
 // See https://kit.svelte.dev/docs/types#app
-
-import type { Members } from '../.dovenv/types'
-
 // for information about these interfaces
+////////////////////////////////////////////////
+
 declare global {
+
+	////////////////////////////////////////////////
+	// APP
+	////////////////////////////////////////////////
 	namespace App {
-		/**
-		 * FOR GLOUDFLARE
-		 *
-		 * @see https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site/
-		 */
-		// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-		interface Locals {}
-		// interface Platform {
-		// 	env: {
-		// 		COUNTER: DurableObjectNamespace;
-		// 	};
-		// 	context: {
-		// 		waitUntil(promise: Promise<any>): void;
-		// 	};
-		// 	caches: CacheStorage & { default: Cache }
+		interface Locals { lang: string }
+		// interface Error {
+		// 	data : object | undefined
+		// 	id   : string
 		// }
-		// interface Session {}
-		// interface Stuff {}
+		// interface PageData {}
+		// interface PageState {}
+		// interface Platform {}
 	}
-	declare const PKG: typeof import( '../package.json' )
-	declare const CONTRIBUTORS: Members
-	declare const APP_INFORMATION: typeof import( '../.dovenv/app.info' ).default
+
+	////////////////////////////////////////////////
+	// VIEW TRANSITIONS
+	// @see https://svelte.dev/blog/view-transitions
+	////////////////////////////////////////////////
+	interface ViewTransition {
+		updateCallbackDone : Promise<void>
+		ready              : Promise<void>
+		finished           : Promise<void>
+		skipTransition     : () => void
+	}
+	// eslint-disable-next-line @typescript-eslint/method-signature-style
+	interface Document { startViewTransition( updateCallback: () => Promise<void> ): ViewTransition }
+
+	////////////////////////////////////////////////
+	// VARIABLES
+	////////////////////////////////////////////////
+	declare const APP_DATA: typeof import( '../vite.config' ).APP_DATA
 }
 
 export {}

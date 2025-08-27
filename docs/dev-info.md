@@ -63,6 +63,18 @@ pnpm add-test
 
 See the list of everyone in this [section](<todo/v1>)
 
+## App icon in development
+
+Is probably that the app icon is **not visible in development**, if you want to see it, you have to build app locally.
+
+## Permissions in development
+
+The request for elevated permissions in the app doesn't work in development, but everything works perfectly in production.
+
+It's likely that files in `~/Library/Containers/com.apple.FinalCutTrial/Data/Library/Application Support/` won't be deleted in development.
+
 ---
 
 You are ready to develop! 🐦💜
+
+

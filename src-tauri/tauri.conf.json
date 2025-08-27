@@ -1,103 +1,73 @@
 {
-	"$schema": "https://schema.tauri.app/config/1.5.4",
+	"$schema": "https://schema.tauri.app/config/2.8.2",
 	"build": {
 		"beforeDevCommand": "pnpm dev:web",
 		"beforeBuildCommand": "pnpm build:web",
-		"devPath": "http://localhost:13129",
-		"distDir": "../build",
-		"withGlobalTauri": false
+		"frontendDist": "../build",
+		"devUrl": "http://localhost:13129",
+		"removeUnusedCommands": false
 	},
-	"package": {
-		"productName": "MATE",
-		"version": "0.2.4"
+	"bundle": {
+		"active": true,
+		"targets": [
+			"app",
+			"dmg"
+		],
+		"copyright": "Licensed under GPL-3.0.",
+		"longDescription": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
+		"shortDescription": "MacOS App Trial Extender",
+		"category": "DeveloperTool",
+		"macOS": {
+			"minimumSystemVersion": "10.13",
+			"signingIdentity": "-"
+		},
+		"icon": [
+			"icons/32x32.png",
+			"icons/128x128.png",
+			"icons/128x128@2x.png",
+			"icons/icon.icns",
+			"icons/icon.ico"
+		],
+		"licenseFile": "../LICENSE",
+		"createUpdaterArtifacts": "v1Compatible"
 	},
-	"tauri": {
-		"systemTray": {
-			"iconPath": "icons/tray-icon.png",
-			"iconAsTemplate": true
-		},
-		"allowlist": {
-			"all": false,
-			"fs": {
-				"all": false,
-				"writeFile": true,
-				"removeFile": true,
-				"exists": true,
-				"scope": [
-					"$HOME/Library/Application Support/*",
-					"$HOME/Library/Application Support/.*",
-					"$HOME/Library/Containers/*"
-				]
-			},
-			"path": {
-				"all": true
-			},
-			"shell": {
-				"open": true
-			},
-			"notification": {
-				"all": true
-			},
-			"dialog": {
-				"all": false,
-				"ask": true,
-				"confirm": true
-			},
-			"window": {
-				"all": false,
-				"startDragging": true
-			}
-		},
-		"bundle": {
-			"active": true,
-			"targets": [
-				"app",
-				"dmg",
-				"updater"
-			],
-			"copyright": "Licensed under GPL-3.0.",
-			"longDescription": "MATE is an application that allows you to reset the trial period of native macos applications such as Final Cut Pro or Logic Pro.",
-			"shortDescription": "MacOS App Trial Extender",
-			"category": "DeveloperTool",
-			"identifier": "com.angelespejo.mate",
-			"icon": [
-				"icons/32x32.png",
-				"icons/128x128.png",
-				"icons/128x128@2x.png",
-				"icons/icon.icns",
-				"icons/icon.ico"
-			],
-			"macOS": {
-				"minimumSystemVersion": "10.13",
-				"license": "../LICENSE",
-				"signingIdentity": "-"
-			}
-		},
+	"productName": "MATE",
+	"mainBinaryName": "MATE",
+	"version": "0.2.4",
+	"identifier": "com.angelespejo.mate",
+	"plugins": {
 		"updater": {
-			"active": true,
-			"dialog": true,
 			"endpoints": [
 				"https://github.com/angelespejo/macos-app-trial-extender/releases/latest/download/latest.json"
 			],
 			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEEwOTY5OTQxRkVCNjE5QjkKUldTNUdiYitRWm1Xb0R6SW9RcEg2aTZ6M0lFNlQyeEtFeWZmeVZ3YU9HNk9ldFNCaWlvOFZnTjEK"
 		},
-		"security": {
-			"csp": null
-		},
-		"macOSPrivateApi": true,
+		"fs": {
+			"requireLiteralLeadingDot": false
+		}
+	},
+	"app": {
 		"windows": [
 			{
 				"fullscreen": false,
 				"resizable": true,
-				"transparent": true,
-				"titleBarStyle": "Overlay",
 				"title": "",
+				"titleBarStyle": "Overlay",
 				"width": 450,
 				"minWidth": 800,
-				"maxWidth": 800,
 				"height": 600,
-				"minHeight": 400
+				"minHeight": 400,
+				"useHttpsScheme": true
 			}
-		]
+		],
+		"trayIcon": {
+			"id": "main",
+			"iconPath": "../docs/icon-tray.png",
+			"iconAsTemplate": true
+		},
+		"withGlobalTauri": false,
+		"security": {
+			"csp": null
+		}
 	}
 }

@@ -1,0 +1,236 @@
+
+@font-face {
+	font-family: chicago;
+	font-style: normal;
+	font-weight: 200 700;
+	font-display: swap;
+	src: url("/chicago.woff2");
+}
+
+
+/* Theme */
+:root {
+	@apply selection:bg-primary-800 selection:text-primary-50;
+	--theme-radius: 1rem;
+	--logic-color: #007AFF;
+	--finalcut-color: #6363ff;
+	--macintosh-color: #111;
+}
+
+.theme-radius {
+	border-radius: var(--theme-radius); 
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Transitions */
+html::view-transition-old(main) {
+  animation-name: -ua-view-transition-fade-out;
+  animation-duration: inherit;
+  animation-fill-mode: inherit;
+}
+
+html::view-transition-new(main) {
+  animation-name: -ua-view-transition-fade-in;
+  animation-duration: inherit;
+  animation-fill-mode: inherit;
+}
+::view-transition-old(main),
+::view-transition-new(main) {
+  animation-duration: 1s;
+}
+
+/* PARAGRAPHS, HEADING */
+h1 {
+	@apply font-900 text-4xl sm:text-3xl md:text-5xl text-primary-50 ;
+}
+h2 {
+	@apply font-extrabold text-xl text-primary-50;
+}
+h3 {
+	@apply font-extrabold text-[25px] text-primary-50;
+}
+h4 {
+@apply font-extrabold text-[25px] text-primary-300;
+}
+h5 {
+@apply font-extrabold text-[25px] text-primary-200;
+}
+h6 {
+@apply font-extrabold text-[25px] text-primary-200;
+}
+p {
+	@apply text-primary-100/50 m-2 opacity-50 text-md;
+}
+
+/* UI ELEMENTS*/
+.app {
+	@apply h-screen w-full flex flex-row items-center justify-between 
+	bg-primary-950 text-primary-50/80
+	transition-all duration-500 ease-in-out;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro";
+}
+.app .content {
+	@apply w-full h-screen flex flex-col p-8 
+	bg-primary-800/20 shadow-primary-700/10;
+	border-end-start-radius: var(--theme-radius); 
+	border-start-start-radius: var(--theme-radius); 
+}
+.app[data-theme="minimal"] {
+	--colors-primary-50: #f9f9f9;
+	--colors-primary-100: #f6f6f6;
+	--colors-primary-200: #ebebeb;
+	--colors-primary-300: #e2e2e2;
+	--colors-primary-400: #dadada;
+	--colors-primary-500: #d1d1d1;
+	--colors-primary-600: #c6c6c6;
+	--colors-primary-700: #bebebe;
+	--colors-primary-800: #b6b6b6;
+	--colors-primary-900: #aeaeae;
+	--colors-primary-950: #f6f6f6;
+	--theme-radius: 0px !important;
+	font-family: chicago;
+
+	h1,h2, h3, h4, h5, p, a, span, 
+	button, 
+	.section--config, 
+	select,
+	table,
+	.section--header .icon {
+		color: var(--macintosh-color);
+	}
+	.section--config:hover, .item-info:hover {
+		box-shadow:none !important;
+	}
+	.avatar {
+		@apply bg-transparent
+	}
+	.toggle.checked,
+	.dot[data-active=false] {
+		background-color: var(--macintosh-color);
+	}
+}
+
+.app[data-theme="logic"] {
+	--theme-radius: 6px;
+	font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+	.header {
+		@apply bg-primary-900;
+	}
+	.content {
+		border-radius: 0 !important;
+		@apply bg-primary-950 !border-l !border-primary-50/20;
+	}
+	.section--config:hover {
+		box-shadow:none !important;
+	}
+	
+	.avatar[data-fallback=true], .button--sidebar--icon-with-title {
+		@apply bg-transparent !important;
+	}
+	.button:not(.button--none),
+	.button--sidebar, 
+	.select, 
+	.toggle,
+	.toggle--point, 
+	.badge,
+	.section--config,
+	table,
+	.item-info  {
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3),  inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+	}
+	.toggle.checked {
+		background-color: var(--logic-color);
+	}
+		.button--sidebar[data-active=true]{
+		@apply text-primary-50;
+		background-color: var(--logic-color) !important;
+	}
+}
+
+.app[data-theme="finalcut"] {
+	--colors-primary-950: #1b1b1bff;
+	--theme-radius: 6px;
+	font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+	.section--config:hover {
+		box-shadow:none !important;
+	}
+	.avatar[data-fallback=true], .button--sidebar--icon-with-title {
+		@apply bg-transparent !important;
+	}
+	.header {
+		@apply bg-primary-900/20 !important;
+	}
+	.content {
+		border-radius: 0 !important;
+		@apply bg-primary-950 border-l  border-primary-800/60;
+	}
+	.button:not(.button--none):not(.section--config--content--info-btn),
+	.select, 
+	.toggle,
+	.toggle--point, 
+	.badge,
+	.section--config,
+	table,
+	.item-info  {
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3),  inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+	}
+	.toggle.checked {
+		background-color: var(--finalcut-color);
+	}
+	.section--config--content--info-btn {
+		background-color: transparent !important;
+		box-shadow: none !important;
+		&[data-active="true"] {
+			color: var(--finalcut-color);
+		}
+	}
+	.button--sidebar[data-active=true]{
+		@apply text-primary-50;
+		background-color: var(--finalcut-color) !important;
+	}
+}
+
+.header {
+	@apply h-full w-full max-w-[200px] flex flex-col items-start justify-between py-8 px-4
+}
+.footer {
+	@apply flex justify-end;
+	> p {
+		@apply opacity-50 !m-0 !mt-2 text-xs;
+	}
+}
+
+/* Custom clasess */
+.spinner {
+  border: 4px solid;
+  animation: spin 1s ease infinite;
+  @apply b-primary-800 b-l-primary-50 w-10 h-10 rounded-full;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes changeHue {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+}
+.change-hue {
+    animation: changeHue 5s linear infinite;
+}
+.hover-change-hue:hover {
+    animation: changeHue 5s linear infinite;
+}

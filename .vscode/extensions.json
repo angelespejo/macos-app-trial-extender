@@ -12,10 +12,8 @@
 	*/
 	"recommendations": [
 		"svelte.svelte-vscode",
-		"davidanson.vscode-markdownlint",
 		"dbaeumer.vscode-eslint",
 		"nhoizey.gremlins",
-		"christian-kohler.npm-intellisense",
 		"csstools.postcss",
 		"bradlc.vscode-tailwindcss",
 		"redhat.vscode-yaml",
@@ -27,5 +25,6 @@
 		"tamasfe.even-better-toml",
 		"github.vscode-github-actions",
 		"vscjava.vscode-gradle",
+		"inlang.vs-code-extension"
 	]
 }

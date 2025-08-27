@@ -1,0 +1,10 @@
+
+.section .section--content {
+	@apply my-2 flex flex-col gap-2
+}
+.section .section--header {
+	@apply w-full flex justify-between
+}
+.section .section--header .icon {
+	@apply opacity-25 text-primary-50
+}

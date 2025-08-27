@@ -1,0 +1,94 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"info": {
+		"title": "Información",
+		"shortDesciption": "MATE es una aplicación que te permite restablecer el período de prueba de aplicaciones nativas de macOS como Final Cut Pro o Logic Pro.",
+		"purposes": "Esta aplicación es solo para fines de desarrollo.",
+		"aboutTitle": "Acerca de",
+		"aboutDescription": "Esta aplicación está dirigida a desarrolladores y testers que pueden haber superado los plazos de prueba y necesitan restablecer el temporizador a cero, lo que les permite seguir probando la aplicación o perfeccionar aún más sus complementos (plugins).",
+		"aboutAlert": "Para acceder ilimitadamente a cualquier programa de macOS, es esencial obtenerlo a través de la App Store de Apple, ya sea descargándolo de forma gratuita o comprándolo si es necesario.",
+		"howTitle": "Cómo funciona",
+		"contributors": "Contribuidores",
+		"howDescription": "Esta aplicación se encarga de automatizar un proceso que normalmente requiere intervención manual en la Terminal. Cuando lo ejecutas, elimina los archivos \"userdata\" de los directorios correspondientes a cada aplicación en ~/Library/Application Support. Estos archivos son responsables de almacenar datos relacionados con la fecha de vencimiento de la prueba de cada aplicación.",
+		"howResume": "En resumen, esta aplicación simplifica y automatiza un proceso que normalmente requeriría el uso manual de la Terminal para cada aplicación individualmente."
+	},
+	"home": {
+		"title": "Principal",
+		"automationBtn": "Activar automatización",
+		"automationBtnDesactive": "Desactivar automatización",
+		"resetBtnSucces": "Éxito al restablecer las versiones de prueba",
+		"resetBtn": "Haz clic para restablecer las versiones de prueba",
+		"tableTitle": "Compatible con:",
+		"tableSoftware": "Software",
+		"tableFrom": "Versión",
+		"tableTo": "Probado hasta"
+	},
+	"settings": {
+		"title": "Configuración",
+		"extendTitle": "Extender la versión de prueba",
+		"extendBtnSuccess": "Éxito",
+		"extendBtnRemoving": "Eliminando",
+		"extendBtn": "Extender",
+		"automateTitle": "Automatización",
+		"automateDescription": "Mantiene automáticamente la versión de prueba el primer día. Se recomienda activar el inicio automático si está activado.",
+		"automateBtnActivate": "Activar",
+		"automateBtnDeactivate": "Desactivar",
+		"generalTitle": "General",
+		"themeTitle": "Tema",
+		"notsTitle": "Notificaciones",
+		"notsDescription": "Si está activado, aparecerán notificaciones cuando se extienda la versión de prueba.",
+		"autostartTitle": "Inicio automático",
+		"autostartDescription": "Hace que la aplicación se inicie automáticamente cuando inicias sesión.",
+		"languageTitle": "Idioma"
+	},
+	"btns": {
+		"foundIssues": "¿Encontraste algún problema?",
+		"goHome": "Ir a la página principal",
+		"readMore": "Leer más",
+		"viewMore": "Ver más",
+		"opensource": "Código abierto",
+		"free": "Gratis",
+		"sendIssue": "Enviar problemas",
+		"name": "Nombre",
+		"version": "Versión",
+		"license": "Licencia",
+		"author": "Autor",
+		"homepage": "Repositorio",
+		"funding": "Donar",
+		"bugs": "Errores"
+	},
+	"nots": {
+		"reset": {
+			"general": {
+				"success": "Reseteadas las versiones de prueba",
+				"fail": "Error al restablecer las versiones de prueba"
+			},
+			"logic": {
+				"success": "Reseteada la version de prueba de Logic Pro",
+				"fail": "Error al restablecer la version de prueba de Logic Pro"
+			},
+			"fcp": {
+				"success": "Reseteada la version de prueba de Final Cut Pro",
+				"fail": "Error al restablecer la version de prueba de Final Cut Pro"
+			}
+		}
+	},
+	"tray": {
+		"home": "Inicio",
+		"more": "Más",
+		"open-page": "Abrir panel de control",
+		"reset": "Restablecer las versiones de prueba",
+		"automate": "Automatico",
+		"info": "Información",
+		"support": "Donar",
+		"settings": "Configuración",
+		"feedback": "Feedback",
+		"quit": "Salir",
+		"issues": "Reportar un problema"
+	},
+	"lang": {
+		"en": "English",
+		"es": "Español",
+		"ca": "Català"
+	}
+}

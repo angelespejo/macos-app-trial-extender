@@ -5,19 +5,38 @@
  * @see https://vitejs.dev/config/
  */
 
+import { paraglideVitePlugin } from '@inlang/paraglide-js'
+import unocss                  from '@svaio/unocss'
+import {
+	transformerDirectives,
+	extractorSvelte,
+	presetWind4,
+	presetIcons,
+} from '@svaio/unocss/utils'
 import { sveltekit }    from '@sveltejs/kit/vite'
 import { internalIpV4 } from 'internal-ip'
-import { defineConfig } from 'vite'
+import {
+	defineConfig,
+	type UserConfig,
+} from 'vite'
 
-import appInfo    from './.dovenv/app.info'
-import { member } from './.dovenv/contributors'
-import pkg        from './package.json' with { type: 'json' }
+import appInfo from './.dovenv/app.info'
+import {
+	member,
+	role,
+} from './.dovenv/contributors'
+import pkg       from './package.json' with { type: 'json' }
+import { theme } from './src/styles/theme'
+import tauriConf from './src-tauri/tauri.conf.json' with { type: 'json' }
+
+import type { Members } from './.dovenv/types'
 
 // @ts-expect-error process is a nodejs global
 const mobile = !!/android|ios/.exec( process.env.TAURI_ENV_PLATFORM )
 const host   = await internalIpV4()
 const port   = 13129 // important for match with tauri.config.json
-const server = {
+
+const server: UserConfig['server'] = {
 	port,
 	strictPort : true,
 	host       : mobile ? '0.0.0.0' : false,
@@ -28,17 +47,57 @@ const server = {
 			port,
 		}
 		: undefined,
+	fs : { allow: [ 'src-tauri/icons', 'docs' ] },
+}
+
+export const APP_DATA = {
+	PKG                : pkg,
+	CONTRIBUTORS_ROLES : role,
+	CONTRIBUTORS       : member as Members,
+	APP_INFORMATION    : appInfo,
+	TAURI_CONFIG       : tauriConf,
 }
 
 export default defineConfig( {
-	plugins : [ sveltekit() ],
+	plugins : [
+		unocss( {
+			theme,
+			presets : [
+				presetWind4( {
+					dark       : 'media',
+					preflights : {
+						reset : true,
+						theme : 'on-demand',
+					},
+				} ),
+				presetIcons( {
+					prefix      : 'i-',
+					collections : {
+						'fa7-solid'  : () => import( '@iconify-json/fa7-solid/icons.json' ).then( i => i.default ),
+						'fa7-brands' : () => import( '@iconify-json/fa7-brands/icons.json' ).then( i => i.default ),
+					},
+					extraProperties : {
+						'display'        : 'inline-block',
+						'vertical-align' : 'middle',
+					},
+				} ),
+			],
+			content      : { pipeline: { include: [ /\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/, 'src/**/*.{js,ts}' ] } },
+			extractors   : [ extractorSvelte() ],
+			transformers : [ transformerDirectives() ],
+		} ),
+		sveltekit(),
+		paraglideVitePlugin( {
+			cleanOutdir     : true,
+			project         : './.dovenv/project.inlang',
+			outdir          : './src/i18n',
+			additionalFiles : { 'eslint.config.js': `export default [ { ignores : [ '*' ] } ]` },
+			strategy        : [ 'url', 'baseLocale' ],
+		} ),
+	],
 	server,
-	preview : server,
-	define  : {
-		PKG             : pkg,
-		CONTRIBUTORS    : member,
-		APP_INFORMATION : appInfo,
-	},
+	preview   : server,
+	define    : { APP_DATA },
 	envPrefix : [
 		'VITE_',
 		'TAURI_PLATFORM',
