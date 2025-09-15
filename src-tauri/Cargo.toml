@@ -8,10 +8,10 @@
 	edition = "2021"
 
 [build-dependencies]
-	tauri-build = { version = "2.4.0", features = [] }
+	tauri-build = { version = "2.4.1", features = [] }
 
 [dependencies]
-	tauri = { version = "2.8.4", features = [
+	tauri = { version = "2.8.5", features = [
 		"tray-icon",
 		"image-ico",
 		"image-png",
@@ -21,14 +21,14 @@
 
 	# Tauri dependencies and plugins
 	tauri-plugin-single-instance = "2.3.3"
-	tauri-plugin-dialog = "2.3.3"
+	tauri-plugin-dialog = "2.4.0"
 	tauri-plugin-fs = { version = "2.4.2", features = [ "watch" ] }
 	tauri-plugin-notification = "2.3.1"
 	tauri-plugin-updater = "2.9.0"
 	tauri-plugin-shell = "2.3.1"
 	tauri-plugin-os = "2.3.1"
 	tauri-plugin-autostart = "2.5.0"
-	tauri-plugin-log = "2.6.0"
+	tauri-plugin-log = "2.7.0"
 	tauri-plugin-store = "2.4.0"
 
 [features]
