@@ -82,14 +82,14 @@
 		"@release-it/bumper": "7.0.5",
 		"@svaio/unocss": "0.0.11",
 		"@sveltejs/adapter-static": "3.0.9",
-		"@sveltejs/kit": "~2.39.1",
+		"@sveltejs/kit": "~2.42.1",
 		"@tauri-apps/cli": "2.8.4",
-		"@types/node": "~24.4.0",
+		"@types/node": "~24.5.1",
 		"acorn": "8.15.0",
 		"acorn-walk": "8.3.4",
 		"auto-changelog": "2.5.0",
 		"eslint": "~9.35.0",
-		"internal-ip": "8.0.0",
+		"internal-ip": "8.0.1",
 		"release-it": "19.0.4",
 		"svelte": "~5.38.10",
 		"svelte-check": "~4.3.1",
@@ -97,7 +97,7 @@
 		"typescript": "~5.9.2",
 		"vite": "~7.1.5"
 	},
-	"packageManager": "pnpm@10.16.1",
+	"packageManager": "pnpm@10.17.0",
 	"engines": {
 		"node": ">=20.0.0",
 		"pnpm": ">=8.10.0"
