@@ -22,7 +22,7 @@
 ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝                                                    
                                                                                                             
                                                 
-VERSION: 	1.0.3 
+VERSION: 	1.0.4 
 REPOSITORY: https://github.com/angelespejo/macos-app-trial-extender
 AUTHORS: 
 	- Angelo (https://github.com/angelespejo)
