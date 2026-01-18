@@ -23,6 +23,11 @@ export const data = {
 				osVersion  : '15.6',
 				user       : [ 'angelo' ],
 			},
+			{
+				appVersion : '11.1.1',
+				osVersion  : '26.2',
+				user       : [ 'angelo' ],
+			},
 		],
 	},
 	logicpro : {
@@ -41,6 +46,11 @@ export const data = {
 				referenceUrl : 'https://github.com/angelespejo/macos-app-trial-extender/pull/1#issuecomment-3172794529',
 				osVersion    : '15.6',
 				user         : [ 'angelo' ],
+			},
+			{
+				appVersion : '11.1.2',
+				osVersion  : '26.2',
+				user       : [ 'angelo' ],
 			},
 		],
 	},

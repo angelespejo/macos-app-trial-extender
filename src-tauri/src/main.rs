@@ -21,12 +21,12 @@ fn main() {
             // core::remove_file_safe,
         ])
         .setup(|app| {
-            let window = app.get_webview_window("main").unwrap();
+            let _window = app.get_webview_window("main").unwrap();
 
             // dock::icon_visibility(app.app_handle(), true);
 
             #[cfg(debug_assertions)]
-            window.open_devtools();
+            _window.open_devtools();
 
             Ok(())
         })

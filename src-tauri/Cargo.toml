@@ -11,7 +11,7 @@
 	tauri-build = { version = "2.4.1", features = [] }
 
 [dependencies]
-	tauri = { version = "2.8.5", features = [
+	tauri = { version = "2.9.5", features = [
 		"tray-icon",
 		"image-ico",
 		"image-png",
@@ -20,16 +20,16 @@
 	serde_json = "1.0"
 
 	# Tauri dependencies and plugins
-	tauri-plugin-single-instance = "2.3.6"
-	tauri-plugin-dialog = "2.4.2"
-	tauri-plugin-fs = { version = "2.4.4", features = [ "watch" ] }
+	tauri-plugin-single-instance = "2.3.7"
+	tauri-plugin-dialog = "2.6.0"
+	tauri-plugin-fs = { version = "2.4.5", features = [ "watch" ] }
 	tauri-plugin-notification = "2.3.3"
 	tauri-plugin-updater = "2.9.0"
-	tauri-plugin-shell = "2.3.3"
+	tauri-plugin-shell = "2.3.4"
 	tauri-plugin-os = "2.3.2"
 	tauri-plugin-autostart = "2.5.1"
-	tauri-plugin-log = "2.7.1"
-	tauri-plugin-store = "2.4.1"
+	tauri-plugin-log = "2.8.0"
+	tauri-plugin-store = "2.4.2"
 
 [features]
 	# this feature is used for production builds or when `devPath` points to the filesystem
