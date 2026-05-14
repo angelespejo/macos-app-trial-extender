@@ -26,10 +26,14 @@ export default defineConfig(
 			'docs/dev-info.md',
 			'src/i18n/**',
 			'src-tauri/gen/**/*.json',
+			'src/**/*.svelte',
 		],
 
 	} ),
-	await setSvelteConfig( { ts: true } ),
+	await setSvelteConfig( {
+		ts           : true,
+		svelteConfig : './svelte.config.js',
+	} ),
 	{
 		files : [ 'src/core/_super/**' ],
 		rules : { 'no-restricted-imports' : [
